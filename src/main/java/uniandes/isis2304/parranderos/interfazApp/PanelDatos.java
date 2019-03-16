@@ -1,8 +1,10 @@
 package uniandes.isis2304.parranderos.interfazApp;
 
 
+
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Universidad	de	los	Andes	(Bogot√°	- Colombia)
+
  * Departamento	de	Ingenier√≠a	de	Sistemas	y	Computaci√≥n
  * Licenciado	bajo	el	esquema	Academic Free License versi√≥n 2.1
  * 		
@@ -26,7 +28,8 @@ import javax.swing.border.TitledBorder;
 /**
  * Clase de interfaz para mostrar los resultados de la ejecuci√≥n de las 
  * operaciones realizadas por el usuario
- * @author Germ√°n Bravo
+ * @author Germ·n Bravo
+ * Modificado por Juan Pablo Correa y Nicol·s Jaramillo
  */
 @SuppressWarnings("serial")
 public class PanelDatos extends JPanel
@@ -40,7 +43,7 @@ public class PanelDatos extends JPanel
     // Atributos de interfaz
     // -----------------------------------------------------------------
 	/**
-	 * ÔøΩ?rea de texto con barras de deslizamiento
+	 * ¡rea de texto con barras de deslizamiento
 	 */
 	private JTextArea textArea;
 
@@ -54,10 +57,10 @@ public class PanelDatos extends JPanel
      */
     public PanelDatos ()
     {
-        setBorder (new TitledBorder ("Panel de informaci√≥n"));
+        setBorder (new TitledBorder ("Panel de informaciÛn"));
         setLayout( new BorderLayout( ) );
         
-        textArea = new JTextArea("Aqu√≠ sale el resultado de las operaciones solicitadas");
+        textArea = new JTextArea("AquÌ se muestra el resultado de las operaciones solicitadas");
         textArea.setEditable(false);
         add (new JScrollPane(textArea), BorderLayout.CENTER);
     }
@@ -74,5 +77,4 @@ public class PanelDatos extends JPanel
     {
     	textArea.setText(texto);
     }
-
 }

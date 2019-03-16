@@ -1,7 +1,8 @@
 package uniandes.isis2304.parranderos.interfazApp;
 
+
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotï¿½	- Colombia)
+ * Universidad	de	los	Andes	(Bogotá	- Colombia)
 
  * Departamento	de	IngenierÃ­a	de	Sistemas	y	ComputaciÃ³n
  * Licenciado	bajo	el	esquema	Academic Free License versiÃ³n 2.1
@@ -9,17 +10,15 @@ package uniandes.isis2304.parranderos.interfazApp;
  * Curso: isis2304 - Sistemas Transaccionales
  * Proyecto: Parranderos Uniandes
  * @version 1.0
- * @author Germï¿½n Bravo
- * Modificado en marzo del 2019 por Juan Pablo Correa y Nicolï¿½s Jaramillo
+ * @author Germán Bravo
+ * Modificado en marzo del 2019 por Juan Pablo Correa y Nicolás Jaramillo
  * Julio de 2018
  * 
- * Revisado por: Claudia Jimï¿½nez, Christian Ariza
+ * Revisado por: Claudia Jiménez, Christian Ariza
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
 import java.awt.BorderLayout;
-
-
 
 import java.awt.Color;
 import java.awt.Desktop;
@@ -31,10 +30,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
-
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -42,9 +40,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-
 import org.apache.log4j.Logger;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -52,17 +48,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.parranderos.negocio.TipoPersona;
-import uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes;
-
-
+import uniandes.isis2304.parranderos.persistencia.*;
 
 /**
  * Clase principal de la interfaz
- * @author Germï¿½n Bravo
- * Modificado por Juan Pablo Correa y Nicolï¿½s Jaramillo
+ * @author Germán Bravo
+ * Modificado por Juan Pablo Correa y Nicolás Jaramillo
  */
 @SuppressWarnings("serial")
-
 public class InterfazIteracionUno extends JFrame implements ActionListener
 {
 	// ----------------
@@ -76,12 +69,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	/**
 	 * Ruta al archivo de configuraciÃ³n de la interfaz
 	 */
-	private static final String CONFIG_INTERFAZ = "./src/resources/config/interfaceConfig.json"; 
+	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConfig.json"; 
 
+	/**
+	 * Ruta al banner
+	 */
+	private static final String RUTA_BANNER = "./src/main/resources/config/bannerHotelAndes.png"; 
+	
 	/**
 	 * Ruta al archivo de configuraciÃ³n de los nombres de tablas de la base de datos
 	 */
-	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
+	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json";
 
 	// ---------------
 	//   ATRIBUTOS
@@ -92,7 +90,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	private JsonObject tableConfig;
 
 	/**
-	 * Asociaciï¿½n a la clase principal del negocio.
+	 * Asociación a la clase principal del negocio.
 	 */
 	private PersistenciaHotelAndes persistencia;
 
@@ -110,54 +108,63 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	private PanelDatos panelDatos;
 
 	/**
-	 * MenÃº de la aplicaciÃ³n
+	 * Menú de la aplicación
 	 */
 	private JMenuBar menuBar;
+	
+	/**
+	 * Indica cuál tipo de persona está usando la aplicación
+	 */
+	private boolean esAdmin;
 
 	// -----------------------------------------------------------
-	//   Mï¿½TODOS
+	//   MÉTODOS
 	// -----------------------------------------------------------
 
 	/**
-	 * Construye la ventana principal de la aplicaciï¿½n. <br>
+	 * Construye la ventana principal de la aplicación. <br>
 	 * <b>post:</b> Todos los componentes de la interfaz fueron inicializados.
 	 */
 	public InterfazIteracionUno( )
 	{
-
-		// Carga la configuraciÃ³n de la interfaz desde un archivo JSON
+		// Carga la configuración de la interfaz desde un archivo JSON
 		guiConfig = openConfig ("Interfaz", CONFIG_INTERFAZ);
 
-		// Configura la apariencia del frame que contiene la interfaz grï¿½fica
-		configurarFrame ( );
+		// Pregunta por el rol del usuario que interactúa con la aplicación		
+		JCheckBox checkbox1 = new JCheckBox("Soy cliente");
+		JCheckBox checkbox2 = new JCheckBox("Soy administrador");
+		Object[] params = { new String( "Por favor, indíquenos cuál es su para usar la aplicación (seleccione sólo una opción)." ), checkbox1, checkbox2 };
+		JOptionPane.showConfirmDialog( this, params, "Seleccionar rol", JOptionPane.OK_OPTION );
+		esAdmin = checkbox2.isSelected();
+		
+		
+		// Configura la apariencia del frame que contiene la interfaz gráfica
+		configurarFrame();
 		
 		if (guiConfig != null)
 			crearMenu( guiConfig.getAsJsonArray("menuBar") );
 
-		//		tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
-
-		try {			
-			// Inicializa la persistencia
-			persistencia = PersistenciaHotelAndes.getInstance( );
-		} catch (Exception e) {
-		}
-
-		//String path = guiConfig.get("bannerPath").getAsString();
+		/*
+		tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+		persistencia = PersistenciaHotelAndes.getInstance( );
+		String path = guiConfig.get("bannerPath").getAsString();
+		*/
+		
 		panelDatos = new PanelDatos ( );
 
 		setLayout (new BorderLayout());
-//		add (new JLabel (new ImageIcon (path)), BorderLayout.NORTH );          
+		add ( new JLabel (new ImageIcon(RUTA_BANNER)), BorderLayout.NORTH );          
 		add( panelDatos, BorderLayout.CENTER );
 	}
 
 	// ----------------------------------------------
-	//   Mï¿½TODOS DE CONFIGURACIï¿½N PARA LA INTERFAZ
+	//   MÉTODOS DE CONFIGURACIÓN PARA LA INTERFAZ
 	// ----------------------------------------------
 	/**
-	 * Lee datos de configuraciï¿½n para la aplicaciï¿½n, a partir de un archivo JSON o con valores por defecto si hay errores.
-	 * @param tipo - El tipo de configuraciï¿½n deseada
-	 * @param archConfig - Archivo Json que contiene la configuraciï¿½n
-	 * @return Un objeto JSON con la configuraciï¿½n del tipo especificado
+	 * Lee datos de configuración para la aplicación, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuración deseada
+	 * @param archConfig - Archivo Json que contiene la configuración
+	 * @return Un objeto JSON con la configuración del tipo especificado
 	 * 			NULL si hay un error en el archivo.
 	 */
 	private JsonObject openConfig (String tipo, String archConfig)
@@ -169,18 +176,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			FileReader file = new FileReader (archConfig);
 			JsonReader reader = new JsonReader ( file );
 			config = gson.fromJson(reader, JsonObject.class);
-			log.info ( "Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: " + tipo );
+			log.info ( "Se encontró un archivo de configuración válido: " + tipo );
 		} 
 		catch (Exception e)
 		{	
-			log.info ( "No se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido" );			
-			JOptionPane.showMessageDialog(null, "No se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
+			log.info ( "No se encontró un archivo de configuración válido" );			
+			JOptionPane.showMessageDialog(null, "No se encontró un archivo de configuración válido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
 		}	
 		return config;
 	}
 
 	/**
-	 * Mï¿½todo para configurar el frame principal de la aplicaciï¿½n
+	 * Método para configurar el frame principal de la aplicación
 	 */
 	private void configurarFrame(  )
 	{
@@ -190,14 +197,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 		if ( guiConfig == null )
 		{
-			log.info ( "Se aplica configuraciï¿½n por defecto" );			
-			titulo = "Parranderos APP Default";
+			log.info ( "Se aplica configuración por defecto" );			
+			titulo = "HotelAndes APP Default";
 			alto = 300;
 			ancho = 500;
 		}
 		else
 		{
-			log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciï¿½n" );
+			log.info ( "Se aplica configuración indicada en el archivo de configuración" );
 			titulo = guiConfig.get("title").getAsString();
 			alto= guiConfig.get("frameH").getAsInt();
 			ancho = guiConfig.get("frameW").getAsInt();
@@ -209,21 +216,21 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		setBackground( Color.WHITE );
 
 		setTitle( titulo );
-		setSize ( ancho, alto);        
+		setSize ( ancho, alto);
 	}
 
 	/**
-	 * Mï¿½todo para crear el menï¿½ de la aplicaciï¿½n con base en el objeto JSON leï¿½do
-	 * Genera una barra de menï¿½ y los menï¿½s con sus respectivas opciones
-	 * @param jsonMenu - Arreglo Json con los menï¿½s deseados
+	 * Método para crear el menú de la aplicación con base en el objeto JSON leído
+	 * Genera una barra de menú y los menús con sus respectivas opciones
+	 * @param jsonMenu - Arreglo Json con los menús deseados
 	 */
 	private void crearMenu( JsonArray jsonMenu )
 	{   
-		// Creaciï¿½n de la barra de menï¿½s
+		// Creación de la barra de menús
 		menuBar = new JMenuBar();       
 		for (JsonElement men : jsonMenu)
 		{
-			// Creaciï¿½n de cada uno de los menï¿½s
+			// Creación de cada uno de los menús
 			JsonObject jom = men.getAsJsonObject(); 
 
 			String menuTitle = jom.get("menuTitle").getAsString();        	
@@ -253,7 +260,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//   CRUD DE USUARIO
 	// ----------------------
 	/**
-	 * Registra un nuevo rol con la informaciï¿½n dada por el usuario
+	 * Registra un nuevo rol con la información dada por el usuario
 	 * <Post> Se crea una nueva tupla en la tabla ROLES, lo cual implica ciertos permisos
 	 * y restricciones en lo que puede o no hacer en el sistema dicho usuario. 
 	 */
@@ -261,8 +268,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String tipoDeRol = JOptionPane.showInputDialog ( this, "ï¿½Cuï¿½l es el tipo de rol?", "Tipo de rol", JOptionPane.QUESTION_MESSAGE );
-			String info = JOptionPane.showInputDialog ( this, "ï¿½Cuï¿½l es el id del rol?", "Identificador", JOptionPane.QUESTION_MESSAGE );
+			String tipoDeRol = JOptionPane.showInputDialog ( this, "¿Cuál es el tipo de rol?", "Tipo de rol", JOptionPane.QUESTION_MESSAGE );
+			String info = JOptionPane.showInputDialog ( this, "¿Cuál es el id del rol?", "Identificador", JOptionPane.QUESTION_MESSAGE );
 
 			int idDelRol = -1;
 
@@ -272,7 +279,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				panelDatos.actualizarInterfaz( "Por favor ingrese un nï¿½mero de id vï¿½lido." );
+				panelDatos.actualizarInterfaz( "Por favor ingrese un número de id válido." );
 			}
 
 			if ( tipoDeRol != null && idDelRol > 0 )
@@ -286,12 +293,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 				String resultado = "En registrarRolDeUsuario\n\n";
 				resultado += "Rol de usuario adicionado exitosamente: " + tp;
-				resultado += "\n Operaciï¿½n terminada";
+				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
 			}
 			else
 			{
-				panelDatos.actualizarInterfaz("Operaciï¿½n cancelada por el usuario");
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
 			}
 		} 
 		catch (Exception e) 
@@ -478,6 +485,9 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public static void main( String[] args )
 	{
+//		PersistenciaHotelAndes pero = PersistenciaHotelAndes.getInstance();
+//		pero.registrarRolDeUsuario("aaa", 99);
+		
 		try
 		{
 
