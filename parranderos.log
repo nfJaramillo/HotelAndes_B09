@@ -1,0 +1,17 @@
+09:01:46,949 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+09:01:46,949 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+09:01:46,965 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:10:18,180 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+09:10:27,097 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+09:10:57,843 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+09:16:36,621 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+09:17:23,629 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - No se encontr� un archivo de configuraci�n v�lido
+09:18:27,407 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraci�n por defecto
