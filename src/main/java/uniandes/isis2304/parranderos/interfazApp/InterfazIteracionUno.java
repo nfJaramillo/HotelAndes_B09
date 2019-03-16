@@ -144,11 +144,11 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		if (guiConfig != null)
 			crearMenu( guiConfig.getAsJsonArray("menuBar") );
 
-		/*
+		
 		tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
 		persistencia = PersistenciaHotelAndes.getInstance( );
 		String path = guiConfig.get("bannerPath").getAsString();
-		*/
+		
 		
 		panelDatos = new PanelDatos ( );
 

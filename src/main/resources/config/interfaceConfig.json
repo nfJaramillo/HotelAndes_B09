@@ -1,0 +1,120 @@
+{
+	"title": "Aplicación transaccional de HotelAndes",
+	"frameH": 900,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle": "Usuarios",
+		  "options":
+			[
+				{
+					"label": "Registrar rol de usuario",
+					"event": "registrarRolDeUsuario"
+				},
+				{
+					"label": "Registrar usuario",
+					"event": "registrarUsuario"
+				}
+			]
+		},
+		{ "menuTitle": "Habitaciones",
+		  "options":
+			[
+				{
+					"label": "Registrar tipo de habitación",
+					"event": "registrarTipoDeHabitacion"
+				},
+				{
+					"label": "Registrar habitación",
+					"event": "registrarHabitacion"
+				}
+			]
+		},		
+		{ "menuTitle": "Servicios",
+		  "options":
+			[
+				{
+					"label": "Registrar un servicio del hotel",
+					"event": "registrarServicioHotel"
+				}
+			]
+		},
+        { "menuTitle": "Planes de consumo",
+		  "options":
+			[
+				{
+					"label": "Registrar un plan de consumo",
+					"event": "registrarPlanDeConsumo"
+				},
+                {
+					"label": "Registrar un plan de consumo",
+					"event": "registrarPlanDeConsumo"
+				}
+			]
+		},
+        { "menuTitle": "Reservas",
+		  "options":
+			[
+				{
+					"label": "Registrar una reserva de alojamiento",
+					"event": "registrarReservaDeAlojamiento"
+				},
+                {
+					"label": "Registrar reserva de hotel",
+					"event": "registrarReservaDeHotel"
+                },
+                {
+                    "label": "Registrar llegada de cliente",
+                    "event": "registrarLlegadaDeCliente"
+                },
+                {
+                    "label": "Registrar salida de cliente",
+                    "event": "registrarSalidaDeCliente"
+                }
+			]
+		},
+        { "menuTitle": "Consumos",
+		  "options":
+			[
+				{
+					"label": "Registrar un consumo",
+					"event": "registrarConsumo"
+				}
+			]
+		},
+        { "menuTitle": "Consultas",
+		  "options":
+			[
+				{
+					"label": "Mostrar dinero recolectado por servicios en cada habitación",
+					"event": "mostrarDineroRecolectadoPorServicio"
+				},
+                {
+					"label": "Los 20 servicios más populares",
+					"event": "mostrar20ServiciosMasPopulares"
+                },
+                {
+                    "label": "Índice de ocupación de cada habitación",
+                    "event": "mostrarIndiceOcupacionHabitacion"
+                },
+                {
+                    "label": "Servicios con ciertas características",
+                    "event": "mostrarServiciosConCaracteristicas"
+                },
+                {
+                    "label": "Consumo de un usuario en ciertas fechas",
+                    "event": "mostrarConsumoUsuarioFechas"
+                }
+			]
+		},
+		{ "menuTitle": "Acerca de ...",
+		  "options":
+			[
+				{
+					"label": "Acerca de ...",
+					"event": "acercaDe"
+				}
+			]
+		}		
+	]
+}
