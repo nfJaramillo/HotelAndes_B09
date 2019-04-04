@@ -1,10 +1,8 @@
 package uniandes.isis2304.parranderos.interfazApp;
 
 
-
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Universidad	de	los	Andes	(Bogot√°	- Colombia)
-
  * Departamento	de	Ingenier√≠a	de	Sistemas	y	Computaci√≥n
  * Licenciado	bajo	el	esquema	Academic Free License versi√≥n 2.1
  * 		
@@ -20,16 +18,16 @@ package uniandes.isis2304.parranderos.interfazApp;
 
 
 import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
 /**
- * Clase de interfaz para mostrar los resultados de la ejecuci√≥n de las 
+ * Clase de interfaz para mostrar los resultados de la ejecuciÔøΩn de las 
  * operaciones realizadas por el usuario
- * @author Germ·n Bravo
- * Modificado por Juan Pablo Correa y Nicol·s Jaramillo
+ * @author Germ√°n Bravo
  */
 @SuppressWarnings("serial")
 public class PanelDatos extends JPanel
@@ -43,7 +41,7 @@ public class PanelDatos extends JPanel
     // Atributos de interfaz
     // -----------------------------------------------------------------
 	/**
-	 * ¡rea de texto con barras de deslizamiento
+	 * ÔøΩrea de texto con barras de deslizamiento
 	 */
 	private JTextArea textArea;
 
@@ -57,16 +55,16 @@ public class PanelDatos extends JPanel
      */
     public PanelDatos ()
     {
-        setBorder (new TitledBorder ("Panel de informaciÛn"));
+        setBorder (new TitledBorder ("Panel de informaci√≥n"));
         setLayout( new BorderLayout( ) );
         
-        textArea = new JTextArea("AquÌ se muestra el resultado de las operaciones solicitadas");
+        textArea = new JTextArea("Aqu√≠ se muestra el resultado de las operaciones solicitadas");
         textArea.setEditable(false);
         add (new JScrollPane(textArea), BorderLayout.CENTER);
     }
 
     // -----------------------------------------------------------------
-    // M√©todos
+    // MÔøΩTODOS
     // -----------------------------------------------------------------
 
     /**
@@ -77,4 +75,5 @@ public class PanelDatos extends JPanel
     {
     	textArea.setText(texto);
     }
+
 }

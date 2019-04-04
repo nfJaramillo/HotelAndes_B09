@@ -5,16 +5,18 @@ import java.sql.Date;
 public class ReservaServicio {
 
 	private String descripcion;
-	private Date fechaFin;
-	private Date fechaInicio;
-	private int id;
-	private ServicioAdicional servicioAdicional;
+	private String fechaFin;
+	private String fechaInicio;
+	private long id;
+	private long servicioAdicional;
+	private long idUsuario;
+	private String tipoIdUsuario;
+	
 
 	public ReservaServicio() {
 
 	}
 
-	
 
 	/**
 	 * @param descripcion
@@ -22,18 +24,19 @@ public class ReservaServicio {
 	 * @param fechaInicio
 	 * @param id
 	 * @param servicioAdicional
+	 * @param idUsuario
+	 * @param tipoIdUsuario
 	 */
-	public ReservaServicio(String descripcion, Date fechaFin, Date fechaInicio, int id,
-			ServicioAdicional servicioAdicional) {
+	public ReservaServicio(String descripcion, String fechaFin, String fechaInicio, long id, long servicioAdicional,long idUsuario, String tipoIdUsuario) {
 		super();
 		this.descripcion = descripcion;
 		this.fechaFin = fechaFin;
 		this.fechaInicio = fechaInicio;
 		this.id = id;
 		this.servicioAdicional = servicioAdicional;
+		this.idUsuario = idUsuario;
+		this.tipoIdUsuario = tipoIdUsuario;
 	}
-
-	
 
 
 	/**
@@ -44,7 +47,6 @@ public class ReservaServicio {
 	}
 
 
-
 	/**
 	 * @param descripcion the descripcion to set
 	 */
@@ -53,50 +55,44 @@ public class ReservaServicio {
 	}
 
 
-
 	/**
 	 * @return the fechaFin
 	 */
-	public Date getFechaFin() {
+	public String getFechaFin() {
 		return fechaFin;
 	}
-
 
 
 	/**
 	 * @param fechaFin the fechaFin to set
 	 */
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-
 
 
 	/**
 	 * @return the fechaInicio
 	 */
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-
 
 
 	/**
 	 * @param fechaInicio the fechaInicio to set
 	 */
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-
 
 
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-
 
 
 	/**
@@ -107,23 +103,52 @@ public class ReservaServicio {
 	}
 
 
-
 	/**
 	 * @return the servicioAdicional
 	 */
-	public ServicioAdicional getServicioAdicional() {
+	public long getServicioAdicional() {
 		return servicioAdicional;
 	}
-
 
 
 	/**
 	 * @param servicioAdicional the servicioAdicional to set
 	 */
-	public void setServicioAdicional(ServicioAdicional servicioAdicional) {
+	public void setServicioAdicional(long servicioAdicional) {
 		this.servicioAdicional = servicioAdicional;
 	}
 
+
+	/**
+	 * @return the idUsuario
+	 */
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+
+
+	/**
+	 * @param idUsuario the idUsuario to set
+	 */
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+
+	/**
+	 * @return the tipoIdUsuario
+	 */
+	public String getTipoIdUsuario() {
+		return tipoIdUsuario;
+	}
+
+
+	/**
+	 * @param tipoIdUsuario the tipoIdUsuario to set
+	 */
+	public void setTipoIdUsuario(String tipoIdUsuario) {
+		this.tipoIdUsuario = tipoIdUsuario;
+	}
 
 
 	/* (non-Javadoc)
@@ -132,8 +157,15 @@ public class ReservaServicio {
 	@Override
 	public String toString() {
 		return "ReservaServicio [descripcion=" + descripcion + ", fechaFin=" + fechaFin + ", fechaInicio=" + fechaInicio
-				+ ", id=" + id + ", servicioAdicional=" + servicioAdicional + "]";
+				+ ", id=" + id + ", servicioAdicional=" + servicioAdicional + ", idUsuario=" + idUsuario
+				+ ", tipoIdUsuario=" + tipoIdUsuario + "]";
 	}
 
+
+	
+
+
+
+	
 	
 }

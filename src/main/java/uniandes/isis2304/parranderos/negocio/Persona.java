@@ -99,6 +99,15 @@ public class Persona {
 	public void setM_TipoPersona(TipoPersona m_TipoPersona) {
 		this.m_TipoPersona = m_TipoPersona;
 	}
+	
+	public void setTIPOIDUSUARIO(String TIPOIDUSUARIO)
+	{
+		tipoIdentificacion  = TIPOIDUSUARIO;
+	}
+	public void setIDUSUARIO(int IDUSUARIO)
+	{
+		id  = IDUSUARIO;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

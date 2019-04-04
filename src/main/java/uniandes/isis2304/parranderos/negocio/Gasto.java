@@ -5,12 +5,13 @@ import java.sql.Date;
 
 public class Gasto {
 
-	private Date fecha;
+	private String fecha;
 	private int id;
-	private boolean pagado;
+	private int pagado;
 	private double precio;
-	private ServicioAdicional servicios;
-	private Persona persona;
+	private long idServicio;
+	private long idPersona;
+	private String tipoId;
 
 	
 	
@@ -19,36 +20,47 @@ public class Gasto {
 		
 	}
 
+
+
 	/**
 	 * @param fecha
 	 * @param id
 	 * @param pagado
 	 * @param precio
-	 * @param servicios
-	 * @param persona
+	 * @param idServicio
+	 * @param idPersona
+	 * @param tipoId
 	 */
-	public Gasto(Date fecha, int id, boolean pagado, double precio, ServicioAdicional servicios, Persona persona) {
+	public Gasto(String fecha, int id, int pagado, double precio, long idServicio, long idPersona, String tipoId) {
+		super();
 		this.fecha = fecha;
 		this.id = id;
 		this.pagado = pagado;
 		this.precio = precio;
-		this.servicios = servicios;
-		this.persona = persona;
+		this.idServicio = idServicio;
+		this.idPersona = idPersona;
+		this.tipoId = tipoId;
 	}
+
+
 
 	/**
 	 * @return the fecha
 	 */
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
+
+
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+
+
 
 	/**
 	 * @return the id
@@ -57,6 +69,8 @@ public class Gasto {
 		return id;
 	}
 
+
+
 	/**
 	 * @param id the id to set
 	 */
@@ -64,19 +78,25 @@ public class Gasto {
 		this.id = id;
 	}
 
+
+
 	/**
 	 * @return the pagado
 	 */
-	public boolean isPagado() {
+	public int getPagado() {
 		return pagado;
 	}
+
+
 
 	/**
 	 * @param pagado the pagado to set
 	 */
-	public void setPagado(boolean pagado) {
+	public void setPagado(int pagado) {
 		this.pagado = pagado;
 	}
+
+
 
 	/**
 	 * @return the precio
@@ -85,6 +105,8 @@ public class Gasto {
 		return precio;
 	}
 
+
+
 	/**
 	 * @param precio the precio to set
 	 */
@@ -92,43 +114,74 @@ public class Gasto {
 		this.precio = precio;
 	}
 
-	/**
-	 * @return the servicios
-	 */
-	public ServicioAdicional getServicios() {
-		return servicios;
-	}
+
 
 	/**
-	 * @param servicios the servicios to set
+	 * @return the idServicio
 	 */
-	public void setServicios(ServicioAdicional servicios) {
-		this.servicios = servicios;
+	public long getIdServicio() {
+		return idServicio;
 	}
 
-	/**
-	 * @return the persona
-	 */
-	public Persona getPersona() {
-		return persona;
-	}
+
 
 	/**
-	 * @param persona the persona to set
+	 * @param idServicio the idServicio to set
 	 */
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setIdServicio(long idServicio) {
+		this.idServicio = idServicio;
 	}
+
+
+
+	/**
+	 * @return the idPersona
+	 */
+	public long getIdPersona() {
+		return idPersona;
+	}
+
+
+
+	/**
+	 * @param idPersona the idPersona to set
+	 */
+	public void setIdPersona(long idPersona) {
+		this.idPersona = idPersona;
+	}
+
+
+
+	/**
+	 * @return the tipoId
+	 */
+	public String getTipoId() {
+		return tipoId;
+	}
+
+
+
+	/**
+	 * @param tipoId the tipoId to set
+	 */
+	public void setTipoId(String tipoId) {
+		this.tipoId = tipoId;
+	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Gasto [fecha=" + fecha + ", id=" + id + ", pagado=" + pagado + ", precio=" + precio + ", servicios="
-				+ servicios + ", persona=" + persona + "]";
+		return "Gasto [fecha=" + fecha + ", id=" + id + ", pagado=" + pagado + ", precio=" + precio + ", idServicio="
+				+ idServicio + ", idPersona=" + idPersona + ", tipoId=" + tipoId + "]";
 	}
 
+
+
+	
 	
 	
 	

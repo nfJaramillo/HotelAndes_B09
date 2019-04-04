@@ -39,7 +39,7 @@ public class SQLTipoPersona {
 
 	public long registrarRolDeUsuario (PersistenceManager pm, long id, String nombre) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO tipos_de_personas" + "(id, nombre) values (?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO tipos_de_personas" + "(id, nombre) values (?, ?)");
         q.setParameters(id, nombre);
         return (long) q.executeUnique();
 	}

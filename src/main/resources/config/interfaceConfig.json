@@ -4,117 +4,56 @@
 	"frameW": 800,
 	"menuBar":
 	[
-		{ "menuTitle": "Usuarios",
+		{ "menuTitle": "Requerimientos funcionales de modificación ",
 		  "options":
 			[
 				{
-					"label": "Registrar rol de usuario",
-					"event": "registrarRolDeUsuario"
+					"label": "RF7: Registrar una reserva de alojamiento",
+					"event": "registrarUnaReservaDeAlojamiento"
 				},
 				{
-					"label": "Registrar usuario",
-					"event": "registrarUsuario"
+					"label": "RF8: Registrar una reserva de un servicio del hotel por parte de un cliente",
+					"event": "registarUnaReservaDeUnServicioDelHotelPorParteDeUnCliente"
+				},
+				{
+					"label": "RF9: Registrar la llegada de un cliente al hotel",
+					"event": "registrarLaLLegadaDeUnClienteAlHotel"
+				},
+				{
+					"label": "RF10: Registrar un consumo de un servicio del hotel por parte de un cliente o sus acompanantes",
+					"event": "registrarUnConsumoDeUnServicioDelHotelPorParteDeUnClienteOSusAcompanantes"
+				},
+				{
+					"label": "RF11: Registrar la salida de un cliente",
+					"event": "registarLaSalidaDeUnCliente"
 				}
 			]
 		},
-		{ "menuTitle": "Habitaciones",
+		{ "menuTitle": "Requerimientos funcionales de consulta",
 		  "options":
 			[
 				{
-					"label": "Registrar tipo de habitación",
-					"event": "registrarTipoDeHabitacion"
+					"label": "RFC1: Mostrar el dinero recolectado",
+					"event": "mostrarElDineroRecolectado"
 				},
 				{
-					"label": "Registrar habitación",
-					"event": "registrarHabitacion"
+					"label": "RFC2: Mostrar los 20 servicios mas populares",
+					"event": "mostrar20ServiciosMasPopulares"
+				},
+				{
+					"label": "RFC3: Mostrar el inidice de ocupacion del hotel",
+					"event": "mostrarIndiceOcupacion"
+				},
+				{
+					"label": " RFC4: Mostrar los servicios que cumplen con cierta caracteristica",
+					"event": "mostrarLosServiciosQueCumplenConCiertaCaracteristica"
+				},
+				{
+					"label": "Mostrar el consumo por un usuario en u rango de fechas",
+					"event": "mostrarConsumoUsuarioFechas"
 				}
 			]
 		},		
-		{ "menuTitle": "Servicios",
-		  "options":
-			[
-				{
-					"label": "Registrar un servicio del hotel",
-					"event": "registrarServicioHotel"
-				}
-			]
-		},
-        { "menuTitle": "Planes de consumo",
-		  "options":
-			[
-				{
-					"label": "Registrar un plan de consumo",
-					"event": "registrarPlanDeConsumo"
-				},
-                {
-					"label": "Registrar un plan de consumo",
-					"event": "registrarPlanDeConsumo"
-				}
-			]
-		},
-        { "menuTitle": "Reservas",
-		  "options":
-			[
-				{
-					"label": "Registrar una reserva de alojamiento",
-					"event": "registrarReservaDeAlojamiento"
-				},
-                {
-					"label": "Registrar reserva de hotel",
-					"event": "registrarReservaDeHotel"
-                },
-                {
-                    "label": "Registrar llegada de cliente",
-                    "event": "registrarLlegadaDeCliente"
-                },
-                {
-                    "label": "Registrar salida de cliente",
-                    "event": "registrarSalidaDeCliente"
-                }
-			]
-		},
-        { "menuTitle": "Consumos",
-		  "options":
-			[
-				{
-					"label": "Registrar un consumo",
-					"event": "registrarConsumo"
-				}
-			]
-		},
-        { "menuTitle": "Consultas",
-		  "options":
-			[
-				{
-					"label": "Mostrar dinero recolectado por servicios en cada habitación",
-					"event": "mostrarDineroRecolectadoPorServicio"
-				},
-                {
-					"label": "Los 20 servicios más populares",
-					"event": "mostrar20ServiciosMasPopulares"
-                },
-                {
-                    "label": "Índice de ocupación de cada habitación",
-                    "event": "mostrarIndiceOcupacionHabitacion"
-                },
-                {
-                    "label": "Servicios con ciertas características",
-                    "event": "mostrarServiciosConCaracteristicas"
-                },
-                {
-                    "label": "Consumo de un usuario en ciertas fechas",
-                    "event": "mostrarConsumoUsuarioFechas"
-                }
-			]
-		},
-		{ "menuTitle": "Acerca de ...",
-		  "options":
-			[
-				{
-					"label": "Acerca de ...",
-					"event": "acercaDe"
-				}
-			]
-		}		
+		
 	]
 }

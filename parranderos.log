@@ -15,3 +15,828 @@ ORA-02289: no existe la secuencia
 
 09:17:23,629 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - No se encontr� un archivo de configuraci�n v�lido
 09:18:27,407 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraci�n por defecto
+09:35:56,134 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - No se encontr� un archivo de configuraci�n v�lido
+09:35:58,916 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraci�n por defecto
+09:39:17,415 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - No se encontr� un archivo de configuraci�n v�lido
+09:39:20,775 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraci�n por defecto
+09:54:46,509 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - No se encontr� un archivo de configuraci�n v�lido
+09:54:50,324 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraci�n por defecto
+09:57:37,697 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+09:57:37,698 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:01:51,064 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:01:53,145 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:02:16,004 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+10:05:29,837 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:05:31,842 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:05:39,285 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+10:07:50,731 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:07:52,668 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:08:02,435 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+10:10:21,985 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:10:24,540 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:10:34,442 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : SQL query tiene parametro "3" pero no existe en el query : INSERT INTO tipos_de_personas(id, nombre) values (?, ?, ?, ?, ?)
+
+10:11:20,542 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:11:22,196 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:33:36,844 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:33:39,095 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:34:17,854 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:34:19,807 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:36:32,040 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:36:33,976 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:38:10,417 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:38:11,864 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:38:29,941 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:38:32,032 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:40:19,527 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:40:21,089 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:41:02,516 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:41:04,514 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:41:38,251 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:41:40,026 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+10:52:45,459 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+10:52:47,084 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+11:22:31,125 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+11:22:32,781 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+11:26:07,298 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+11:26:08,985 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+11:27:13,773 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+11:27:17,759 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+11:27:31,173 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontr� un archivo de configuraci�n v�lido: Interfaz
+11:27:32,736 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuraci�n
+13:15:16,398 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:15:18,164 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:18:29,994 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304B181910"."RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA")
+
+13:20:56,615 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:20:58,365 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:21:43,182 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304B181910"."RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA")
+
+13:26:37,992 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:26:39,731 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:29:06,677 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:29:08,146 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:29:09,896 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:30:11,903 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:30:13,263 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:30:15,044 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:31:14,073 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:31:15,542 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:31:17,276 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : SQL query tiene parametro "9" pero no existe en el query : INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?,?,?)
+
+13:31:51,971 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:31:53,284 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:31:55,042 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:37:35,296 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:37:36,624 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:37:38,427 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:39:10,621 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:39:12,074 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:39:14,038 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:40:21,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:40:24,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:40:26,111 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-01722: número no válido
+
+13:46:27,789 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:46:29,711 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:47:04,165 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:47:06,041 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:47:24,906 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:47:26,297 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:47:34,973 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:47:36,880 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:48:33,779 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304B181910"."RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA")
+
+13:50:32,280 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:50:33,796 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:50:39,659 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:50:40,629 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:51:27,238 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-01400: no se puede realizar una inserción NULL en ("ISIS2304B181910"."RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA")
+
+13:51:56,484 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:51:58,219 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:45:23,530 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:45:24,999 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:45:29,038 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:45:37,383 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:49:20,802 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Cannot call executeResultList method when query has result unset. Call executeList instead.
+
+15:51:35,746 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:51:36,840 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:52:43,716 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM RESERVAS_DE_ALOJAMIENTO WHERE IDHABITACION = 11 AND ( ((3917-10-03 between FECHALLEGADATEORICA and FECHASALIDATEORICA) OR (3917-10-10 BETWEEN FECHALLEGADATEORICA and FECHASALIDATEORICA)) )  or ( ((FECHALLEGADATEORICA between 3917-10-03 and 3917-10-10) OR ( FECHASALIDATEORICA between 3917-10-03 AND 3917-10-10)) )".
+ORA-00932: tipos de dato inconsistentes: se esperaba NUMBER se ha obtenido DATE
+
+15:59:03,125 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:59:10,501 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:59:19,012 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:59:20,747 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:03:31,804 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:03:34,242 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:21:19,883 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:21:22,508 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:23:29,469 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:23:31,157 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:24:46,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:24:48,289 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:28:06,474 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:28:07,740 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:30:52,870 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:30:54,824 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:35:42,251 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:35:47,158 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:39:02,946 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:39:06,753 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:39:07,816 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:40:33,725 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:40:35,397 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:41:18,318 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:42:30,918 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:42:33,351 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:44:14,787 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:44:17,294 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:44:46,727 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+16:47:27,674 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:47:37,294 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:51:06,823 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:51:09,609 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:52:30,774 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
+
+19:13:52,936 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:13:59,733 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:28:28,077 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:28:32,020 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:30:16,827 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:30:21,650 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:39:49,460 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:39:52,118 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:41:51,931 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:41:54,656 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:42:02,013 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:42:03,360 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:43:52,539 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:43:54,444 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:44:01,262 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:44:03,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:44:12,288 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:44:13,771 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:44:44,483 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:44:46,580 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:45:50,846 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:45:55,670 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:49:07,835 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:49:12,921 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:49:47,624 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:49:49,802 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:49:57,624 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:50:03,237 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:50:27,146 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:50:38,681 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:51:51,536 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:51:56,512 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:54:39,894 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:54:41,159 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:55:01,137 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:55:02,357 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:57:05,903 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:57:07,123 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:57:43,050 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:57:44,382 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:58:15,293 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:58:16,724 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:58:52,356 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:58:53,721 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:00:42,501 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:00:43,806 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:01:26,579 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:01:31,870 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:05:35,371 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:05:36,374 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:06:13,561 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:06:14,755 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:06:45,001 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:06:46,205 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:25:25,849 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:25:29,957 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:29:09,857 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:29:15,009 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+08:12:00,996 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+08:12:04,540 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+08:12:23,932 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+08:12:25,658 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+08:13:05,089 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
+
+08:38:16,059 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+08:38:18,439 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+08:39:07,231 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+08:41:27,636 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+08:41:32,375 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+08:42:33,408 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT * FROM RESERVAS_SERVICIOS WHERE IDSERVICIO = 3 AND ( (('' between FECHAINICIO and FECHAFIN) OR ('null' BETWEEN FECHAINICIO and FECHAFIN)) )  or ( ((FECHAINICIO between '' and 'null') OR ( FECHAFIN between '' AND 'null')) )".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+08:43:18,527 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+09:06:42,661 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:06:46,204 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:07:56,425 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe una reserva con dicho id
+
+09:08:12,082 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe una reserva con dicho id
+
+09:08:38,241 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:08:39,410 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:10:02,350 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:10:04,024 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:11:03,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:11:05,010 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:11:12,832 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = 17/03/2019".
+ORA-00932: tipos de dato inconsistentes: se esperaba DATE se ha obtenido NUMBER
+
+09:11:59,682 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:12:01,044 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:12:09,086 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = 17/03/2019".
+ORA-00932: tipos de dato inconsistentes: se esperaba DATE se ha obtenido NUMBER
+
+09:12:55,216 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:12:56,110 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:13:50,004 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:13:50,984 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:15:10,222 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:15:11,123 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:16:50,896 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:16:51,840 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:17:18,306 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:17:19,128 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:19:10,688 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:19:11,646 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:19:19,805 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = 17/03/2019WHERE ID = 1202".
+ORA-00932: tipos de dato inconsistentes: se esperaba DATE se ha obtenido NUMBER
+
+09:19:43,808 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:19:46,159 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:19:55,448 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:19:59,662 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:20:07,467 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = 17/03/2019 WHERE ID = 1202".
+ORA-00932: tipos de dato inconsistentes: se esperaba DATE se ha obtenido NUMBER
+
+09:20:26,590 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:20:29,255 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:21:50,692 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:21:51,914 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:24:25,048 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:24:26,108 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:27:50,998 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:27:51,985 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:27:58,857 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = 17/03/2019 WHERE ID = 1202".
+ORA-00932: tipos de dato inconsistentes: se esperaba DATE se ha obtenido NUMBER
+
+09:29:25,548 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:29:26,622 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:31:49,423 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:31:50,233 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:32:49,851 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:32:55,732 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:34:15,421 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:34:16,490 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:34:23,760 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = '17/03/2019' WHERE ID = 1202;".
+ORA-00933: comando SQL no terminado correctamente
+
+09:37:26,389 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:37:28,916 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:37:33,415 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:37:35,488 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:37:42,732 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHALLEGADAREAL = '17/03/2019' WHERE ID = 1202;".
+ORA-00933: comando SQL no terminado correctamente
+
+09:37:56,666 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:37:57,517 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:38:08,437 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:38:09,420 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:41:35,667 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:41:36,841 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:43:02,547 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:43:03,399 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:44:23,477 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:44:24,623 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:44:38,683 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:44:39,556 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:45:12,675 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:45:13,644 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:45:22,707 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe una reserva con dicho id
+
+09:45:55,614 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:45:56,773 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:46:01,850 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:46:02,634 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:47:07,118 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:47:09,297 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:48:15,150 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:48:16,761 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:48:59,631 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+09:49:33,099 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:49:34,467 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:50:13,222 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:50:14,537 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:50:19,097 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:50:20,345 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:51:32,810 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:51:34,328 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:59:03,068 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:59:04,289 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:59:10,462 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+09:59:21,162 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:59:22,117 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+09:59:27,314 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+09:59:54,271 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+09:59:55,376 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:00:01,575 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+10:00:51,665 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:00:52,553 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:00:58,189 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+10:01:43,770 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:01:44,753 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:01:59,574 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+10:02:33,498 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+10:03:58,250 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:03:59,267 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:04:05,631 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
+
+10:05:22,734 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:05:23,770 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:05:28,869 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Cannot call executeResultUnique method when query has result unset. Call executeUnique instead.
+
+10:07:42,377 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:07:43,726 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:35:51,716 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:35:54,280 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:39:07,000 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:39:08,181 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:40:21,773 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:40:22,690 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:45:49,286 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:45:51,205 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:46:15,454 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:48:30,603 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:48:31,633 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:48:43,516 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:49:32,968 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:49:36,190 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:49:51,041 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:51:16,682 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:51:17,667 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:51:40,428 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:52:17,791 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:52:18,960 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:52:30,223 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+10:54:04,230 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:54:05,818 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:54:11,918 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:54:12,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:54:30,584 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:54:37,679 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:54:48,274 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:55:05,716 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe ese servicio
+
+10:56:34,492 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:56:35,630 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:56:45,349 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+10:57:29,606 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:57:30,755 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:57:41,898 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Cannot call executeResultList method when query has result unset. Call executeList instead.
+
+10:59:04,331 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+10:59:06,045 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+10:59:14,841 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:02:48,185 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:02:49,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:02:57,751 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:04:07,669 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:04:08,591 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:04:17,565 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:08:41,456 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:08:42,467 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:08:52,269 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:13:37,831 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:13:38,738 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:13:46,357 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:14:45,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:14:46,929 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:14:55,203 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:17:51,077 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:17:52,205 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:17:59,764 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:18:45,017 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:18:47,006 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:18:57,839 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:25:54,524 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:25:55,907 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:26:10,132 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:26:20,446 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:27:43,776 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:27:44,899 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:27:53,375 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:29:04,263 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:29:05,671 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:29:17,717 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304B181910.GASTOS_CK) violada
+
+11:29:53,229 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:29:54,283 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:30:08,041 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:30:58,231 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:30:59,717 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:31:15,001 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:35:33,077 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:35:33,980 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:35:44,782 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:35:58,274 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:35:59,456 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:36:12,423 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Double
+
+11:43:15,419 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:43:16,383 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:49:08,642 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+11:49:09,722 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+11:49:24,563 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-00001: restricción única (ISIS2304B181910.IDGATOS_PK) violada
+
+12:05:35,265 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:05:36,383 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:05:46,160 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:05:47,168 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:07:09,617 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+12:07:18,940 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:07:24,043 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:07:24,972 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:07:33,926 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:07:35,180 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:10:46,393 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:10:51,694 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:11:02,919 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:11:03,897 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:19:02,845 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:19:04,156 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:19:22,707 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT HotelAndes_sequence.nextval FROM DUAL".
+ORA-02289: no existe la secuencia
+
+12:24:40,361 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:24:41,961 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:08:30,031 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:08:32,638 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:10:05,499 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:10:06,490 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:11:09,117 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:11:10,141 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:11:51,733 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:11:52,719 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:12:23,161 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:12:24,279 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:13:24,164 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:13:25,071 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:15:23,993 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:15:24,972 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:15:32,204 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : [Ljava.lang.Object; cannot be cast to uniandes.isis2304.parranderos.negocio.Persona
+
+13:16:30,953 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:16:31,868 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:16:39,756 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.negocio.Persona" pero era imposible poner el valor al campo "TIPOIDUSUARIO"  tipo "java.lang.String". El campo debe tener un metodo publico set/put o ser publico.
+
+13:18:56,443 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:18:57,660 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:19:04,668 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:19:05,619 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:19:15,813 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.negocio.Persona" pero era imposible poner el valor al campo "IDUSUARIO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+13:20:11,243 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:20:13,150 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:24:05,121 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:24:06,002 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:24:13,571 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "select sum(precio) from gastos where pagado = 1 and idUsuario = 9 and idtipoidentificacion = Cedula".
+ORA-00904: "CEDULA": identificador no válido
+
+13:24:51,608 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:24:52,581 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:24:58,614 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.math.BigDecimal cannot be cast to java.lang.Integer
+
+13:26:30,989 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:26:34,450 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:27:08,616 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:27:09,939 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:37:03,852 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:37:07,903 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:39:29,499 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SSELECT valor FROM SERVICIOS_ADICIONALES inner join reservas_servicios on SERVICIOS_ADICIONALES.id = reservas_servicios.idwhere reservas_servicios.id =  24".
+ORA-00900: sentencia SQL no válida
+
+13:40:36,643 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:40:39,389 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:41:07,046 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SSELECT valor FROM SERVICIOS_ADICIONALES inner join reservas_servicios on SERVICIOS_ADICIONALES.id = reservas_servicios.id where reservas_servicios.id =  24".
+ORA-00900: sentencia SQL no válida
+
+13:41:17,782 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:41:18,753 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:41:33,527 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe esa reserva o servicio
+
+13:42:23,492 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:42:24,491 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:42:39,833 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDSERVICIOGATOS_FK) violada - clave principal no encontrada
+
+13:44:02,297 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:44:03,383 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:44:15,605 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDSERVICIOGATOS_FK) violada - clave principal no encontrada
+
+13:45:15,757 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:45:16,719 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+13:49:09,633 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+13:49:11,529 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+14:29:39,609 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+14:30:16,889 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+14:30:27,299 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Jamas se hizo el checkIn
+
+14:30:47,488 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.sql.Timestamp cannot be cast to java.lang.String
+
+14:33:10,894 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+14:33:11,976 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+14:33:20,209 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : java.sql.Timestamp cannot be cast to com.sun.jmx.snmp.Timestamp
+
+14:34:36,924 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+14:34:40,749 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:27:08,027 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:27:08,982 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:45:51,195 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:45:52,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+15:46:14,905 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '17/03/2019' WHERE ID = 23".
+ORA-02290: restricción de control (ISIS2304B181910.FECHADESALIDAMAYOR_CK) violada
+
+15:48:21,398 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+15:48:23,100 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:10:43,223 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:10:44,585 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:10:55,735 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:10:56,789 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:11:27,764 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_SERVICIOS(ID,DESCRIPCION,FECHAINICIO,FECHAFIN,IDSERVICIO,IDTIPOPERSONA,TIPOIDENTIFICACION) values (?, ?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDUSUARIOSERVICIOSR_FK) violada - clave principal no encontrada
+
+16:11:42,416 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:11:44,065 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:11:52,714 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:11:53,714 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:12:26,969 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+16:12:31,817 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:12:33,292 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:12:42,457 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:12:43,406 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:48:40,318 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:48:44,127 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:49:32,603 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:49:33,940 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:49:38,212 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:49:39,103 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:51:40,330 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+16:51:43,075 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+16:52:09,306 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : No existe esa reserva o servicio
+
+17:31:39,932 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:31:41,024 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:33:42,166 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:33:45,482 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:34:18,986 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT tablita1.idhabitacion, dineroPeriodoEspecifico, dineroAnioCorrido  FROM      (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroPeriodoEspecifico          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '01_01_2000' AND '01/01/2020' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion          ) tablita1  FULL OUTER JOIN          (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroAnioCorrido          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '01/01/2019' AND '17/03/2019' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion           ) tablita2         ON tablita1.idhabitacion = tablita2.idhabitacion;".
+ORA-00933: comando SQL no terminado correctamente
+
+17:37:13,407 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:37:14,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:37:43,050 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:37:44,318 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:38:41,300 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:38:42,405 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:38:59,392 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROPERIODOESPECIFICO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+17:42:18,663 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:42:19,648 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:46:50,298 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:46:51,591 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:48:18,653 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:48:19,839 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:51:40,952 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:51:42,072 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:52:01,035 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:52:05,792 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:56:48,320 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:56:49,347 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+17:57:03,418 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT tablita1.idhabitacion, dineroPeriodoEspecifico, dineroAnioCorrido  FROM      (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroPeriodoEspecifico          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '' AND 'null' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion          ) tablita1  FULL OUTER JOIN          (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroAnioCorrido          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '01/01/2019' AND '17/03/2019' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion           ) tablita2         ON tablita1.idhabitacion = tablita2.idhabitacion".
+ORA-01858: se ha encontrado un carácter no numérico donde se esperaba uno numérico
+
+17:58:23,530 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+17:58:24,877 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:01:29,009 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:01:29,778 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:03:29,207 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:03:30,228 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:11:06,993 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:11:08,342 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:11:21,094 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROPERIODOESPECIFICO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+18:11:29,442 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:11:30,431 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:11:50,099 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROPERIODOESPECIFICO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+18:12:25,489 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:12:26,608 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:12:38,896 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT tablita1.idhabitacion, dineroPeriodoEspecifico, dineroAnioCorrido  FROM      (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroPeriodoEspecifico          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '01/01/2000' AND '01/01/2000 01/01/2020' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion          ) tablita1  FULL OUTER JOIN          (   SELECT reservas_de_alojamiento.idhabitacion, SUM(gastos.precio) AS dineroAnioCorrido          FROM          ( reservas_de_alojamiento              INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )              INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario                           AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion              WHERE gastos.fecha BETWEEN '01/01/2019' AND '17/03/2019' and reservas_de_alojamiento.idhotel = 1               GROUP BY reservas_de_alojamiento.idhabitacion           ) tablita2         ON tablita1.idhabitacion = tablita2.idhabitacion".
+ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
+
+18:12:44,584 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:12:46,374 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:12:58,050 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROPERIODOESPECIFICO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+18:13:36,458 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:13:37,700 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:13:52,759 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROPERIODOESPECIFICO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+18:14:10,020 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:14:10,996 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:14:55,482 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:14:56,505 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+18:15:10,363 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : El Query tenia que devolver objetos de tipo "uniandes.isis2304.parranderos.persistencia.ClaseAsistente" pero era imposible poner el valor al campo "DINEROANIOCORRIDO"  tipo "java.math.BigDecimal". El campo debe tener un metodo publico set/put o ser publico.
+
+18:16:07,032 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+18:16:07,990 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+19:06:26,685 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+19:06:28,293 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:02:04,333 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:02:05,211 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:02:19,898 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:02:21,385 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:03:50,448 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:04:14,253 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:11:44,937 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:11:46,026 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:12:01,437 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : [Ljava.lang.Object; cannot be cast to java.lang.String
+
+20:17:56,595 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:18:39,533 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:19:47,882 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:19:53,482 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:19:59,354 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:20:46,923 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:20:48,143 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:20:53,882 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:21:00,922 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:21:02,077 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:21:10,829 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:23:17,932 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:23:20,414 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:23:26,775 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:23:56,877 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:23:58,040 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:25:01,389 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:25:01,888 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:25:06,419 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:25:40,372 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:25:43,600 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:25:45,120 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:25:52,712 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:26:29,314 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:26:30,705 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:26:48,767 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:27:15,088 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:27:16,833 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:27:23,720 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+20:27:54,759 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:27:55,968 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:29:37,927 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:29:39,051 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:30:48,984 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:30:53,489 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:31:44,523 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:31:45,671 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:31:54,917 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '?' WHERE ID = ?".
+Índice de columna no válido
+20:32:29,495 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:32:31,146 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:33:24,486 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:33:25,548 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:35:58,061 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:35:59,083 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:36:52,338 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:36:53,283 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:37:15,428 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '01/01/2000 WHERE ID = 80".
+ORA-01756: la cadena entrecomillada no está terminada correctamente
+
+20:37:35,985 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:37:36,897 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:39:17,416 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:39:19,094 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:43:22,530 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:43:23,680 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:47:51,977 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:47:53,066 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:49:46,846 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:49:47,986 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+20:50:43,455 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+20:50:44,786 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+21:03:36,223 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+21:03:37,661 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+21:03:49,611 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "ELECT tablita1.numHabitacion, (tablita2.cuantosHay/tablita1.cuantosCaben)*100 AS indice  FROM      ( SELECT hab.numero AS numHabitacion, tipos.capacidad AS cuantosCaben      FROM habitaciones hab, tipos_de_habitacion tipos      WHERE hab.idhotel = 1       AND hab.tipohabitacion = tipos.id) tablita1  JOIN      ( SELECT alojamiento.idHabitacion, cuantosporreserva.cuantoshay          FROM reservas_de_alojamiento alojamiento          FULL OUTER JOIN          ( SELECT reserva.idreserva, COUNT(*) as cuantosHay          FROM reservas_de_clientes reserva, personas cliente          WHERE reserva.idusuario = cliente.id              AND reserva.tipoidusuario = cliente.tipoidentificacion          GROUP BY reserva.idreserva ) cuantosPorReserva          ON alojamiento.id = cuantosporreserva.idReserva          WHERE alojamiento.fechallegadareal <= '17/03/2019'               AND alojamiento.fechasalidareal IS NULL              AND alojamiento.idhotel = 1 ) tablita2  ON tablita1.numHabitacion = tablita2.idHabitacion".
+ORA-00900: sentencia SQL no válida
+
+21:04:11,864 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+21:04:13,028 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+21:20:35,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+21:20:37,699 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+21:23:26,125 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+21:23:27,088 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+21:44:46,489 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+21:44:47,291 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
