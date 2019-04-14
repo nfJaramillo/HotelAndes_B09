@@ -1,0 +1,21 @@
+Fecha y hora límite: 17 de abril de 2019, 22:00
+
+Archivo de la entrega:
+
+Archivo comprimido en formato .zip. Nombre del archivo: <It2_L-NN_login1_login2>.zip. L-NN es el código asignado a su grupo y login1 y 2 son los correspondientes a los integrantes del grupo.
+
+
+Contenido del archivo:
+
+Documento de informe, debe estar en formato .pdf. Debe incluir los modelos solicitados, resultados logrados, resultados no logrados, balance del plan de pruebas, supuestos adicionales sobre las reglas de negocio encontradas en el caso de estudio. El nombre del archivo debe seguir el mismo formato de nombramiento del zip.
+
+Proyecto Java con el código fuente, la documentación del proyecto de software y el bono si fue desarrollado. La documentación del proyecto debe quedar en una carpeta docs, en la estructura principal de directorios del proyecto java.
+En la carpeta docs del proyecto Java deben estar: Los modelos desarrollados, tanto en el formato fuente como en pdf.
+
+La documentación de los casos de uso.
+Los archivos de scripts, sentencias (.sql) 
+y pruebas indicados en el enunciado (.sql y .json).
+Archivo readme.txt, con todos los pasos a seguir para instalar la aplicación.
+
+- El no seguimiento del formato de entrega del taller tiene una penalización de 0.5/5.0 puntos en la nota final, por cada
+elemento faltante.
