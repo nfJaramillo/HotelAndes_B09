@@ -55,7 +55,7 @@ public class PanelDatos extends JPanel
      */
     public PanelDatos ()
     {
-        setBorder (new TitledBorder ("Panel de información"));
+        setBorder (new TitledBorder ("Panel de informacion"));
         setLayout( new BorderLayout( ) );
         
         textArea = new JTextArea("Aqui se muestra el resultado de las operaciones solicitadas");

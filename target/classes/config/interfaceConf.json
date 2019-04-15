@@ -1,0 +1,69 @@
+{
+	"title": "Aplicacion transaccional de HotelAndes",
+	"frameH": 700,
+	"frameW": 800,
+	"menuBar":
+	[
+		{ "menuTitle": "Requerimientos funcionales de modificacion ",
+		  "options":
+			[
+				{
+					"label": "RF7: Registrar una reserva de alojamiento",
+					"event": "registrarUnaReservaDeAlojamiento"
+				},
+				{
+					"label": "RF8: Registrar una reserva de un servicio del hotel por parte de un cliente",
+					"event": "registarUnaReservaDeUnServicioDelHotelPorParteDeUnCliente"
+				},
+				{
+					"label": "RF9: Registrar la llegada de un cliente al hotel",
+					"event": "registrarLaLLegadaDeUnClienteAlHotel"
+				},
+				{
+					"label": "RF10: Registrar un consumo de un servicio del hotel por parte de un cliente o sus acompanantes",
+					"event": "registrarUnConsumoDeUnServicioDelHotelPorParteDeUnClienteOSusAcompanantes"
+				},
+				{
+					"label": "RF11: Registrar la salida de un cliente",
+					"event": "registarLaSalidaDeUnCliente"
+				}
+			]
+		},
+		{ "menuTitle": "Requerimientos funcionales de consulta",
+		  "options":
+			[
+				{
+					"label": "RFC1: Mostrar el dinero recolectado",
+					"event": "mostrarElDineroRecolectado"
+				},
+				{
+					"label": "RFC2: Mostrar los 20 servicios mas populares",
+					"event": "mostrar20ServiciosMasPopulares"
+				},
+				{
+					"label": "RFC3: Mostrar el inidice de ocupacion del hotel",
+					"event": "mostrarIndiceOcupacion"
+				},
+				{
+					"label": "RFC4: Mostrar los servicios que cumplen con cierta caracteristica",
+					"event": "RFC4"
+				},
+				{
+					"label": "RFC5: Mostrar el consumo por un usuario en u rango de fechas",
+					"event": "mostrarConsumoUsuarioFechas"
+				}
+			]
+		}
+,
+		{
+			"menuTitle": "Acerca de",
+			"options":
+			[
+				{
+					"label": "Acerca de...",
+					"event": "acercaDe"
+				}
+			]
+		}
+	]
+}
