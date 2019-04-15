@@ -840,3 +840,5 @@ ORA-00900: sentencia SQL no válida
 21:23:27,088 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
 21:44:46,489 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
 21:44:47,291 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
+12:32:34,598 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontró un archivo de configuración válido: Interfaz
+12:32:35,583 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuración indicada en el archivo de configuración
