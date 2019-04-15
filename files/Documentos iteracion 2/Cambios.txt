@@ -1,0 +1,13 @@
+Cambios 1:
+	- Gasto ya no tiene una persona si no una reserva
+	- Gasto no tiene un servicio adicional si no una reserva servicio
+	- Una reserva no tiene 12 personas maximo si no ilimitadas
+Cambios 2:
+	- RF12: Añadir atributo en Reservas de alojamiento y Reservas de servicio. Boolean esReservaConvencion
+	- RF13: Ninguno
+	- RF14: Ninguno
+	- RF15: Añadir un atributo en Habitacion y en Servicio Adicional. Boolean estaEnMantenimiento
+	- RF16: Ninguno
+	- RFC6: Ninguno
+	- RFC7: Ninguno
+	- RFC8: Ninguno 
