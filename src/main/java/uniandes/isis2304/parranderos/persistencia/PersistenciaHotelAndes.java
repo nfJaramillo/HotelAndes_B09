@@ -1,7 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.sql.Date;
-
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -711,7 +711,73 @@ public class PersistenciaHotelAndes {
         	throw e;
         }
 	}
-	
+	public List<Integer> RFC12(int idHotel, int planDeConsumo, String fecha1, String fecha2, ArrayList<Integer> habitaciones, ArrayList<Integer> cantHabitaciones, ArrayList<Integer> servicios) throws Exception
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        long id = nextval();
+        try
+        {
+            tx.begin();
+            List<Integer> resp = sqlConsultas.RF12(pm, idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
+            tx.commit();
+            
+            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+            
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+            return resp;
+            
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+        	
+        	
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+        	throw e;
+        }
+	}
+	public void RFC12B( int idReserva, String[] tipos,long[]idPersonas) throws Exception
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        long id = nextval();
+        try
+        {
+            tx.begin();
+            sqlConsultas.RF12B(pm, idReserva, tipos, idPersonas);
+            tx.commit();
+            
+            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+            
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+            
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+        	
+        	
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+        	throw e;
+        }
+	}
 	
 	/**
 	 * @return Retorna el �nico objeto PersistenciaParranderos existente - Patron SINGLETON

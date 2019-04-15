@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -197,6 +198,52 @@ public class SQLConsultas {
 
 
 	return lista;
+	}
+	
+	
+	public List<Integer> RF12 (PersistenceManager pm,int idHotel, int planDeConsumo, String fecha1, String fecha2, ArrayList<Integer> habitaciones, ArrayList<Integer> cantHabitaciones, ArrayList<Integer> servicios) throws Exception
+	{
+		// Registrar habitaciones
+		ArrayList<Integer> habitacionesYServiciosReservados = new ArrayList<>();
+		for (int i = 0; i < habitaciones.size(); i++) {
+			Query a = pm.newQuery(SQL,"select habitaciones.numero\r\n" + 
+					"from habitaciones\r\n" + 
+					"where habitaciones.tipohabitacion = "+ habitaciones.get(i) + " and  numero not in (\r\n" + 
+					"select habitaciones.numero\r\n" + 
+					"from reservas_de_alojamiento \r\n" + 
+					"inner join habitaciones \r\n" + 
+					"on reservas_de_alojamiento.idhabitacion = habitaciones.numero\r\n" + 
+					"where (reservas_de_alojamiento.fechallegadateorica  between '"+ fecha1+"' and '"+fecha2+"')\r\n" + 
+					"or (reservas_de_alojamiento.fechasalidateorica  between '"+ fecha1+"' and '"+fecha2+"')\r\n" + 
+					"or ('"+ fecha1+"' between reservas_de_alojamiento.fechallegadateorica and reservas_de_alojamiento.fechasalidateorica)\r\n" + 
+					"or ('"+fecha2+"' between reservas_de_alojamiento.fechallegadateorica and reservas_de_alojamiento.fechasalidateorica))");
+			List<Integer> listaHabitacionesDisponiblesPorTipo = a.executeList();
+			if(listaHabitacionesDisponiblesPorTipo.size()<cantHabitaciones.size())
+			{
+				throw new Exception ("No hay suficientes habitaciones del tipo: "+habitaciones.get(i)+" en el hotel");
+			}
+			for (int j = 0; j < cantHabitaciones.size(); j++) {
+				pp.registrarReservaDeAlojamiento(listaHabitacionesDisponiblesPorTipo.get(j), idHotel, fecha1, null, fecha2, null, planDeConsumo, null, null);
+				habitacionesYServiciosReservados.add(listaHabitacionesDisponiblesPorTipo.get(j));
+			}
+		}
+		
+		// Registrar servicios
+		habitacionesYServiciosReservados.add(-1);
+		for (Integer servicioAdicional : servicios) {
+			pp.registrarReservaDeServicio("Convenvion", fecha2, fecha1, servicioAdicional, 13, "Cedula");
+			habitacionesYServiciosReservados.add(servicioAdicional);
+		}
+		return habitacionesYServiciosReservados;
+	}
+	public void RF12B (PersistenceManager pm, int idReserva, String[] tipos,long[]idPersonas)
+	{
+		for (int i = 0; i < idPersonas.length; i++)
+		{
+			Query r = pm.newQuery(SQL, "insert into RESERVAS_DE_CLIENTES"+ "(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)");
+			r.setParameters(idReserva,idPersonas[i],tipos[i]);
+			r.executeUnique();
+		}
 	}
 
 }
