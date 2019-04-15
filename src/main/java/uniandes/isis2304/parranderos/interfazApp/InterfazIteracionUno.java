@@ -362,18 +362,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			String tipoIdentificacion;
 			long idUsuario;
 			long idReservaServicio;
-			int seCargaALaHabitacion = 1;
+			int seCargaALaHabitacion = -1;
 
 			try
 			{
 				idUsuario = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva:", "ID reserva", JOptionPane.QUESTION_MESSAGE ) );
 				idReservaServicio = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva del servicio:", "ID reserva servicio", JOptionPane.QUESTION_MESSAGE ) );
 
-				Object[] options = { "SÃ­", "No" };
-				int n = JOptionPane.showOptionDialog(this, "Â¿Desea cargar el valor a la habitaciÃ³n?", "Cargar valor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0] );
-				if( n == JOptionPane.NO_OPTION ) seCargaALaHabitacion = 0;
+				 seCargaALaHabitacion = Integer.parseInt(JOptionPane.showInputDialog(this, "Escriba 0, si el usuario ya lo pago, 1 si lo carga a su cuenta o 2 si lo carga a la cuenta de la convencion", "¿Desea pagar el servicio, cargarlo a su cuenta o cargarlo a la cuenta de su convenvion (Si esta en una) ?", JOptionPane.QUESTION_MESSAGE));
 
-				System.out.println( seCargaALaHabitacion + ( seCargaALaHabitacion == 0 ? "No la carga a la habitaciÃ³n" : "SÃ­ la carga a la habitaciÃ³n" ) );
 			}
 			catch (Exception e)
 			{

@@ -129,6 +129,6 @@ Para los bares, normalmente incluye el consumo de bebidas nacionales (en algunos
 límites. Por ejemplo, 3 cervezas diarias). Los consumos no incluidos en el plan son cargados a la
 cuenta de la habitación.','Todo incluido');
 INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (4,1,'Genera un descuento (%) en el costo del alojamiento para estadías mayores a 7 noches','Larga estadía');
-
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (5,1,'ConvencionTest','Larga estadía');
 
 

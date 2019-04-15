@@ -54,6 +54,23 @@ public class SQLGastos {
 		List<Number> lista1= b.executeList();
 		
 
+		if(pagado == 2)
+		{
+			Query c = pm.newQuery(SQL, "select planes_de_consumo.descripcion\r\n" + 
+					"from reservas_de_alojamiento\r\n" + 
+					"inner join planes_de_consumo\r\n" + 
+					"on reservas_de_alojamiento.plandeconsumo = planes_de_consumo.id\r\n" + 
+					"where reservas_de_alojamiento.id = "+idUsuario);
+			
+			String descripcionPlanConsumo = (String) c.executeUnique();
+			if(!descripcionPlanConsumo.startsWith("Convencion"))
+			{
+				throw new Exception("Esa reserva no pertenece al plan de consumo de una convencion");
+			}
+		}
+		
+		
+
 		Query q = pm.newQuery(SQL, "INSERT INTO GASTOS (Id, IdServicio, Fecha,  Pagado, Precio, Idreserva ) values (?,?,?,?,?,?)");
 		q.setParameters(id, lista1.get(0), fecha, pagado, lista.get(0),idUsuario );
 		q.executeUnique();
