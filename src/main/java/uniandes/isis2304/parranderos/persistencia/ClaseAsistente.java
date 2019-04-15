@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.util.Date;
+
 public class ClaseAsistente {
 	
 	
@@ -48,9 +50,71 @@ public class ClaseAsistente {
 	
 	private int PRECIO;
 	
+	private int IDRESERVA;
+	
+	private int IDRESERVA_1;
+	
+	private String TIPOIDUSUARIO;
+	
+
 	
 	
 	
+	
+	/**
+	 * @return the iDRESERVA
+	 */
+	public int getIDRESERVA() {
+		return IDRESERVA;
+	}
+
+
+
+	/**
+	 * @param iDRESERVA the iDRESERVA to set
+	 */
+	public void setIDRESERVA(int iDRESERVA) {
+		IDRESERVA = iDRESERVA;
+	}
+
+
+
+	/**
+	 * @return the iDRESERVA_1
+	 */
+	public int getIDRESERVA_1() {
+		return IDRESERVA_1;
+	}
+
+
+
+	/**
+	 * @param iDRESERVA_1 the iDRESERVA_1 to set
+	 */
+	public void setIDRESERVA_1(int iDRESERVA_1) {
+		IDRESERVA_1 = iDRESERVA_1;
+	}
+
+
+
+	/**
+	 * @return the tIPOIDUSUARIO
+	 */
+	public String getTIPOIDUSUARIO() {
+		return TIPOIDUSUARIO;
+	}
+
+
+
+	/**
+	 * @param tIPOIDUSUARIO the tIPOIDUSUARIO to set
+	 */
+	public void setTIPOIDUSUARIO(String tIPOIDUSUARIO) {
+		TIPOIDUSUARIO = tIPOIDUSUARIO;
+	}
+
+
+
 	/**
 	 * @return the iDUSUARIO
 	 */
@@ -117,8 +181,8 @@ public class ClaseAsistente {
 	/**
 	 * @param fECHA the fECHA to set
 	 */
-	public void setFECHA(String fECHA) {
-		FECHA = fECHA;
+	public void setFECHA(Date fECHA) {
+		FECHA = fECHA.toString().substring(0, 10);
 	}
 
 
@@ -498,7 +562,10 @@ public class ClaseAsistente {
 				+ ", PRECIO=" + PRECIO + ", DESCRIPCION=" + DESCRIPCION + "]";
 	}
 
-
+public String toString3()
+{
+	return "ID= "+ID+", Fecha: "+FECHA+", Pagado: "+PAGADO+", Precio: "+PRECIO+", Id reserva: "+IDRESERVA+", Id usuario: "+IDUSUARIO+", Tipo id usuario: "+TIPOIDUSUARIO;
+}
 
 
 

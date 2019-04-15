@@ -107,7 +107,7 @@ public class SQLReservasDeAlojamiento {
 		
 		int precioAPagar = 0;
 		for (int i = 0; i < lista1.size(); i++) {
-			Query c = pm.newQuery(SQL, "select sum(precio) from gastos where pagado = 1 and idUsuario = "+lista1.get(i).getId() +" and idtipoidentificacion = '"+ lista1.get(i).getTipoIdentificacion()+"'");
+			Query c = pm.newQuery(SQL, "select sum(precio) from gastos where pagado = 1 and idReserva = "+idReserva);
 			List<Number> lista2 = c.executeList();
 			if(lista2.get(0)!=null)
 			precioAPagar += lista2.get(0).intValue();

@@ -58,7 +58,7 @@ public class PanelDatos extends JPanel
         setBorder (new TitledBorder ("Panel de información"));
         setLayout( new BorderLayout( ) );
         
-        textArea = new JTextArea("Aquí se muestra el resultado de las operaciones solicitadas");
+        textArea = new JTextArea("Aqui se muestra el resultado de las operaciones solicitadas");
         textArea.setEditable(false);
         add (new JScrollPane(textArea), BorderLayout.CENTER);
     }

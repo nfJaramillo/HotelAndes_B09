@@ -1,19 +1,19 @@
 package uniandes.isis2304.parranderos.interfazApp;
 
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de los Andes (Bogotá - Colombia)
+ * Universidad	de los Andes (BogotÃ¡ - Colombia)
  *
- * Departamento	de	Ingeniería	de	Sistemas y Computación
- * Licenciado bajo el esquema Academic Free License versión 2.1
+ * Departamento	de	IngenierÃ­a	de	Sistemas y ComputaciÃ³n
+ * Licenciado bajo el esquema Academic Free License versiÃ³n 2.1
  * 
  * Curso: isis2304 - Sistemas Transaccionales
  * Proyecto: Parranderos Uniandes
  * @version 1.0
- * @author Germán Bravo
+ * @author GermÃ¡n Bravo
  * Julio de 2018
- * Revisado por: Claudia Jiménez, Christian Ariza
+ * Revisado por: Claudia JimÃ©nez, Christian Ariza
  *
- * Modificado por Juan Pablo Correa y Nicolás Jaramillo en marzo del 2019
+ * Modificado por Juan Pablo Correa y NicolÃ¡s Jaramillo en marzo del 2019
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -59,8 +59,8 @@ import uniandes.isis2304.parranderos.persistencia.*;
 
 /**
  * Clase principal de la interfaz
- * @author Germán Bravo
- * Modificado por Juan Pablo Correa y Nicolás Jaramillo
+ * @author GermÃ¡n Bravo
+ * Modificado por Juan Pablo Correa y NicolÃ¡s Jaramillo
  */
 @SuppressWarnings("serial")
 public class InterfazIteracionUno extends JFrame implements ActionListener
@@ -69,17 +69,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//  CONSTANTES
 	//~~~~~~~~~~~~~~
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciÃ³n
 	 */
 	private static Logger log = Logger.getLogger(InterfazIteracionUno.class.getName());
 
 	/**
-	 * Ruta al archivo de configuración de la interfaz
+	 * Ruta al archivo de configuraciÃ³n de la interfaz
 	 */
 	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConf.json";
 
 	/**
-	 * Ruta al archivo de configuración de la interfaz
+	 * Ruta al archivo de configuraciÃ³n de la interfaz
 	 */
 	private static final String RUTA_BANNER = "./src/main/resources/config/bannerHotelAndes.png"; 
 
@@ -87,50 +87,50 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//   ATRIBUTOS
 	//~~~~~~~~~~~~~~
 	/**
-	 * Asociación a la clase de persistencia del negocio
+	 * AsociaciÃ³n a la clase de persistencia del negocio
 	 */
 	private PersistenciaHotelAndes persistencia;
 
 	/**
-	 * Objeto JSON con la configuración de interfaz de la app
+	 * Objeto JSON con la configuraciÃ³n de interfaz de la app
 	 */
 	private JsonObject guiConfig;
 
 	/**
-	 * Panel de despliegue de interacción para los requerimientos
+	 * Panel de despliegue de interacciÃ³n para los requerimientos
 	 */
 	private PanelDatos panelDatos;
 
 	/**
-	 * Menú de la aplicación
+	 * MenÃº de la aplicaciÃ³n
 	 */
 	private JMenuBar menuBar;
 
 	/**
-	 * Atributo para modelar el rol de quien interactúa con la aplicación
+	 * Atributo para modelar el rol de quien interactÃºa con la aplicaciÃ³n
 	 */
 	private boolean esAdmin;
 
 
 	//~~~~~~~~~~~~~~
-	//   MÉTODOS
+	//   METODOS
 	//~~~~~~~~~~~~~~
 	/**
-	 * Construye la ventana principal de la aplicación. <br>
+	 * Construye la ventana principal de la aplicaciÃ³n. <br>
 	 * <b>post:</b> Todos los componentes de la interfaz fueron inicializados.
 	 */
 	public InterfazIteracionUno( )
 	{
-		// Carga la configuración de la interfaz desde un archivo JSON
+		// Carga la configuraciÃ³n de la interfaz desde un archivo JSON
 		guiConfig = openConfig ("Interfaz", CONFIG_INTERFAZ);
 
-		// Pregunta por el rol del usuario que interactúa con la aplicación
+		// Pregunta por el rol del usuario que interactÃºa con la aplicaciÃ³n
 		preguntarPorElRol();
 
-		// Configura la apariencia del frame que contiene la interfaz gráfica
+		// Configura la apariencia del frame que contiene la interfaz grÃ¡fica
 		configurarFrame();
 
-		// Crea el menú
+		// Crea el menÃº
 		if (guiConfig != null)
 			crearMenu( guiConfig.getAsJsonArray("menuBar") );
 
@@ -147,12 +147,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	private void preguntarPorElRol()
 	{
 		Object[] options = { "Administrador", "Cliente" };
-		int n = JOptionPane.showOptionDialog(this, "          ¿Cuál es su rol?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+		int n = JOptionPane.showOptionDialog(this, "          ¿Cual es su rol?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 		esAdmin = n!=JOptionPane.NO_OPTION;	
 	}
 
 	/**
-	 * Registra un nuevo rol con la información dada por el usuario
+	 * Registra un nuevo rol con la informaciÃ³n dada por el usuario
 	 * <Post> Se crea una nueva tupla en la tabla ROLES, lo cual implica ciertos permisos
 	 * y restricciones en lo que puede o no hacer en el sistema dicho usuario. 
 	 */
@@ -160,8 +160,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String tipoDeRol = JOptionPane.showInputDialog ( this, "¿Cuál es el tipo de rol?", "Tipo de rol", JOptionPane.QUESTION_MESSAGE );
-			String info = JOptionPane.showInputDialog ( this, "¿Cuál es el id del rol?", "Identificador", JOptionPane.QUESTION_MESSAGE );
+			String tipoDeRol = JOptionPane.showInputDialog ( this, "¿Cual es el tipo de rol?", "Tipo de rol", JOptionPane.QUESTION_MESSAGE );
+			String info = JOptionPane.showInputDialog ( this, "¿Cual es el tipo de rol?", "Identificador", JOptionPane.QUESTION_MESSAGE );
 
 			int idDelRol = -1;
 
@@ -171,7 +171,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				panelDatos.actualizarInterfaz( "Por favor ingrese un nï¿½mero de id vï¿½lido." );
+				panelDatos.actualizarInterfaz( "Por favor ingrese un nÃ¯Â¿Â½mero de id vÃ¯Â¿Â½lido." );
 			}
 
 			if ( tipoDeRol != null && idDelRol > 0 )
@@ -185,12 +185,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 				String resultado = "En registrarRolDeUsuario\n\n";
 				resultado += "Rol de usuario adicionado exitosamente: " + tp;
-				resultado += "\n\nOperación terminada.";
+				resultado += "\n\nOperaciÃ³n terminada.";
 				panelDatos.actualizarInterfaz(resultado);
 			}
 			else
 			{
-				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+				panelDatos.actualizarInterfaz("OperaciÃ³n cancelada por el usuario");
 			}
 		}
 		catch (Exception e) 
@@ -202,17 +202,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   CRUD DE LOS REQUERIMIENTOS FUNCIONALES DE MODIFICACIÓN
+	//   CRUD DE LOS REQUERIMIENTOS FUNCIONALES DE MODIFICACIÃ“N
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
 	 * RF7 - Registra una reserva de alojamiento
-	 * Sólo los clientes pueden hacer este método
+	 * SÃ³lo los clientes pueden hacer este mÃ©todo
 	 */
 	public void registrarUnaReservaDeAlojamiento()
 	{
 		try 
 		{
-			// Esta función está permitida sólo para clientes
+			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para clientes
 			verificarRol( 'C' );
 
 			long idHabitacion;
@@ -225,14 +225,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			try
 			{
-				idHabitacion = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la habitación:", "ID habitación", JOptionPane.QUESTION_MESSAGE ) );
+				idHabitacion = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la habitaciÃ³n:", "ID habitaciÃ³n", JOptionPane.QUESTION_MESSAGE ) );
 				idHotel = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ) );
 				fechaLlegada =  JOptionPane.showInputDialog( this, "Fecha de llegada (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
 				fechaSalida =  JOptionPane.showInputDialog( this, "Fecha de salida (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
 				idPlanDeConsumo = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador del plan de consumo:", "ID plan de consumo", JOptionPane.QUESTION_MESSAGE ) );
 
-				// Lo siguiente guarda la información de las personas en dos arreglos
-				String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "Información de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "InformaciÃ³n de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
 
 				tiposDeIdentificaciones = new String[ aux.length ];
 				identificaciones = new long[ aux.length ];
@@ -252,12 +252,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			ReservasDeAlojamiento ra = persistencia.registrarReservaDeAlojamiento( idHabitacion, idHotel, fechaLlegada, null, fechaSalida, null, idPlanDeConsumo, tiposDeIdentificaciones, identificaciones );				
 
 			if( ra == null )
-				throw new Exception( "No se pudo crear una reserva de alojamiento en la habitación " + idHabitacion );
+				throw new Exception( "No se pudo crear una reserva de alojamiento en la habitaciÃ³n " + idHabitacion );
 
 			String resultado = "\n-> En RF7 registrarUnaReservaDeAlojamiento:";
 			resultado += "\n       Reserva de alojamiento registrada exitosamente:";
-			resultado += "\n         Información de la reserva: " + ra;
-			resultado += "\n\nOperación terminada.";
+			resultado += "\n         InformaciÃ³n de la reserva: " + ra;
+			resultado += "\n\nOperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -268,13 +268,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	/**
 	 * RF8 - Registra una reserva de un servicio del hotel por parte de un cliente
-	 * Sólo los clientes pueden hacer esta acción
+	 * SÃ³lo los clientes pueden hacer esta acciÃ³n
 	 */
 	public void registarUnaReservaDeUnServicioDelHotelPorParteDeUnCliente()
 	{
 		try 
 		{
-			verificarRol( 'C' ); // Esta función está permitida sólo para clientes
+			verificarRol( 'C' ); // Esta funciÃ³n estÃ¡ permitida sÃ³lo para clientes
 
 			String descripcion;
 			String fechaSalida;
@@ -290,7 +290,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				tipoIDPersona =  JOptionPane.showInputDialog( this, "Tipo de identificador:", "Tipo id", JOptionPane.QUESTION_MESSAGE );
 				fechaLlegada =  JOptionPane.showInputDialog( this, "Fecha de llegada (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
 				fechaSalida =  JOptionPane.showInputDialog( this, "Fecha de salida (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE );
-				descripcion = JOptionPane.showInputDialog( this, "Descripción adicional:", "Descripción", JOptionPane.QUESTION_MESSAGE );
+				descripcion = JOptionPane.showInputDialog( this, "DescripciÃ³n adicional:", "DescripciÃ³n", JOptionPane.QUESTION_MESSAGE );
 			}
 			catch (Exception e)
 			{
@@ -304,7 +304,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			String resultado = "\n-> En RF7 registrarUnaReservaDeAlojamiento:";
 			resultado += "     \n       Reserva de alojamiento registrada exitosamente:\n      ----> " + ra;
-			resultado += "\n\nOperación terminada.";
+			resultado += "\n\nOperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -315,13 +315,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	/**
 	 * RF9 - Registra una llegada de un cliente al hotel
-	 * Sólo los recepcionistas (administradores) pueden ejecutar esta acción 
+	 * SÃ³lo los recepcionistas (administradores) pueden ejecutar esta acciÃ³n 
 	 */
 	public void registrarLaLLegadaDeUnClienteAlHotel()
 	{
 		try 
 		{
-			// Esta función está permitida sólo para administradores
+			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
 			verificarRol( 'A' );
 
 			long idReserva;
@@ -339,7 +339,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			String resultado = "\n-> En RF9 registrarUnaReservaDeAlojamiento:";
 			resultado += "\n       Se ha registrado exitosamente la llegada del cliente.";
-			resultado += "\n\nOperación terminada.";
+			resultado += "\n\nOperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -349,14 +349,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	/**
-	 * RF10 - Registra un consumo de un servicio del hotel por parte de un cliente o sus acompañantes
-	 * Sólo los administradores pueden ejecutar esta acción
+	 * RF10 - Registra un consumo de un servicio del hotel por parte de un cliente o sus acompaÃ±antes
+	 * SÃ³lo los administradores pueden ejecutar esta acciÃ³n
 	 */
 	public void registrarUnConsumoDeUnServicioDelHotelPorParteDeUnClienteOSusAcompanantes()
 	{
 		try 
 		{
-			// Esta función está permitida sólo para administradores
+			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
 			verificarRol( 'A' );
 
 			String tipoIdentificacion;
@@ -366,29 +366,28 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			try
 			{
-				tipoIdentificacion = JOptionPane.showInputDialog( this, "Tipo de identificación:", "Tipo de identificación", JOptionPane.QUESTION_MESSAGE );
-				idUsuario = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador del usuario:", "ID usuario", JOptionPane.QUESTION_MESSAGE ) );
+				idUsuario = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva:", "ID reserva", JOptionPane.QUESTION_MESSAGE ) );
 				idReservaServicio = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva del servicio:", "ID reserva servicio", JOptionPane.QUESTION_MESSAGE ) );
 
-				Object[] options = { "Sí", "No" };
-				int n = JOptionPane.showOptionDialog(this, "¿Desea cargar el valor a la habitación?", "Cargar valor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0] );
+				Object[] options = { "SÃ­", "No" };
+				int n = JOptionPane.showOptionDialog(this, "Â¿Desea cargar el valor a la habitaciÃ³n?", "Cargar valor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0] );
 				if( n == JOptionPane.NO_OPTION ) seCargaALaHabitacion = 0;
 
-				System.out.println( seCargaALaHabitacion + ( seCargaALaHabitacion == 0 ? "No la carga a la habitación" : "Sí la carga a la habitación" ) );
+				System.out.println( seCargaALaHabitacion + ( seCargaALaHabitacion == 0 ? "No la carga a la habitaciÃ³n" : "SÃ­ la carga a la habitaciÃ³n" ) );
 			}
 			catch (Exception e)
 			{
 				throw new Exception( "Error convirtiendo uno de los datos de entrada, por favor verifique que los formatos sean los correctos." );
 			}
 
-			Gasto g = persistencia.registrarConsumo( tipoIdentificacion, idUsuario, idReservaServicio, darFechaDeHoy(), seCargaALaHabitacion );
+			Gasto g = persistencia.registrarConsumo(  idUsuario, idReservaServicio, darFechaDeHoy(), seCargaALaHabitacion );
 
 			if( g == null )
 				throw new Exception( "No se pudo registrar un consumo." );
 
 			String resultado = "\n-> En RF10 registrarUnConsumoDeUnServicioDelHotelPorParteDeUnClienteOSusAcompanantes:";
 			resultado += "\n       Se ha solicitado exitosamente el consumo.";
-			resultado += "\n\nOperación terminada.";
+			resultado += "\n\nOperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -399,13 +398,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	/**
 	 * RF11 - Registra la salida de un cliente del hotel
-	 * Sólo los recepcionistas (administradores) pueden ejecutar esta acción
+	 * SÃ³lo los recepcionistas (administradores) pueden ejecutar esta acciÃ³n
 	 */
 	public void registarLaSalidaDeUnCliente()
 	{
 		try
 		{
-			verificarRol( 'A' ); //Esta función está permitida sólo para administradores
+			verificarRol( 'A' ); //Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
 
 			long idReserva;
 			int pagoCuentaRestante;
@@ -415,7 +414,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				idReserva = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva:", "ID reserva", JOptionPane.QUESTION_MESSAGE ) );
 
 				int loQueDebePagar = persistencia.cuentaAPagar( idReserva );
-				pagoCuentaRestante = (int) Double.parseDouble( JOptionPane.showInputDialog( this, "Usted debe un total de $" + loQueDebePagar + "\n¿Cuánto va a pagar por los gastos?", "Pago", JOptionPane.QUESTION_MESSAGE ) );
+				pagoCuentaRestante = (int) Double.parseDouble( JOptionPane.showInputDialog( this, "Usted debe un total de $" + loQueDebePagar + "\nÂ¿CuÃ¡nto va a pagar por los gastos?", "Pago", JOptionPane.QUESTION_MESSAGE ) );
 				if( pagoCuentaRestante < loQueDebePagar ) throw new Exception( "El dinero no alcanza para pagar la reserva. No se puede dar salida sin cancelar la totalidad." );
 			}
 			catch (Exception e)
@@ -427,7 +426,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			String resultado = "\n-> En RF11 registarLaSalidaDeUnCliente:";
 			resultado += "     \n       Se ha dado salida a los clientes de la reserva '" + idReserva + "'.";
-			resultado += "\n\nOperación terminada.";
+			resultado += "\n\nOperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -441,7 +440,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
 	 * RFC1 - Muestra el dinero recolectado por servicios por servicios en cada
-	 * habitación durante un periodo de tiempo y el año corrido.
+	 * habitaciÃ³n durante un periodo de tiempo y el aÃ±o corrido.
 	 */
 	public void mostrarElDineroRecolectado()
 	{
@@ -465,15 +464,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			List<ClaseAsistente> lista = persistencia.RFC1( idHotel, fechaInicio, fechaFin, darFechaDeHoy() );
 
 			String resultado = "\n-> En RFC1 mostrarElDineroRecolectado:\n\n\n";
-			resultado       += "         El dinero recolectado por cada habitación del hotel de id '" + idHotel + "' fue de:\n\n";
-			resultado       +=        "\tID de la habitación \t Dinero recolectado entre el \t\t Dinero en el año corrido (" + darFechaDeHoy().substring(6) + ")\n";
+			resultado       += "         El dinero recolectado por cada habitaciÃ³n del hotel de id '" + idHotel + "' fue de:\n\n";
+			resultado       +=        "\tID de la habitaciÃ³n \t Dinero recolectado entre el \t\t Dinero en el aÃ±o corrido (" + darFechaDeHoy().substring(6) + ")\n";
 			resultado       +=        "\t                    \t\t" + fechaInicio + " y el" + fechaFin + "\n";
 			resultado       +=        "\t------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getIDHABITACION() + "\t\t $" + ca.getDINEROPERIODOESPECIFICO()  + "\t\t\t $" + ca.getDINEROANIOCORRIDO() +"\n";
 
-			resultado += "\n\n\n\n-  [RFC1] Operación terminada.";
+			resultado += "\n\n\n\n-  [RFC1] OperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -483,7 +482,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	/**
-	 * RFC2 - Muestra los 20 servicios que más fueron consumidos en un periodo de tiempo dado.
+	 * RFC2 - Muestra los 20 servicios que mÃ¡s fueron consumidos en un periodo de tiempo dado.
 	 */
 	public void mostrar20ServiciosMasPopulares()
 	{
@@ -507,14 +506,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			List<ClaseAsistente> lista = persistencia.RFC2( idHotel, fechaInicio, fechaFin );
 
 			String resultado = "\n-> En RFC2 mostrar20ServiciosMasPopulares:\n\n\n";
-			resultado       += "         Los veinte servicios más populares del hotel de id '" + idHotel + "' fue de:\n\n";
-			resultado       +=        "\tID del servicio     \t Nombre del servicio         \t\t Número de apariciones\n";
+			resultado       += "         Los veinte servicios mÃ¡s populares del hotel de id '" + idHotel + "' fue de:\n\n";
+			resultado       +=        "\tID del servicio     \t Nombre del servicio         \t\t NÃºmero de apariciones\n";
 			resultado       +=        "\t----------------------------------------------------------------------------------------------------------------------------------------------\n";
 
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getIDSERVICIOS() + "\t\t  " + ca.getIDSERVICIOS()  + "\t\t\t  " + ca.getCONTEOSERVICIOS() +"\n";
 
-			resultado += "\n\n\n\n  [RFC2] Operación terminada.";
+			resultado += "\n\n\n\n  [RFC2] OperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -544,13 +543,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			List<ClaseAsistente> lista = persistencia.RFC3( idHotel, darFechaDeHoy() );
 
 			String resultado = "\n-> En RFC3 mostrarIndiceOcupacion:\n\n\n";
-			resultado       +=        "\tNúmero de habitación\tÍndice \n";
+			resultado       +=        "\tNÃºmero de habitaciÃ³n\tÃ�ndice \n";
 			resultado       +=        "\t----------------------------------------------------------------------------------------------------------------------------------------------\n";
 			//indice numhabitacion
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getNUMHABITACION() + "\t\t  " + ca.getINDICE() + "\n";
 
-			resultado += "\n\n\n\n  [RFC2] Operación terminada.";
+			resultado += "\n\n\n\n  [RFC2] OperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -567,7 +566,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			try
 			{
-				opcion = JOptionPane.showInputDialog( this, "Especifique la característica sobre la que desea filtrar\n\n Opciones:\n    P para precio.\n    F para fecha.\n    T para tipo.\n    C para consumo.", "Filtrar servicios", JOptionPane.QUESTION_MESSAGE ).charAt(0);
+				opcion = JOptionPane.showInputDialog( this, "Especifique la caracterÃ­stica sobre la que desea filtrar\n\n Opciones:\n    P para precio.\n    F para fecha.\n    T para tipo.\n    C para consumo.", "Filtrar servicios", JOptionPane.QUESTION_MESSAGE ).charAt(0);
 
 				List<ClaseAsistente> respuesta = null;
 
@@ -588,7 +587,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 					respuesta = persistencia.RFC4TIPO( tipo );
 					break;
 				case 'C': // CONSUMO
-					int contador = Integer.parseInt( JOptionPane.showInputDialog( this, "¿Cuántas veces han usado ese consumo?:", "RFC4", JOptionPane.QUESTION_MESSAGE ) );
+					int contador = Integer.parseInt( JOptionPane.showInputDialog( this, "Â¿CuÃ¡ntas veces han usado ese consumo?:", "RFC4", JOptionPane.QUESTION_MESSAGE ) );
 					String fecha1 = JOptionPane.showInputDialog( this, "Fecha inicial (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha inicial", JOptionPane.QUESTION_MESSAGE );
 					String fecha2 = JOptionPane.showInputDialog( this, "Fecha final (formato DD/MM/AAAA, p.e. 31/03/2019):", "Fecha final", JOptionPane.QUESTION_MESSAGE );
 					respuesta = persistencia.RFC4CONSUMO( contador, fecha1, fecha2 );
@@ -600,12 +599,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				for( ClaseAsistente ca : respuesta )
 					resultado += "\t" + ca.toString() + "\n";
 
-				resultado += "\n\n\n\n  [RFC4] Operación terminada.";
+				resultado += "\n\n\n\n  [RFC4] OperaciÃ³n terminada.";
 				panelDatos.actualizarInterfaz(resultado);
 			}
 			catch (Exception e)
 			{
-				throw new Exception( "Ingresó una opción que no está permitida, o uno de los valores no siguió el formato que debería." );
+				throw new Exception( "IngresÃ³ una opciÃ³n que no estÃ¡ permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
 			}
 		} 
 		catch (Exception e) 
@@ -640,14 +639,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 			List<ClaseAsistente> lista = persistencia.RFC5( idPersona.intValue(), tipoIDPersona, fecha1, fecha2 );
+		
 
 			String resultado = "\n-> En RFC5 mostrarConsumoUsuarioFechas:\n\n\n";
 			resultado       +=        "\t-----------------------------------------------------\n";
 
 			for( ClaseAsistente ca : lista )
-				resultado += "\t" + ca.toString2() + "\n";
+				resultado += "\t" + ca.toString3() + "\n";
 
-			resultado += "\n\n\n\n  [RFC5] Operación terminada.";
+			resultado += "\n\n\n\n  [RFC5] OperaciÃ³n terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -657,24 +657,24 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÉTODOS PARA LA PRESENTACIÓN DE LOS DATOS
+	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
-	 * Genera una cadena para indicar al usuario que hubo un error en la aplicación
-	 * @param e - La excepción generada
-	 * @return La cadena con la información de la excepción y detalles adicionales
+	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
+	 * @param e - La excepciÃ³n generada
+	 * @return La cadena con la informaciÃ³n de la excepciÃ³n y detalles adicionales
 	 */
 	private String generarMensajeError(Exception e) 
 	{
-		String resultado = "Error en la ejecución:\n";
+		String resultado = "Error en la ejecuciÃ³n:\n";
 		resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
 		return resultado;
 	}
 
 	/**
-	 * Genera una cadena de caracteres con la descripción de la excepcion e, haciendo énfasis en las excepciones de JDO
-	 * @param e - La excepción recibida
-	 * @return La descripción de la excepción cuando es javax.jdo.JDODataStoreException o "" de lo contrario
+	 * Genera una cadena de caracteres con la descripciÃ³n de la excepcion e, haciendo Ã©nfasis en las excepciones de JDO
+	 * @param e - La excepciÃ³n recibida
+	 * @return La descripciÃ³n de la excepciÃ³n cuando es javax.jdo.JDODataStoreException o "" de lo contrario
 	 */
 	private String darDetalleException(Exception e) 
 	{
@@ -688,18 +688,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	/**
-	 * Verifica el rol de quien interactúa con la aplicación, para permitirle o no ciertas acciones
+	 * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
 	 * @param seEsperaQueSea Lo que se espera que sea el usuario
 	 * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
 	 */
 	private void verificarRol( char seEsperaQueSea ) throws Exception
 	{
-		if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "¡Usted no posee permisos de administrador para ejecutar esta opción!" );
-		else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opción es exclusiva para los clientes." );
+		if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
+		else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
 	}
 
 	/**
-	 * Abre el archivo dado como parámetro con la aplicación por defecto del sistema
+	 * Abre el archivo dado como parÃ¡metro con la aplicaciÃ³n por defecto del sistema
 	 * @param nombreArchivo - El nombre del archivo que se quiere mostrar
 	 */
 	private void mostrarArchivo( String nombreArchivo )
@@ -717,7 +717,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	/**
-	 * Retorna un String con la fecha del día de hoy
+	 * Retorna un String con la fecha del dÃ­a de hoy
 	 * @return String de la fecha actual en formato dd/MM/AAAA
 	 */
 	private String darFechaDeHoy()
@@ -728,11 +728,11 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//  MÉTODOS DE INTERACCIÓN
+	//  MÃ‰TODOS DE INTERACCIÃ“N
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
-	 * Método para la ejecución de los eventos que enlazan el menú con los mÃ©todos de negocio
-	 * Invoca al método correspondiente segÃºn el evento recibido
+	 * MÃ©todo para la ejecuciÃ³n de los eventos que enlazan el menÃº con los mÃƒÂ©todos de negocio
+	 * Invoca al mÃ©todo correspondiente segÃƒÂºn el evento recibido
 	 * @param pEvento - El evento del usuario
 	 */
 	@Override
@@ -754,8 +754,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//   PROGRAMA PRINCIPAL 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
-	 * Este método ejecuta la aplicación, creando una nueva interfaz
-	 * @param args Arreglo de argumentos que se recibe por línea de comandos
+	 * Este mÃ©todo ejecuta la aplicaciÃ³n, creando una nueva interfaz
+	 * @param args Arreglo de argumentos que se recibe por lÃ­nea de comandos
 	 */
 	public static void main( String[] args )
 	{
@@ -777,13 +777,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÉTODOS DE CONFIGURACIÓN PARA LA INTERFAZ
+	//   MÃ‰TODOS DE CONFIGURACIÃ“N PARA LA INTERFAZ
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
-	 * Lee datos de configuración para la aplicación, a partir de un archivo JSON o con valores por defecto si hay errores.
-	 * @param tipo - El tipo de configuración deseada
-	 * @param archConfig - Archivo Json que contiene la configuración
-	 * @return Un objeto JSON con la configuración del tipo especificado
+	 * Lee datos de configuraciÃ³n para la aplicaciÃ³n, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuraciÃ³n deseada
+	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
 	 * 			NULL si hay un error en el archivo.
 	 */
 	private JsonObject openConfig (String tipo, String archConfig)
@@ -795,18 +795,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			FileReader file = new FileReader (archConfig);
 			JsonReader reader = new JsonReader ( file );
 			config = gson.fromJson(reader, JsonObject.class);
-			log.info ( "Se encontró un archivo de configuración válido: " + tipo );
+			log.info ( "Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo );
 		} 
 		catch (Exception e)
 		{	
-			log.info ( "No se encontró un archivo de configuración válido" );			
-			JOptionPane.showMessageDialog(null, "No se encontró un archivo de configuración válido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
+			log.info ( "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido" );			
+			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
 		}	
 		return config;
 	}
 
 	/**
-	 * Método para configurar el frame principal de la aplicación
+	 * MÃ©todo para configurar el frame principal de la aplicaciÃ³n
 	 */
 	private void configurarFrame(  )
 	{
@@ -816,14 +816,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 		if ( guiConfig == null )
 		{
-			log.info ( "Se aplica configuración por defecto" );			
+			log.info ( "Se aplica configuraciÃ³n por defecto" );			
 			titulo = "Parranderos APP Default";
 			alto = 300;
 			ancho = 500;
 		}
 		else
 		{
-			log.info ( "Se aplica configuración indicada en el archivo de configuración" );
+			log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n" );
 			titulo = guiConfig.get("title").getAsString();
 			alto= guiConfig.get("frameH").getAsInt();
 			ancho = guiConfig.get("frameW").getAsInt();
@@ -839,17 +839,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	/**
-	 * Método para crear el menú de la aplicación con base en el objeto JSON leído
-	 * Genera una barra de menú y los menús con sus respectivas opciones
-	 * @param jsonMenu - Arreglo Json con los menús deseados
+	 * MÃ©todo para crear el menÃº de la aplicaciÃ³n con base en el objeto JSON leÃ­do
+	 * Genera una barra de menÃº y los menÃºs con sus respectivas opciones
+	 * @param jsonMenu - Arreglo Json con los menÃºs deseados
 	 */
 	private void crearMenu( JsonArray jsonMenu )
 	{   
-		// Creación de la barra de menús
+		// CreaciÃ³n de la barra de menÃºs
 		menuBar = new JMenuBar();       
 		for (JsonElement men : jsonMenu)
 		{
-			// Creación de cada uno de los menús
+			// CreaciÃ³n de cada uno de los menÃºs
 			JsonObject jom = men.getAsJsonObject(); 
 
 			String menuTitle = jom.get("menuTitle").getAsString();        	
@@ -859,7 +859,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			for (JsonElement op : opciones)
 			{       	
-				// Creación de cada una de las opciones del menú
+				// CreaciÃ³n de cada una de las opciones del menÃº
 				JsonObject jo = op.getAsJsonObject(); 
 				String lb = jo.get("label").getAsString();
 				String event = jo.get("event").getAsString();
@@ -880,16 +880,16 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//   ACERCA DE
 	//~~~~~~~~~~~~~~~~~
 	/**
-	 * Muestra la información acerca del desarrollo de esta apicación
+	 * Muestra la informaciÃ³n acerca del desarrollo de esta apicaciÃ³n
 	 */
 	public void acercaDe()
 	{
 		String resultado = "\n***********************************************************************\n";
-		resultado += " * Universidad de los Andes (Bogotá - Colombia)\n";
+		resultado += " * Universidad de los Andes (BogotÃ¡ - Colombia)\n";
 		resultado += " * Curso: ISIS 2304 - Sistemas Transaccionales\n";
 		resultado += " * Proyecto HotelAndes\n";
-		resultado += " * Hecho por Juan Pablo Correa y Nicolás Jaramillo\n *\n";
-		resultado += " * El código original del proyecto es propiedad del profesor Germán Bravo,\n"
+		resultado += " * Hecho por Juan Pablo Correa y NicolÃ¡s Jaramillo\n *\n";
+		resultado += " * El cÃ³digo original del proyecto es propiedad del profesor GermÃ¡n Bravo,\n"
 				+ " * y fue tomado del proyecto Parranderos\n";
 		resultado += "***********************************************************************\n\n";
 

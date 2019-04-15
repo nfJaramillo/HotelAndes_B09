@@ -46,8 +46,7 @@ public class SQLConsultas {
 					"        FROM\r\n" + 
 					"        ( reservas_de_alojamiento\r\n" + 
 					"            INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )\r\n" + 
-					"            INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario\r\n" + 
-					"                         AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion\r\n" + 
+					"            INNER JOIN gastos ON reservas_de_clientes.idreserva = gastos.idreserva\r\n" + 
 					"            WHERE gastos.fecha BETWEEN '"+ fechaInicio+ "' AND '" +  fechaFin+"' and reservas_de_alojamiento.idhotel = "+idHotel+" \r\n" + 
 					"            GROUP BY reservas_de_alojamiento.idhabitacion\r\n" + 
 					"        ) tablita1\r\n" + 
@@ -56,8 +55,7 @@ public class SQLConsultas {
 					"        FROM\r\n" + 
 					"        ( reservas_de_alojamiento\r\n" + 
 					"            INNER JOIN reservas_de_clientes ON reservas_de_alojamiento.id = reservas_de_clientes.idreserva )\r\n" + 
-					"            INNER JOIN gastos ON reservas_de_clientes.idusuario = gastos.idusuario\r\n" + 
-					"                         AND reservas_de_clientes.tipoidusuario = gastos.idtipoidentificacion\r\n" + 
+					"            INNER JOIN gastos ON reservas_de_clientes.idreserva = gastos.idreserva\r\n" +
 					"            WHERE gastos.fecha BETWEEN '01/01/2019' AND '"+ fechaActual +"' and reservas_de_alojamiento.idhotel = "+idHotel+" \r\n" + 
 					"            GROUP BY reservas_de_alojamiento.idhabitacion \r\n" + 
 					"        ) tablita2       \r\n" + 
@@ -188,12 +186,15 @@ public class SQLConsultas {
 	
 	public  List<ClaseAsistente> RFC5 (PersistenceManager pm, int idUsuario,  String tipoUsuario, String fecha1, String fecha2)
 	{
-		Query a = pm.newQuery(SQL, "select *\r\n" + 
-				"from gastos\r\n" + 
-				"where idusuario = "+idUsuario+ " and  idtipoidentificacion = '"+tipoUsuario + "' and fecha between '"+ fecha1+"' and '"+ fecha2+"'");
+		Query a = pm.newQuery(SQL, "select *  \r\n" + 
+				"from (gastos  \r\n" + 
+				"inner join reservas_de_clientes\r\n" + 
+				"on gastos.idreserva = reservas_de_clientes.idreserva)\r\n" + 
+				"where idusuario = "+ idUsuario +" and  tipoidusuario = '"+ tipoUsuario +"' and fecha between '"+fecha1+"' and '"+fecha2+"'");
 		
 		a.setResultClass(ClaseAsistente.class);
 		List<ClaseAsistente> lista= a.executeList();
+
 
 	return lista;
 	}

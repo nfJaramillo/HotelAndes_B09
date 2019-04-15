@@ -329,7 +329,7 @@ public class PersistenciaHotelAndes {
         }
 	}
 	
-	public Gasto registrarConsumo( String idTipoIdentificacion, long idUsuario, long idServicio, String fecha, int pagado) throws Exception
+	public Gasto registrarConsumo( long idUsuario, long idServicio, String fecha, int pagado) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -337,7 +337,7 @@ public class PersistenciaHotelAndes {
         try
         {
             tx.begin();
-            double precio = sqlGastos.registrarGasto(pm, nextval(), idTipoIdentificacion,  idUsuario,  idServicio,  fecha,  pagado);
+            double precio = sqlGastos.registrarGasto(pm, nextval(),  idUsuario,  idServicio,  fecha,  pagado);
             tx.commit();
             
             log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
@@ -346,7 +346,7 @@ public class PersistenciaHotelAndes {
                 tx.rollback();
             
             pm.close();
-            return new Gasto( fecha,  (int) id,  pagado,  precio,  idServicio,  idUsuario,  idTipoIdentificacion);
+            return new Gasto( fecha,  (int) id,  pagado,  precio,  idServicio,  idUsuario);
             
         }
         catch (Exception e)
@@ -694,7 +694,7 @@ public class PersistenciaHotelAndes {
                 tx.rollback();
             
             pm.close();
-            return null;
+            return resp;
             
         }
         catch (Exception e)

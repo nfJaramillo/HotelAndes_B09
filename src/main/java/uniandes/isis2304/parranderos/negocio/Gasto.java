@@ -11,7 +11,6 @@ public class Gasto {
 	private double precio;
 	private long idServicio;
 	private long idPersona;
-	private String tipoId;
 
 	
 	
@@ -31,7 +30,7 @@ public class Gasto {
 	 * @param idPersona
 	 * @param tipoId
 	 */
-	public Gasto(String fecha, int id, int pagado, double precio, long idServicio, long idPersona, String tipoId) {
+	public Gasto(String fecha, int id, int pagado, double precio, long idServicio, long idPersona) {
 		super();
 		this.fecha = fecha;
 		this.id = id;
@@ -39,7 +38,6 @@ public class Gasto {
 		this.precio = precio;
 		this.idServicio = idServicio;
 		this.idPersona = idPersona;
-		this.tipoId = tipoId;
 	}
 
 
@@ -152,22 +150,7 @@ public class Gasto {
 
 
 
-	/**
-	 * @return the tipoId
-	 */
-	public String getTipoId() {
-		return tipoId;
-	}
-
-
-
-	/**
-	 * @param tipoId the tipoId to set
-	 */
-	public void setTipoId(String tipoId) {
-		this.tipoId = tipoId;
-	}
-
+	
 
 
 	/* (non-Javadoc)
@@ -176,7 +159,7 @@ public class Gasto {
 	@Override
 	public String toString() {
 		return "Gasto [fecha=" + fecha + ", id=" + id + ", pagado=" + pagado + ", precio=" + precio + ", idServicio="
-				+ idServicio + ", idPersona=" + idPersona + ", tipoId=" + tipoId + "]";
+				+ idServicio + ", idPersona=" + idPersona +  "]";
 	}
 
 

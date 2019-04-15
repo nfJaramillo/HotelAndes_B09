@@ -39,7 +39,7 @@ public class SQLGastos {
 	}
 
 
-	public double registrarGasto (PersistenceManager pm, long id, String idTipoIdentificacion, long idUsuario, long idServicio, String fecha, int pagado) throws Exception 
+	public double registrarGasto (PersistenceManager pm, long id, long idUsuario, long idServicio, String fecha, int pagado) throws Exception 
 	{
 		
 			Query a = pm.newQuery(SQL, "SELECT valor FROM SERVICIOS_ADICIONALES inner join reservas_servicios on SERVICIOS_ADICIONALES.id = reservas_servicios.idservicio where reservas_servicios.id =  "+idServicio);
@@ -54,8 +54,8 @@ public class SQLGastos {
 		List<Number> lista1= b.executeList();
 		
 
-		Query q = pm.newQuery(SQL, "INSERT INTO GASTOS (Id, IdTipoIdentificacion, IdServicio, Fecha, IdUsuario, Pagado, Precio ) values (?,?,?,?,?,?,?)");
-		q.setParameters(id, idTipoIdentificacion, lista1.get(0), fecha, idUsuario, pagado, lista.get(0) );
+		Query q = pm.newQuery(SQL, "INSERT INTO GASTOS (Id, IdServicio, Fecha,  Pagado, Precio, Idreserva ) values (?,?,?,?,?,?)");
+		q.setParameters(id, lista1.get(0), fecha, pagado, lista.get(0),idUsuario );
 		q.executeUnique();
 		return lista.get(0).intValue() ;
 		
