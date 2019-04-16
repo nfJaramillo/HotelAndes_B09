@@ -753,246 +753,280 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-
-
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/**
- * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
- * @param e - La excepciÃ³n generada
- * @return La cadena con la informaciÃ³n de la excepciÃ³n y detalles adicionales
- */
-private String generarMensajeError(Exception e) 
-{
-	String resultado = "Error en la ejecuciÃ³n:\n";
-	resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
-	return resultado;
-}
-
-/**
- * Genera una cadena de caracteres con la descripciÃ³n de la excepcion e, haciendo Ã©nfasis en las excepciones de JDO
- * @param e - La excepciÃ³n recibida
- * @return La descripciÃ³n de la excepciÃ³n cuando es javax.jdo.JDODataStoreException o "" de lo contrario
- */
-private String darDetalleException(Exception e) 
-{
-	String resp = "";
-	if( e.getClass().getName().equals("javax.jdo.JDODataStoreException") )
+	public void RF13() throws Exception 
 	{
-		JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
-		return ". " + je.getNestedExceptions()[0].getMessage();
-	}
-	return resp;
-}
+		// Declaracion de variables 
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		ArrayList<Integer> servicios = new ArrayList<>();
 
-/**
- * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
- * @param seEsperaQueSea Lo que se espera que sea el usuario
- * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
- */
-private void verificarRol( char seEsperaQueSea ) throws Exception
-{
-	if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
-	else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
-}
-
-/**
- * Abre el archivo dado como parÃ¡metro con la aplicaciÃ³n por defecto del sistema
- * @param nombreArchivo - El nombre del archivo que se quiere mostrar
- */
-private void mostrarArchivo( String nombreArchivo )
-{
-	try
-	{
-		Desktop.getDesktop().open(new File(nombreArchivo));
-	}
-	catch (IOException e)
-	{
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
-
-
-/**
- * Retorna un String con la fecha del dÃ­a de hoy
- * @return String de la fecha actual en formato dd/MM/AAAA
- */
-private String darFechaDeHoy()
-{
-	Date date = (Calendar.getInstance()).getTime();
-	DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
-	return dateFormat.format(date);
-}
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//  MÃ‰TODOS DE INTERACCIÃ“N
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/**
- * MÃ©todo para la ejecuciÃ³n de los eventos que enlazan el menÃº con los mÃƒÂ©todos de negocio
- * Invoca al mÃ©todo correspondiente segÃƒÂºn el evento recibido
- * @param pEvento - El evento del usuario
- */
-@Override
-public void actionPerformed(ActionEvent pEvento)
-{
-	String evento = pEvento.getActionCommand( );		
-	try 
-	{
-		Method req = InterfazIteracionUno.class.getMethod ( evento );			
-		req.invoke ( this );
-	} 
-	catch (Exception e) 
-	{
-		e.printStackTrace();
-	} 
-}
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~
-//   PROGRAMA PRINCIPAL 
-//~~~~~~~~~~~~~~~~~~~~~~~~~
-/**
- * Este mÃ©todo ejecuta la aplicaciÃ³n, creando una nueva interfaz
- * @param args Arreglo de argumentos que se recibe por lÃ­nea de comandos
- */
-public static void main( String[] args )
-{
-	try
-	{	
-		// Unifica la interfaz para Mac y para Windows.
-		UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
-		InterfazIteracionUno interfaz = new InterfazIteracionUno( );
-
-		// Crea y centra la interfaz
-		interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		interfaz.setLocationRelativeTo(null);
-		interfaz.setVisible(true);
-	}
-	catch( Exception e )
-	{
-		e.printStackTrace( );
-	}
-}
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   MÃ‰TODOS DE CONFIGURACIÃ“N PARA LA INTERFAZ
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/**
- * Lee datos de configuraciÃ³n para la aplicaciÃ³n, a partir de un archivo JSON o con valores por defecto si hay errores.
- * @param tipo - El tipo de configuraciÃ³n deseada
- * @param archConfig - Archivo Json que contiene la configuraciÃ³n
- * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
- * 			NULL si hay un error en el archivo.
- */
-private JsonObject openConfig (String tipo, String archConfig)
-{
-	JsonObject config = null;
-	try 
-	{
-		Gson gson = new Gson( );
-		FileReader file = new FileReader (archConfig);
-		JsonReader reader = new JsonReader ( file );
-		config = gson.fromJson(reader, JsonObject.class);
-		log.info ( "Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo );
-	} 
-	catch (Exception e)
-	{	
-		log.info ( "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido" );			
-		JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
-	}	
-	return config;
-}
-
-/**
- * MÃ©todo para configurar el frame principal de la aplicaciÃ³n
- */
-private void configurarFrame(  )
-{
-	int alto = 0;
-	int ancho = 0;
-	String titulo = "";	
-
-	if ( guiConfig == null )
-	{
-		log.info ( "Se aplica configuraciÃ³n por defecto" );			
-		titulo = "Parranderos APP Default";
-		alto = 300;
-		ancho = 500;
-	}
-	else
-	{
-		log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n" );
-		titulo = guiConfig.get("title").getAsString();
-		alto= guiConfig.get("frameH").getAsInt();
-		ancho = guiConfig.get("frameW").getAsInt();
+		try
+		{
+			// Peticion de datos
+			String[] aux = JOptionPane.showInputDialog( this, "Datos las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux) {
+				habitaciones.add(Integer.valueOf(string));
+			}
+			// Peticion de datos
+			String[] aux1 = JOptionPane.showInputDialog( this, "Datos las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux1) {
+				servicios.add(Integer.valueOf(string));
+			}
+		}
+		catch (Exception e)
+		{
+			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+		}
+		
+		//Llamado a la persistencia
+		try
+		{
+			persistencia.RFC13(habitaciones, servicios);
+			panelDatos.actualizarInterfaz( "Operacion exitosa" );
+		}
+		catch (Exception e) {
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
 
-	setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-	setLocation (50,50);
-	setResizable( true );
-	setBackground( Color.WHITE );
 
-	setTitle( titulo );
-	setSize ( ancho, alto);        
-}
 
-/**
- * MÃ©todo para crear el menÃº de la aplicaciÃ³n con base en el objeto JSON leÃ­do
- * Genera una barra de menÃº y los menÃºs con sus respectivas opciones
- * @param jsonMenu - Arreglo Json con los menÃºs deseados
- */
-private void crearMenu( JsonArray jsonMenu )
-{   
-	// CreaciÃ³n de la barra de menÃºs
-	menuBar = new JMenuBar();       
-	for (JsonElement men : jsonMenu)
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/**
+	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
+	 * @param e - La excepciÃ³n generada
+	 * @return La cadena con la informaciÃ³n de la excepciÃ³n y detalles adicionales
+	 */
+	private String generarMensajeError(Exception e) 
 	{
-		// CreaciÃ³n de cada uno de los menÃºs
-		JsonObject jom = men.getAsJsonObject(); 
+		String resultado = "Error en la ejecuciÃ³n:\n";
+		resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
+		return resultado;
+	}
 
-		String menuTitle = jom.get("menuTitle").getAsString();        	
-		JsonArray opciones = jom.getAsJsonArray("options");
+	/**
+	 * Genera una cadena de caracteres con la descripciÃ³n de la excepcion e, haciendo Ã©nfasis en las excepciones de JDO
+	 * @param e - La excepciÃ³n recibida
+	 * @return La descripciÃ³n de la excepciÃ³n cuando es javax.jdo.JDODataStoreException o "" de lo contrario
+	 */
+	private String darDetalleException(Exception e) 
+	{
+		String resp = "";
+		if( e.getClass().getName().equals("javax.jdo.JDODataStoreException") )
+		{
+			JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+			return ". " + je.getNestedExceptions()[0].getMessage();
+		}
+		return resp;
+	}
 
-		JMenu menu = new JMenu( menuTitle);
+	/**
+	 * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
+	 * @param seEsperaQueSea Lo que se espera que sea el usuario
+	 * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
+	 */
+	private void verificarRol( char seEsperaQueSea ) throws Exception
+	{
+		if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
+		else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
+	}
 
-		for (JsonElement op : opciones)
-		{       	
-			// CreaciÃ³n de cada una de las opciones del menÃº
-			JsonObject jo = op.getAsJsonObject(); 
-			String lb = jo.get("label").getAsString();
-			String event = jo.get("event").getAsString();
+	/**
+	 * Abre el archivo dado como parÃ¡metro con la aplicaciÃ³n por defecto del sistema
+	 * @param nombreArchivo - El nombre del archivo que se quiere mostrar
+	 */
+	private void mostrarArchivo( String nombreArchivo )
+	{
+		try
+		{
+			Desktop.getDesktop().open(new File(nombreArchivo));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-			JMenuItem mItem = new JMenuItem( lb );
-			mItem.addActionListener( this );
-			mItem.setActionCommand(event);
 
-			menu.add(mItem);
+	/**
+	 * Retorna un String con la fecha del dÃ­a de hoy
+	 * @return String de la fecha actual en formato dd/MM/AAAA
+	 */
+	private String darFechaDeHoy()
+	{
+		Date date = (Calendar.getInstance()).getTime();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+		return dateFormat.format(date);
+	}
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//  MÃ‰TODOS DE INTERACCIÃ“N
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/**
+	 * MÃ©todo para la ejecuciÃ³n de los eventos que enlazan el menÃº con los mÃƒÂ©todos de negocio
+	 * Invoca al mÃ©todo correspondiente segÃƒÂºn el evento recibido
+	 * @param pEvento - El evento del usuario
+	 */
+	@Override
+	public void actionPerformed(ActionEvent pEvento)
+	{
+		String evento = pEvento.getActionCommand( );		
+		try 
+		{
+			Method req = InterfazIteracionUno.class.getMethod ( evento );			
+			req.invoke ( this );
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		} 
+	}
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~
+	//   PROGRAMA PRINCIPAL 
+	//~~~~~~~~~~~~~~~~~~~~~~~~~
+	/**
+	 * Este mÃ©todo ejecuta la aplicaciÃ³n, creando una nueva interfaz
+	 * @param args Arreglo de argumentos que se recibe por lÃ­nea de comandos
+	 */
+	public static void main( String[] args )
+	{
+		try
+		{	
+			// Unifica la interfaz para Mac y para Windows.
+			UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
+			InterfazIteracionUno interfaz = new InterfazIteracionUno( );
+
+			// Crea y centra la interfaz
+			interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			interfaz.setLocationRelativeTo(null);
+			interfaz.setVisible(true);
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace( );
+		}
+	}
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//   MÃ‰TODOS DE CONFIGURACIÃ“N PARA LA INTERFAZ
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/**
+	 * Lee datos de configuraciÃ³n para la aplicaciÃ³n, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuraciÃ³n deseada
+	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
+	 * 			NULL si hay un error en el archivo.
+	 */
+	private JsonObject openConfig (String tipo, String archConfig)
+	{
+		JsonObject config = null;
+		try 
+		{
+			Gson gson = new Gson( );
+			FileReader file = new FileReader (archConfig);
+			JsonReader reader = new JsonReader ( file );
+			config = gson.fromJson(reader, JsonObject.class);
+			log.info ( "Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo );
+		} 
+		catch (Exception e)
+		{	
+			log.info ( "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido" );			
+			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
+		}	
+		return config;
+	}
+
+	/**
+	 * MÃ©todo para configurar el frame principal de la aplicaciÃ³n
+	 */
+	private void configurarFrame(  )
+	{
+		int alto = 0;
+		int ancho = 0;
+		String titulo = "";	
+
+		if ( guiConfig == null )
+		{
+			log.info ( "Se aplica configuraciÃ³n por defecto" );			
+			titulo = "Parranderos APP Default";
+			alto = 300;
+			ancho = 500;
+		}
+		else
+		{
+			log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n" );
+			titulo = guiConfig.get("title").getAsString();
+			alto= guiConfig.get("frameH").getAsInt();
+			ancho = guiConfig.get("frameW").getAsInt();
 		}
 
-		menuBar.add( menu );
-	}        
-	setJMenuBar ( menuBar );	
-}
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		setLocation (50,50);
+		setResizable( true );
+		setBackground( Color.WHITE );
 
-//~~~~~~~~~~~~~~~~~
-//   ACERCA DE
-//~~~~~~~~~~~~~~~~~
-/**
- * Muestra la informaciÃ³n acerca del desarrollo de esta apicaciÃ³n
- */
-public void acercaDe()
-{
-	String resultado = "\n***********************************************************************\n";
-	resultado += " * Universidad de los Andes (BogotÃ¡ - Colombia)\n";
-	resultado += " * Curso: ISIS 2304 - Sistemas Transaccionales\n";
-	resultado += " * Proyecto HotelAndes\n";
-	resultado += " * Hecho por Juan Pablo Correa y NicolÃ¡s Jaramillo\n *\n";
-	resultado += " * El cÃ³digo original del proyecto es propiedad del profesor GermÃ¡n Bravo,\n"
-			+ " * y fue tomado del proyecto Parranderos\n";
-	resultado += "***********************************************************************\n\n";
+		setTitle( titulo );
+		setSize ( ancho, alto);        
+	}
 
-	panelDatos.actualizarInterfaz(resultado);		
-}
+	/**
+	 * MÃ©todo para crear el menÃº de la aplicaciÃ³n con base en el objeto JSON leÃ­do
+	 * Genera una barra de menÃº y los menÃºs con sus respectivas opciones
+	 * @param jsonMenu - Arreglo Json con los menÃºs deseados
+	 */
+	private void crearMenu( JsonArray jsonMenu )
+	{   
+		// CreaciÃ³n de la barra de menÃºs
+		menuBar = new JMenuBar();       
+		for (JsonElement men : jsonMenu)
+		{
+			// CreaciÃ³n de cada uno de los menÃºs
+			JsonObject jom = men.getAsJsonObject(); 
+
+			String menuTitle = jom.get("menuTitle").getAsString();        	
+			JsonArray opciones = jom.getAsJsonArray("options");
+
+			JMenu menu = new JMenu( menuTitle);
+
+			for (JsonElement op : opciones)
+			{       	
+				// CreaciÃ³n de cada una de las opciones del menÃº
+				JsonObject jo = op.getAsJsonObject(); 
+				String lb = jo.get("label").getAsString();
+				String event = jo.get("event").getAsString();
+
+				JMenuItem mItem = new JMenuItem( lb );
+				mItem.addActionListener( this );
+				mItem.setActionCommand(event);
+
+				menu.add(mItem);
+			}
+
+			menuBar.add( menu );
+		}        
+		setJMenuBar ( menuBar );	
+	}
+
+	//~~~~~~~~~~~~~~~~~
+	//   ACERCA DE
+	//~~~~~~~~~~~~~~~~~
+	/**
+	 * Muestra la informaciÃ³n acerca del desarrollo de esta apicaciÃ³n
+	 */
+	public void acercaDe()
+	{
+		String resultado = "\n***********************************************************************\n";
+		resultado += " * Universidad de los Andes (BogotÃ¡ - Colombia)\n";
+		resultado += " * Curso: ISIS 2304 - Sistemas Transaccionales\n";
+		resultado += " * Proyecto HotelAndes\n";
+		resultado += " * Hecho por Juan Pablo Correa y NicolÃ¡s Jaramillo\n *\n";
+		resultado += " * El cÃ³digo original del proyecto es propiedad del profesor GermÃ¡n Bravo,\n"
+				+ " * y fue tomado del proyecto Parranderos\n";
+		resultado += "***********************************************************************\n\n";
+
+		panelDatos.actualizarInterfaz(resultado);		
+	}
 }

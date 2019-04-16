@@ -823,6 +823,39 @@ public class PersistenciaHotelAndes {
         	throw e;
         }
 	}
+	public void RFC13( ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        long id = nextval();
+        try
+        {
+            tx.begin();
+            sqlConsultas.RF13(pm, habitaciones, servicios);
+            tx.commit();
+            
+            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+            
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+            
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+        	
+        	
+            if (tx.isActive())
+                tx.rollback();
+            
+            pm.close();
+        	throw e;
+        }
+	}
 	
 	/**
 	 * @return Retorna el �nico objeto PersistenciaParranderos existente - Patron SINGLETON
