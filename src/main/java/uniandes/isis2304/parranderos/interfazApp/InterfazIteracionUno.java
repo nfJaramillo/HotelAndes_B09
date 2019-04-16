@@ -799,7 +799,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	/**
 	 * Método que suple el requerimiento RF14, terminar una 
 	 */
-	public void RF14RegistarCierreDeConvencion()
+	public void RF14()
 	{
 		try
 		{
@@ -891,7 +891,31 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 
+	public void RF16()
+	{
+		
+	}
+	
 
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// Requerimientos de consulta de la Iteración 2
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public void RFC6()
+	{
+		
+	}
+	
+	public void RFC7()
+	{
+		
+	}
+	
+	public void RFC8()
+	{
+		
+	}
+	
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

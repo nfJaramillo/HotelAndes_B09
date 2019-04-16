@@ -1328,3 +1328,7 @@ READ_COMMITTED y SERIALIZABLE son los únicos niveles de transacción válidos
 15:32:46,221 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
 15:33:31,264 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
 
+18:14:41,260 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+18:14:45,355 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+18:23:11,335 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+18:23:12,900 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
