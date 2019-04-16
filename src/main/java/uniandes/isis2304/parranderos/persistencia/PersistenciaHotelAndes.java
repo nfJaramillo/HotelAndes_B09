@@ -868,7 +868,9 @@ public class PersistenciaHotelAndes {
 		}
 		return instance;
 	}
-	
-	//public 
 
+	public void RF14RegistarCierreDeConvencion(ArrayList<Integer> idReservas, String darFechaDeHoy) throws Exception
+	{
+		// 
+	}
 }

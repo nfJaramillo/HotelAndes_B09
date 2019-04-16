@@ -68,7 +68,7 @@
 				},
 				{
 					"label": "RF13: CANCELAR RESERVAS ASOCIADAS A UNA CONVENCION",
-					"event": "RFC12B"
+					"event": "RF13"
 				},
 				{
 					"label": "RF14: REGISTRAR EL FIN DE UNA CONVENCION",

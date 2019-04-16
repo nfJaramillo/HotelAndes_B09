@@ -109,8 +109,11 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	/**
 	 * Atributo para modelar el rol de quien interactÃºa con la aplicaciÃ³n
+	 * 0 - Administrador
+	 * 1 - Cliente
+	 * 2 - Organizador de eventos
 	 */
-	private boolean esAdmin;
+	private int rol;
 
 
 	//~~~~~~~~~~~~~~
@@ -129,7 +132,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		preguntarPorElRol();
 
 		// Configura la apariencia del frame que contiene la interfaz grÃ¡fica
-		configurarFrame();
+		/*configurarFrame();
 
 		// Crea el menÃº
 		if (guiConfig != null)
@@ -142,14 +145,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 		setLayout (new BorderLayout());
 		add( new JLabel(new ImageIcon(RUTA_BANNER)), BorderLayout.NORTH );          
-		add( panelDatos, BorderLayout.CENTER );
+		add( panelDatos, BorderLayout.CENTER );*/
 	}
 
 	private void preguntarPorElRol()
 	{
-		Object[] options = { "Administrador", "Cliente" };
-		int n = JOptionPane.showOptionDialog(this, "          ¿Cual es su rol?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-		esAdmin = n!=JOptionPane.NO_OPTION;	
+		Object[] options = { "Administrador", "Cliente", "Organizador de eventos" };
+		rol= JOptionPane.showOptionDialog(this, "                                                 ¿Cual es su rol?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 	}
 
 	/**
@@ -402,7 +404,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			verificarRol( 'A' ); //Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
+			verificarRol( 0 ); //Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
 
 			long idReserva;
 			int pagoCuentaRestante;
@@ -653,9 +655,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-	//-----------------------------------------------------------------------------------
-	// Requerimientos de modificacion iteracion 2
-	//----------------------------------------------------------------------------------
+
+
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// Requerimientos de modificacion de la Iteración 2
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 	public void RFC12() throws Exception
 	{
@@ -776,7 +783,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		{
 			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 		}
-		
+
 		//Llamado a la persistencia
 		try
 		{
@@ -788,6 +795,48 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
+
+	/**
+	 * Método que suple el requerimiento RF14, terminar una 
+	 */
+	public void RF14RegistarCierreDeConvencion()
+	{
+		try
+		{
+			ArrayList<Integer> idReservas = new ArrayList<>();
+
+			try
+			{
+				verificarRol( 2 ); //Esta función está permitida sólo para organizadores de eventos
+
+				String[] aux = JOptionPane.showInputDialog( this, "Datos las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+
+				for (String string : aux)
+					idReservas.add( Integer.valueOf(string) );
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			for (int i = 0; i < idReservas.size(); i++)
+			{
+				int loQueDebePagar = persistencia.cuentaAPagar( idReservas.get(i) );
+				if( loQueDebePagar > 0 ) throw new Exception( "Al menos una persona no está a paz y salvo con el hotel." );
+			}
+
+			// persistencia.RF14RegistarCierreDeConvencion( idReservas, darFechaDeHoy() );
+			
+			String resultado = "\n-> En RF14 registarCierreDeConvención:";
+			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idReservas + "'.";
+			resultado += "\n\nOperación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -826,10 +875,10 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 * @param seEsperaQueSea Lo que se espera que sea el usuario
 	 * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
 	 */
-	private void verificarRol( char seEsperaQueSea ) throws Exception
+	private void verificarRol( int seEsperaQueSea ) throws Exception
 	{
-		if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
-		else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
+		for ( int i = 0; i < 3; i++ )
+			if( seEsperaQueSea == i && rol != i ) throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
 	}
 
 	/**

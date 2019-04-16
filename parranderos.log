@@ -1233,3 +1233,12 @@ ORA-00933: comando SQL no terminado correctamente
 
 22:15:20,665 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 22:15:21,814 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+07:30:46,740 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+07:30:56,427 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+07:35:45,226 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+07:35:49,195 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+07:36:01,362 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+07:36:03,355 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+07:36:24,492 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+07:36:51,789 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+07:37:05,626 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
