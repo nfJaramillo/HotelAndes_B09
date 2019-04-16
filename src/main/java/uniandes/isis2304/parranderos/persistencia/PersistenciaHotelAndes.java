@@ -30,56 +30,56 @@ import uniandes.isis2304.parranderos.negocio.TipoPersona;
  * The Class PersistenciaHotelAndes.
  */
 public class PersistenciaHotelAndes {
-	
+
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
 	/** Logger para escribir la traza de la ejecuci�n. */
 	private static Logger log = Logger.getLogger(PersistenciaHotelAndes.class.getName());
-	
+
 	/** Cadena para indicar el tipo de sentencias que se va a utilizar en una consulta. */
 	public final static String SQL = "javax.jdo.query.SQL";
 
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	
+
 	/** Atributo privado que es el �nico objeto de la clase - Patr�n SINGLETON. */
 	private static PersistenciaHotelAndes instance;
-	
+
 	/** F�brica de Manejadores de persistencia, para el manejo correcto de las transacciones. */
 	private PersistenceManagerFactory pmf;
-	
+
 	/** Arreglo de cadenas con los nombres de las tablas de la base de datos, en su orden: Secuenciador, tipoBebida, bebida, bar, bebedor, gustan, sirven y visitan. */
 	private List <String> tablas;
-	
+
 	/** Atributo para el acceso a las sentencias SQL propias a PersistenciaParranderos. */
 	private SQLUtil sqlUtil;
-	
+
 	/* ****************************************************************
 	 * 			Atributos otrosss
 	 *****************************************************************/
-	
+
 	/** The sql tipo persona. */
 	private SQLTipoPersona sqlTipoPersona;
-	
+
 	/** The sql reservas de alojamiento. */
 	private SQLReservasDeAlojamiento sqlReservasDeAlojamiento;
-	
+
 	/** The sql reservas de servicio. */
 	private SQLReservasDeServicio sqlReservasDeServicio;
-	
+
 	/** The sql gastos. */
 	private SQLGastos sqlGastos;
-	
+
 	/** The sql consultas. */
 	private SQLConsultas sqlConsultas;
-	
+
 	/* ****************************************************************
 	 * 			M�todos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
-	
-	
+
+
 	/**
 	 * Constructor privado con valores por defecto - Patr�n SINGLETON.
 	 */
@@ -87,7 +87,7 @@ public class PersistenciaHotelAndes {
 	{
 		pmf = JDOHelper.getPersistenceManagerFactory("HotelAndes");		
 		crearClasesSQL ();
-		
+
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
 		tablas.add ("HotelAndes_sequence");
@@ -95,8 +95,8 @@ public class PersistenciaHotelAndes {
 		tablas.add("RESERVAS_DE_ALOJAMIENTO");
 		tablas.add("RESERVAS_DE_SERVICIO");
 		tablas.add("GASTOS");
-}
-	
+	}
+
 	/**
 	 * Cierra la conexi�n con la base de datos.
 	 */
@@ -105,7 +105,7 @@ public class PersistenciaHotelAndes {
 		pmf.close ();
 		instance = null;
 	}
-	
+
 	/**
 	 * Genera una lista con los nombres de las tablas de la base de datos.
 	 *
@@ -121,29 +121,29 @@ public class PersistenciaHotelAndes {
 		{
 			resp.add (nom.getAsString ());
 		}
-		
+
 		return resp;
 	}
-	
-	
+
+
 	/**
 	 * Crea los atributos de clases de apoyo SQL.
 	 */
 	private void crearClasesSQL ()
 	{
 		sqlTipoPersona = new SQLTipoPersona(this);
-	
+
 		sqlUtil = new SQLUtil(this);
-		
+
 		sqlReservasDeAlojamiento = new SQLReservasDeAlojamiento(this);
-		
+
 		sqlReservasDeServicio = new SQLReservasDeServicio(this);
-		
+
 		sqlGastos = new SQLGastos(this);
-		
+
 		sqlConsultas = new SQLConsultas(this);
 	}
-	
+
 	/**
 	 * Dar seq hotel andes.
 	 *
@@ -153,7 +153,7 @@ public class PersistenciaHotelAndes {
 	{
 		return tablas.get (0);
 	}
-	
+
 	/**
 	 * Dar tabla tipo persona.
 	 *
@@ -163,7 +163,7 @@ public class PersistenciaHotelAndes {
 	{
 		return tablas.get (1);
 	}
-	
+
 	/**
 	 * Nextval.
 	 *
@@ -171,11 +171,11 @@ public class PersistenciaHotelAndes {
 	 */
 	private long nextval ()
 	{
-        long resp = sqlUtil.nextval (pmf.getPersistenceManager());
-        log.trace ("Generando secuencia: " + resp);
-        return resp;
-    }
-	
+		long resp = sqlUtil.nextval (pmf.getPersistenceManager());
+		log.trace ("Generando secuencia: " + resp);
+		return resp;
+	}
+
 	/**
 	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle espec�fico del problema encontrado.
 	 *
@@ -192,11 +192,11 @@ public class PersistenciaHotelAndes {
 		}
 		return resp;
 	}
-	
+
 	/* ****************************************************************
 	 * 			M�todos para manejar los TIPOS DE PERSONA
 	 *****************************************************************/
-	
+
 	/**
 	 * M�todo que inserta, de manera transaccional, una tupla en la tabla TipoBebida
 	 * Adiciona entradas al log de la aplicaci�n.
@@ -208,34 +208,34 @@ public class PersistenciaHotelAndes {
 	public TipoPersona registrarRolDeUsuario(String nombre, int id)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            sqlTipoPersona.registrarRolDeUsuario(pm, id, nombre);
-            tx.commit();
-            
-            log.trace ("Inserci�n de tipo persona: " + nombre + "con id: " + id + " tuplas insertadas");
-            
-            return new TipoPersona (id,nombre);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	return null;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlTipoPersona.registrarRolDeUsuario(pm, id, nombre);
+			tx.commit();
+
+			log.trace ("Inserci�n de tipo persona: " + nombre + "con id: " + id + " tuplas insertadas");
+
+			return new TipoPersona (id,nombre);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
-	
+
 
 	/**
 	 * Registrar reserva de alojamiento.
@@ -255,39 +255,39 @@ public class PersistenciaHotelAndes {
 	public ReservasDeAlojamiento registrarReservaDeAlojamiento( long idHabitacion,long idHotel, String fechallegadateorica,String fechallegadareal, String fechasalidateorica, String fechasalidareal, long plandeconsumo, String[] tipos,long[]idPersonas) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            sqlReservasDeAlojamiento.registrarReservaDeAlojamiento(pm,id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo,tipos,idPersonas);
-             tx.commit();
-            
-         
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return new ReservasDeAlojamiento (id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			sqlReservasDeAlojamiento.registrarReservaDeAlojamiento(pm,id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo,tipos,idPersonas);
+			tx.commit();
+
+
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return new ReservasDeAlojamiento (id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Registrar reserva de alojamiento sin transaccion.
 	 *
@@ -306,21 +306,21 @@ public class PersistenciaHotelAndes {
 	public ReservasDeAlojamiento registrarReservaDeAlojamientoSinTransaccion( long idHabitacion,long idHotel, String fechallegadateorica,String fechallegadareal, String fechasalidateorica, String fechasalidareal, long plandeconsumo, String[] tipos,long[]idPersonas) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        long id = nextval();
-        try
-        {
-            sqlReservasDeAlojamiento.registrarReservaDeAlojamiento(pm,id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo,tipos,idPersonas);
-            return new ReservasDeAlojamiento (id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	throw e;
-        }
+		long id = nextval();
+		try
+		{
+			sqlReservasDeAlojamiento.registrarReservaDeAlojamiento(pm,id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo,tipos,idPersonas);
+			return new ReservasDeAlojamiento (id, idHabitacion, idHotel, fechallegadateorica, fechallegadareal, fechasalidateorica, fechasalidareal, plandeconsumo);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Registrar reserva de servicio sin transaccion.
 	 *
@@ -336,27 +336,27 @@ public class PersistenciaHotelAndes {
 	public ReservaServicio registrarReservaDeServicioSinTransaccion(String descripcion, String fechaFin, String fechaInicio, long servicioAdicional,long idUsuario, String tipoIdUsuario) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        long id = nextval();
-        try
-        {
-            sqlReservasDeServicio.registrarReservaDeServicio(pm, descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
-            
-           
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-          
-            return new ReservaServicio ( descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+		long id = nextval();
+		try
+		{
+			sqlReservasDeServicio.registrarReservaDeServicio(pm, descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
 
-        	throw e;
-        }
+
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			return new ReservaServicio ( descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Registrar reserva de servicio.
 	 *
@@ -372,40 +372,40 @@ public class PersistenciaHotelAndes {
 	public ReservaServicio registrarReservaDeServicio(String descripcion, String fechaFin, String fechaInicio, long servicioAdicional,long idUsuario, String tipoIdUsuario) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            sqlReservasDeServicio.registrarReservaDeServicio(pm, descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
-            
-             tx.commit();
-            
-           
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return new ReservaServicio ( descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			sqlReservasDeServicio.registrarReservaDeServicio(pm, descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
+
+			tx.commit();
+
+
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return new ReservaServicio ( descripcion,  fechaFin,  fechaInicio,  id,  servicioAdicional, idUsuario,  tipoIdUsuario);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Check in.
 	 *
@@ -416,36 +416,36 @@ public class PersistenciaHotelAndes {
 	public void checkIn(Long idReserva, String fechaActual) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            sqlReservasDeAlojamiento.checkIn(pm, idReserva, fechaActual);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + idReserva + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlReservasDeAlojamiento.checkIn(pm, idReserva, fechaActual);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + idReserva + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Registrar consumo.
 	 *
@@ -459,39 +459,39 @@ public class PersistenciaHotelAndes {
 	public Gasto registrarConsumo( long idUsuario, long idServicio, String fecha, int pagado) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            double precio = sqlGastos.registrarGasto(pm, nextval(),  idUsuario,  idServicio,  fecha,  pagado);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return new Gasto( fecha,  (int) id,  pagado,  precio,  idServicio,  idUsuario);
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			double precio = sqlGastos.registrarGasto(pm, nextval(),  idUsuario,  idServicio,  fecha,  pagado);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return new Gasto( fecha,  (int) id,  pagado,  precio,  idServicio,  idUsuario);
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
-	
+
+
 	/**
 	 * Cuenta A pagar.
 	 *
@@ -502,38 +502,38 @@ public class PersistenciaHotelAndes {
 	public int cuentaAPagar (long idReserva) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            int resp = sqlReservasDeAlojamiento.precioAPagar(pm, idReserva);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-           return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			int resp = sqlReservasDeAlojamiento.precioAPagar(pm, idReserva);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Check out.
 	 *
@@ -544,37 +544,37 @@ public class PersistenciaHotelAndes {
 	public void checkOut (long idReserva, String fechaActual) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-          sqlReservasDeAlojamiento. checkOut(pm, idReserva, fechaActual);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			sqlReservasDeAlojamiento.checkOut(pm, idReserva, fechaActual);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc1.
 	 *
@@ -588,38 +588,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC1 (long idHotel, String fechaInicio, String fechaFin, String fechaActual) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC1(pm, idHotel, fechaInicio, fechaFin, fechaActual);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC1(pm, idHotel, fechaInicio, fechaFin, fechaActual);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc2.
 	 *
@@ -632,38 +632,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC2 (long idHotel, String fechaInicio, String fechaFin) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC2(pm, idHotel, fechaInicio, fechaFin);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC2(pm, idHotel, fechaInicio, fechaFin);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc3.
 	 *
@@ -675,38 +675,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC3(long idHotel, String fechaActual) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC3(pm, idHotel, fechaActual);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx = pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC3(pm, idHotel, fechaActual);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc4precio.
 	 *
@@ -717,38 +717,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC4PRECIO (int precio1, int precio2)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC4PRECIO(pm, precio1, precio2);	
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC4PRECIO(pm, precio1, precio2);	
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc4fecha.
 	 *
@@ -759,38 +759,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC4FECHA (String precio1, String precio2)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC4FECHA(pm, precio1, precio2);	
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC4FECHA(pm, precio1, precio2);	
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc4tipo.
 	 *
@@ -800,38 +800,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC4TIPO (String precio1)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC4TIPO(pm, precio1);	
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC4TIPO(pm, precio1);	
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc4consumo.
 	 *
@@ -843,38 +843,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC4CONSUMO(int consumo, String fecha1, String fecha2)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC4CONSUMO(pm, consumo, fecha1, fecha2)	;
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC4CONSUMO(pm, consumo, fecha1, fecha2)	;
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc5.
 	 *
@@ -887,38 +887,38 @@ public class PersistenciaHotelAndes {
 	public List<ClaseAsistente> RFC5(int idUsuario, String tipoUsuario, String fecha1, String fecha2)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            List<ClaseAsistente> resp = sqlConsultas.RFC5(pm, idUsuario, tipoUsuario, fecha1, fecha2);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC5(pm, idUsuario, tipoUsuario, fecha1, fecha2);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc12.
 	 *
@@ -935,39 +935,39 @@ public class PersistenciaHotelAndes {
 	public ArrayList<Integer> RFC12(int idHotel, int planDeConsumo, String fecha1, String fecha2, ArrayList<Integer> habitaciones, ArrayList<Integer> cantHabitaciones, ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            ArrayList<Integer> resp = sqlConsultas.RF12(pm, idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            return resp;
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-        	System.out.println("Exception yeiiiii!!!!");
-        	if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			ArrayList<Integer> resp = sqlConsultas.RF12(pm, idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			System.out.println("Exception yeiiiii!!!!");
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc12b.
 	 *
@@ -979,37 +979,37 @@ public class PersistenciaHotelAndes {
 	public void RFC12B( int idReserva, String[] tipos,long[]idPersonas) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            sqlConsultas.RF12B(pm, idReserva, tipos, idPersonas);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			sqlConsultas.RF12B(pm, idReserva, tipos, idPersonas);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
+
 	/**
 	 * Rfc13.
 	 *
@@ -1020,42 +1020,42 @@ public class PersistenciaHotelAndes {
 	public void RFC13( ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-            tx.begin();
-            sqlConsultas.RF13(pm, habitaciones, servicios);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			sqlConsultas.RF13(pm, habitaciones, servicios);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	/**
 	 * RF 14 registar cierre de convencion.
 	 *
@@ -1063,13 +1063,49 @@ public class PersistenciaHotelAndes {
 	 * @param darFechaDeHoy the dar fecha de hoy
 	 * @throws Exception the exception
 	 */
-	public void RF14RegistarCierreDeConvencion(ArrayList<Integer> idReservas, String darFechaDeHoy) throws Exception
+	public void RF14RegistarCierreDeConvencion( ArrayList<Integer> idHabitaciones, ArrayList<Integer> idReservasServicios, String fechaActual ) throws Exception
 	{
-		// 
+		// Para hacer checkout de las reservas de alojamiento
+		for ( int i = 0; i < idHabitaciones.size(); i++ )
+			checkOut( idHabitaciones.get(i), fechaActual );
+
+		// Para hacer checkout de los servicios
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+
+			for (int i = 0; i < idReservasServicios.size(); i++)
+				sqlReservasDeAlojamiento.checkOutServicio( pm, idReservasServicios.get(i), fechaActual );
+
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Rfc13.
 	 *
@@ -1080,44 +1116,44 @@ public class PersistenciaHotelAndes {
 	public void RFC15( int idHotel,String fecha1, String fecha2, ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        long id = nextval();
-        try
-        {
-        	tx.setIsolationLevel("serializable");
-            tx.begin();
-            
-            System.out.println(tx.getIsolationLevel());
-            sqlConsultas.RF15(pm, idHotel, fecha1, fecha2, habitaciones, servicios);
-            tx.commit();
-            
-            log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
-            
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-            
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
-        	
-        	
-            if (tx.isActive())
-                tx.rollback();
-            
-            pm.close();
-        	throw e;
-        }
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.setIsolationLevel("serializable");
+			tx.begin();
+
+			System.out.println(tx.getIsolationLevel());
+			sqlConsultas.RF15(pm, idHotel, fecha1, fecha2, habitaciones, servicios);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 * Gets the single instance of PersistenciaHotelAndes.
 	 *
@@ -1132,5 +1168,5 @@ public class PersistenciaHotelAndes {
 		return instance;
 	}
 
-	
+
 }

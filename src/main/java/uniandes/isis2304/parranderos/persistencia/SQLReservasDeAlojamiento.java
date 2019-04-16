@@ -131,7 +131,7 @@ public class SQLReservasDeAlojamiento {
 		List lista =a.executeList();
 
 		if( lista.isEmpty() )
-			throw new Exception("Jamas se hizo el checkIn");
+			throw new Exception("Jamás se hizo el checkIn");
 
 
 		Query b = pm.newQuery(SQL, "SELECT  tipoidusuario, idusuario FROM reservas_de_clientes where idreserva =  "+ idReserva);
@@ -182,8 +182,20 @@ public class SQLReservasDeAlojamiento {
 	{
 		Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
 		q.setParameters(fechaActual,idReserva);
+		q.executeUnique();
+	}
 
-		q.executeUnique()  ;
+	/**
+	 * Hace un checkout de un servicio
+	 * @param pm
+	 * @param idReserva
+	 * @param fechaActual
+	 */
+	public void checkOutServicio( PersistenceManager pm, long idReserva, String fechaActual )
+	{
+		Query q = pm.newQuery(SQL, "UPDATE  SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
+		q.setParameters(fechaActual,idReserva);
+		q.executeUnique();
 	}
 
 }

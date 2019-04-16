@@ -769,15 +769,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		try
 		{
 			// Peticion de datos
-			String[] aux = JOptionPane.showInputDialog( this, "Datos las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux) {
+			String[] aux = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux)
 				habitaciones.add(Integer.valueOf(string));
-			}
+
 			// Peticion de datos
-			String[] aux1 = JOptionPane.showInputDialog( this, "Datos las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux1) {
+			String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux1)
 				servicios.add(Integer.valueOf(string));
-			}
+
 		}
 		catch (Exception e)
 		{
@@ -803,32 +803,41 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			ArrayList<Integer> idReservas = new ArrayList<>();
+			ArrayList<Integer> idHabitaciones = new ArrayList<>();
+			ArrayList<Integer> idServicios = new ArrayList<>();
 
 			try
 			{
 				verificarRol( 2 ); //Esta función está permitida sólo para organizadores de eventos
 
-				String[] aux = JOptionPane.showInputDialog( this, "Datos las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux1 )
+					idHabitaciones.add( Integer.valueOf(string) );
 
-				for (String string : aux)
-					idReservas.add( Integer.valueOf(string) );
+				String[] aux2 = JOptionPane.showInputDialog( this, "Datos de las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux2)
+					idServicios.add( Integer.valueOf(string) );
 			}
 			catch (Exception e)
 			{
 				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
 
-			for (int i = 0; i < idReservas.size(); i++)
+			// Valida que los servicios estén pagos
+			for (int i = 0; i < idServicios.size(); i++)
 			{
-				int loQueDebePagar = persistencia.cuentaAPagar( idReservas.get(i) );
-				if( loQueDebePagar > 0 ) throw new Exception( "Al menos una persona no está a paz y salvo con el hotel." );
+				int loQueDebePagar = persistencia.cuentaAPagar( idServicios.get(i) );
+				if( loQueDebePagar > 0 ) throw new Exception( "No se puede cerrar la convención, el servicio de ID " + idServicios.get(i) + " aún tiene cuentas pendientes.");
 			}
 
-			// persistencia.RF14RegistarCierreDeConvencion( idReservas, darFechaDeHoy() );
+			// ¿Deberé validar si las habitaciones tienen cobros?
+			
+			
+			// Registra el cierre de la convención
+			persistencia.RF14RegistarCierreDeConvencion( idHabitaciones, idServicios, darFechaDeHoy() );
 
 			String resultado = "\n-> En RF14 registarCierreDeConvención:";
-			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idReservas + "'.";
+			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idServicios + "'.";
 			resultado += "\n\nOperación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
@@ -838,19 +847,19 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-		public void RF15() throws Exception
+	public void RF15() throws Exception
+	{
+		//Declaracion de variables
+		int idHotel;
+		String fecha1;
+		String fecha2;
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		ArrayList<Integer> servicios = new ArrayList<>();
+
+		//Obtencion de datos 
+
+		try
 		{
-			//Declaracion de variables
-			int idHotel;
-			String fecha1;
-			String fecha2;
-			ArrayList<Integer> habitaciones = new ArrayList<>();
-			ArrayList<Integer> servicios = new ArrayList<>();
-
-			//Obtencion de datos 
-
-			try
-			{
 			idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
 			fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
 			fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
@@ -865,22 +874,22 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			for (String string : aux1) {
 				servicios.add(Integer.parseInt(string));
 			}
-			}
-			catch(Exception e)
-			{
-				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
-			}
-			//LLamado a la persistencia
-			try
-			{
+		}
+		catch(Exception e)
+		{
+			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+		}
+		//LLamado a la persistencia
+		try
+		{
 			persistencia.RFC15(idHotel, fecha1, fecha2, habitaciones, servicios);
 			panelDatos.actualizarInterfaz("Operacion exitosa");
-			}
-			catch (Exception e) {
-				panelDatos.actualizarInterfaz( generarMensajeError(e) );
-			}
 		}
-	
+		catch (Exception e) {
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
