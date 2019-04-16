@@ -6,23 +6,22 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLGastos.
+ */
 public class SQLGastos {
 	
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
-	/**
-	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
-	 * Se renombra ac� para facilitar la escritura de las sentencias
-	 */
+	/** Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos Se renombra ac� para facilitar la escritura de las sentencias. */
 	private final static String SQL = PersistenciaHotelAndes.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El manejador de persistencia general de la aplicaci�n
-	 */
+	/** El manejador de persistencia general de la aplicaci�n. */
 	private PersistenciaHotelAndes pp;
 
 	/* ****************************************************************
@@ -30,7 +29,8 @@ public class SQLGastos {
 	 *****************************************************************/
 
 	/**
-	 * Constructor
+	 * Constructor.
+	 *
 	 * @param pp - El Manejador de persistencia de la aplicaci�n
 	 */
 	public SQLGastos (PersistenciaHotelAndes pp)
@@ -39,6 +39,18 @@ public class SQLGastos {
 	}
 
 
+	/**
+	 * Registrar gasto.
+	 *
+	 * @param pm the pm
+	 * @param id the id
+	 * @param idUsuario the id usuario
+	 * @param idServicio the id servicio
+	 * @param fecha the fecha
+	 * @param pagado the pagado
+	 * @return the double
+	 * @throws Exception the exception
+	 */
 	public double registrarGasto (PersistenceManager pm, long id, long idUsuario, long idServicio, String fecha, int pagado) throws Exception 
 	{
 		

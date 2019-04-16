@@ -2,58 +2,87 @@ package uniandes.isis2304.parranderos.persistencia;
 
 import java.util.Date;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClaseAsistente.
+ */
 public class ClaseAsistente {
 	
 	
+	/** The idhabitacion. */
 	private int IDHABITACION;
 
+	/** The dineroperiodoespecifico. */
 	private int DINEROPERIODOESPECIFICO;
 	
+	/** The dineroaniocorrido. */
 	private int DINEROANIOCORRIDO;
 	
+	/** The conteoservicios. */
 	private int CONTEOSERVICIOS;
 	
+	/** The idservicios. */
 	private int IDSERVICIOS;
 	
+	/** The nombreservicios. */
 	private String NOMBRESERVICIOS;
 	
+	/** The numhabitacion. */
 	private int NUMHABITACION;
 	
+	/** The indice. */
 	private double INDICE ;
 	
+	/** The id. */
 	private int ID;
 	
+	/** The idhotel. */
 	private int IDHOTEL;
 	
+	/** The categoria. */
 	private String CATEGORIA;
 	
+	/** The estaincluido. */
 	private int ESTAINCLUIDO;
 	
+	/** The horarioinicio. */
 	private String HORARIOINICIO;
 	
+	/** The horariofin. */
 	private String HORARIOFIN;
 	
+	/** The nombre. */
 	private String NOMBRE;
 	
+	/** The valor. */
 	private String VALOR;
 	
 
+	/** The idusuario. */
 	private int IDUSUARIO;
 	
+	/** The idtipoidentificacion. */
 	private String IDTIPOIDENTIFICACION;
 	
+	/** The idservicio. */
 	private int IDSERVICIO;
 	
+	/** The fecha. */
 	private String FECHA;
 	
+	/** The pagado. */
 	private int PAGADO;
 	
+	/** The precio. */
 	private int PRECIO;
 	
+	/** The idreserva. */
 	private int IDRESERVA;
 	
+	/** The idreserva 1. */
 	private int IDRESERVA_1;
 	
+	/** The tipoidusuario. */
 	private String TIPOIDUSUARIO;
 	
 
@@ -62,6 +91,8 @@ public class ClaseAsistente {
 	
 	
 	/**
+	 * Gets the idreserva.
+	 *
 	 * @return the iDRESERVA
 	 */
 	public int getIDRESERVA() {
@@ -71,6 +102,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idreserva.
+	 *
 	 * @param iDRESERVA the iDRESERVA to set
 	 */
 	public void setIDRESERVA(int iDRESERVA) {
@@ -80,6 +113,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idreserva 1.
+	 *
 	 * @return the iDRESERVA_1
 	 */
 	public int getIDRESERVA_1() {
@@ -89,6 +124,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idreserva 1.
+	 *
 	 * @param iDRESERVA_1 the iDRESERVA_1 to set
 	 */
 	public void setIDRESERVA_1(int iDRESERVA_1) {
@@ -98,6 +135,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the tipoidusuario.
+	 *
 	 * @return the tIPOIDUSUARIO
 	 */
 	public String getTIPOIDUSUARIO() {
@@ -107,6 +146,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the tipoidusuario.
+	 *
 	 * @param tIPOIDUSUARIO the tIPOIDUSUARIO to set
 	 */
 	public void setTIPOIDUSUARIO(String tIPOIDUSUARIO) {
@@ -116,6 +157,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idusuario.
+	 *
 	 * @return the iDUSUARIO
 	 */
 	public int getIDUSUARIO() {
@@ -125,6 +168,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idusuario.
+	 *
 	 * @param iDUSUARIO the iDUSUARIO to set
 	 */
 	public void setIDUSUARIO(int iDUSUARIO) {
@@ -134,6 +179,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idtipoidentificacion.
+	 *
 	 * @return the iDTIPOIDENTIFICACION
 	 */
 	public String getIDTIPOIDENTIFICACION() {
@@ -143,6 +190,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idtipoidentificacion.
+	 *
 	 * @param iDTIPOIDENTIFICACION the iDTIPOIDENTIFICACION to set
 	 */
 	public void setIDTIPOIDENTIFICACION(String iDTIPOIDENTIFICACION) {
@@ -152,6 +201,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idservicio.
+	 *
 	 * @return the iDSERVICIO
 	 */
 	public int getIDSERVICIO() {
@@ -161,6 +212,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idservicio.
+	 *
 	 * @param iDSERVICIO the iDSERVICIO to set
 	 */
 	public void setIDSERVICIO(int iDSERVICIO) {
@@ -170,6 +223,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the fecha.
+	 *
 	 * @return the fECHA
 	 */
 	public String getFECHA() {
@@ -179,6 +234,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the fecha.
+	 *
 	 * @param fECHA the fECHA to set
 	 */
 	public void setFECHA(Date fECHA) {
@@ -188,6 +245,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the pagado.
+	 *
 	 * @return the pAGADO
 	 */
 	public int getPAGADO() {
@@ -197,6 +256,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the pagado.
+	 *
 	 * @param pAGADO the pAGADO to set
 	 */
 	public void setPAGADO(int pAGADO) {
@@ -206,6 +267,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the precio.
+	 *
 	 * @return the pRECIO
 	 */
 	public int getPRECIO() {
@@ -215,6 +278,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the precio.
+	 *
 	 * @param pRECIO the pRECIO to set
 	 */
 	public void setPRECIO(int pRECIO) {
@@ -224,6 +289,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the id.
+	 *
 	 * @return the iD
 	 */
 	public int getID() {
@@ -233,6 +300,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the id.
+	 *
 	 * @param iD the iD to set
 	 */
 	public void setID(int iD) {
@@ -242,6 +311,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idhotel.
+	 *
 	 * @return the iDHOTEL
 	 */
 	public int getIDHOTEL() {
@@ -251,6 +322,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idhotel.
+	 *
 	 * @param iDHOTEL the iDHOTEL to set
 	 */
 	public void setIDHOTEL(int iDHOTEL) {
@@ -260,6 +333,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the categoria.
+	 *
 	 * @return the cATEGORIA
 	 */
 	public String getCATEGORIA() {
@@ -269,6 +344,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the categoria.
+	 *
 	 * @param cATEGORIA the cATEGORIA to set
 	 */
 	public void setCATEGORIA(String cATEGORIA) {
@@ -278,6 +355,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the estaincluido.
+	 *
 	 * @return the eSTAINCLUIDO
 	 */
 	public int getESTAINCLUIDO() {
@@ -287,6 +366,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the estaincluido.
+	 *
 	 * @param eSTAINCLUIDO the eSTAINCLUIDO to set
 	 */
 	public void setESTAINCLUIDO(int eSTAINCLUIDO) {
@@ -296,6 +377,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the horarioinicio.
+	 *
 	 * @return the hORARIOINICIO
 	 */
 	public String getHORARIOINICIO() {
@@ -305,6 +388,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the horarioinicio.
+	 *
 	 * @param hORARIOINICIO the hORARIOINICIO to set
 	 */
 	public void setHORARIOINICIO(String hORARIOINICIO) {
@@ -314,6 +399,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the horariofin.
+	 *
 	 * @return the hORARIOFIN
 	 */
 	public String getHORARIOFIN() {
@@ -323,6 +410,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the horariofin.
+	 *
 	 * @param hORARIOFIN the hORARIOFIN to set
 	 */
 	public void setHORARIOFIN(String hORARIOFIN) {
@@ -332,6 +421,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the nombre.
+	 *
 	 * @return the nOMBRE
 	 */
 	public String getNOMBRE() {
@@ -341,6 +432,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the nombre.
+	 *
 	 * @param nOMBRE the nOMBRE to set
 	 */
 	public void setNOMBRE(String nOMBRE) {
@@ -350,6 +443,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the valor.
+	 *
 	 * @return the vALOR
 	 */
 	public String getVALOR() {
@@ -359,6 +454,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the valor.
+	 *
 	 * @param vALOR the vALOR to set
 	 */
 	public void setVALOR(String vALOR) {
@@ -368,6 +465,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the descripcion.
+	 *
 	 * @return the dESCRIPCION
 	 */
 	public String getDESCRIPCION() {
@@ -377,6 +476,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the descripcion.
+	 *
 	 * @param dESCRIPCION the dESCRIPCION to set
 	 */
 	public void setDESCRIPCION(String dESCRIPCION) {
@@ -385,10 +486,13 @@ public class ClaseAsistente {
 
 
 
+	/** The descripcion. */
 	private String DESCRIPCION;
 	
 
 	/**
+	 * Gets the numhabitacion.
+	 *
 	 * @return the nUMHABITACION
 	 */
 	public int getNUMHABITACION() {
@@ -398,6 +502,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the numhabitacion.
+	 *
 	 * @param nUMHABITACION the nUMHABITACION to set
 	 */
 	public void setNUMHABITACION(int nUMHABITACION) {
@@ -407,6 +513,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the indice.
+	 *
 	 * @return the iNDICE
 	 */
 	public double getINDICE() {
@@ -416,6 +524,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the indice.
+	 *
 	 * @param iNDICE the iNDICE to set
 	 */
 	public void setINDICE(double iNDICE) {
@@ -424,6 +534,9 @@ public class ClaseAsistente {
 
 
 
+	/**
+	 * Instantiates a new clase asistente.
+	 */
 	public ClaseAsistente()
 	{
 		
@@ -432,6 +545,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the conteoservicios.
+	 *
 	 * @return the cONTEOSERVICIOS
 	 */
 	public int getCONTEOSERVICIOS() {
@@ -441,6 +556,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the conteoservicios.
+	 *
 	 * @param cONTEOSERVICIOS the cONTEOSERVICIOS to set
 	 */
 	public void setCONTEOSERVICIOS(int cONTEOSERVICIOS) {
@@ -450,6 +567,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idservicios.
+	 *
 	 * @return the iDSERVICIOS
 	 */
 	public int getIDSERVICIOS() {
@@ -459,6 +578,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idservicios.
+	 *
 	 * @param iDSERVICIOS the iDSERVICIOS to set
 	 */
 	public void setIDSERVICIOS(int iDSERVICIOS) {
@@ -468,6 +589,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the dineroperiodoespecifico.
+	 *
 	 * @return the dINEROPERIODOESPECIFICO
 	 */
 	public int getDINEROPERIODOESPECIFICO() {
@@ -477,6 +600,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the nombreservicios.
+	 *
 	 * @return the nOMBRESERVICIOS
 	 */
 	public String getNOMBRESERVICIOS() {
@@ -486,6 +611,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the nombreservicios.
+	 *
 	 * @param nOMBRESERVICIOS the nOMBRESERVICIOS to set
 	 */
 	public void setNOMBRESERVICIOS(String nOMBRESERVICIOS) {
@@ -495,6 +622,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the dineroperiodoespecifico.
+	 *
 	 * @param dINEROPERIODOESPECIFICO the dINEROPERIODOESPECIFICO to set
 	 */
 	public void setDINEROPERIODOESPECIFICO(int dINEROPERIODOESPECIFICO) {
@@ -504,6 +633,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the idhabitacion.
+	 *
 	 * @return the iDHABITACION
 	 */
 	public int getIDHABITACION() {
@@ -513,6 +644,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the idhabitacion.
+	 *
 	 * @param iDHABITACION the iDHABITACION to set
 	 */
 	public void setIDHABITACION(int iDHABITACION) {
@@ -526,6 +659,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Gets the dineroaniocorrido.
+	 *
 	 * @return the dINEROANIOCORRIDO
 	 */
 	public int getDINEROANIOCORRIDO() {
@@ -535,6 +670,8 @@ public class ClaseAsistente {
 
 
 	/**
+	 * Sets the dineroaniocorrido.
+	 *
 	 * @param dINEROANIOCORRIDO the dINEROANIOCORRIDO to set
 	 */
 	public void setDINEROANIOCORRIDO(int dINEROANIOCORRIDO) {
@@ -556,12 +693,22 @@ public class ClaseAsistente {
 
 
 
+	/**
+	 * To string 2.
+	 *
+	 * @return the string
+	 */
 	public String toString2() {
 		return "ClaseAsistente [ID=" + ID + ", IDUSUARIO=" + IDUSUARIO + ", IDTIPOIDENTIFICACION="
 				+ IDTIPOIDENTIFICACION + ", IDSERVICIO=" + IDSERVICIO + ", FECHA=" + FECHA + ", PAGADO=" + PAGADO
 				+ ", PRECIO=" + PRECIO + ", DESCRIPCION=" + DESCRIPCION + "]";
 	}
 
+/**
+ * To string 3.
+ *
+ * @return the string
+ */
 public String toString3()
 {
 	return "ID= "+ID+", Fecha: "+FECHA+", Pagado: "+PAGADO+", Precio: "+PRECIO+", Id reserva: "+IDRESERVA+", Id usuario: "+IDUSUARIO+", Tipo id usuario: "+TIPOIDUSUARIO;

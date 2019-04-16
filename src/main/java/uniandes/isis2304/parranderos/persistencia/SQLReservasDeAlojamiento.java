@@ -12,24 +12,23 @@ import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Persona;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLReservasDeAlojamiento.
+ */
 public class SQLReservasDeAlojamiento {
 
 
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
-	/**
-	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
-	 * Se renombra ac� para facilitar la escritura de las sentencias
-	 */
+	/** Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos Se renombra ac� para facilitar la escritura de las sentencias. */
 	private final static String SQL = PersistenciaHotelAndes.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El manejador de persistencia general de la aplicaci�n
-	 */
+	/** El manejador de persistencia general de la aplicaci�n. */
 	private PersistenciaHotelAndes pp;
 
 	/* ****************************************************************
@@ -37,7 +36,8 @@ public class SQLReservasDeAlojamiento {
 	 *****************************************************************/
 
 	/**
-	 * Constructor
+	 * Constructor.
+	 *
 	 * @param pp - El Manejador de persistencia de la aplicaci�n
 	 */
 	public SQLReservasDeAlojamiento (PersistenciaHotelAndes pp)
@@ -46,6 +46,22 @@ public class SQLReservasDeAlojamiento {
 	}
 
 
+	/**
+	 * Registrar reserva de alojamiento.
+	 *
+	 * @param pm the pm
+	 * @param id the id
+	 * @param idHabitacion the id habitacion
+	 * @param idHotel the id hotel
+	 * @param fechallegadateorica the fechallegadateorica
+	 * @param fechallegadareal the fechallegadareal
+	 * @param fechasalidateorica the fechasalidateorica
+	 * @param fechasalidareal the fechasalidareal
+	 * @param plandeconsumo the plandeconsumo
+	 * @param tipos the tipos
+	 * @param idPersonas the id personas
+	 * @throws Exception the exception
+	 */
 	public void registrarReservaDeAlojamiento (PersistenceManager pm, long id, long idHabitacion,long idHotel, String fechallegadateorica,String fechallegadareal, String fechasalidateorica, String fechasalidareal, long plandeconsumo,String[] tipos,long[]idPersonas) throws Exception 
 	{
 
@@ -79,6 +95,14 @@ public class SQLReservasDeAlojamiento {
 
 	}
 
+	/**
+	 * Check in.
+	 *
+	 * @param pm the pm
+	 * @param idReserva the id reserva
+	 * @param fechaActual the fecha actual
+	 * @throws Exception the exception
+	 */
 	public void checkIn (PersistenceManager pm, Long idReserva, String fechaActual) throws Exception
 	{
 		Query a = pm.newQuery(SQL, "SELECT * FROM RESERVAS_DE_ALOJAMIENTO WHERE ID = "+idReserva);
@@ -92,6 +116,14 @@ public class SQLReservasDeAlojamiento {
 		q.executeUnique()  ;
 	}
 
+	/**
+	 * Precio A pagar.
+	 *
+	 * @param pm the pm
+	 * @param idReserva the id reserva
+	 * @return the int
+	 * @throws Exception the exception
+	 */
 	public int precioAPagar (PersistenceManager pm, long idReserva) throws Exception
 	{		
 
@@ -139,6 +171,13 @@ public class SQLReservasDeAlojamiento {
 
 	}
 
+	/**
+	 * Check out.
+	 *
+	 * @param pm the pm
+	 * @param idReserva the id reserva
+	 * @param fechaActual the fecha actual
+	 */
 	public void checkOut(PersistenceManager pm, long idReserva, String fechaActual)
 	{
 		Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);

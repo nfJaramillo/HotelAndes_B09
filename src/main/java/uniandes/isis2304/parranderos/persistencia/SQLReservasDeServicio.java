@@ -5,23 +5,22 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLReservasDeServicio.
+ */
 public class SQLReservasDeServicio {
 	
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
-	/**
-	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
-	 * Se renombra ac� para facilitar la escritura de las sentencias
-	 */
+	/** Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos Se renombra ac� para facilitar la escritura de las sentencias. */
 	private final static String SQL = PersistenciaHotelAndes.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El manejador de persistencia general de la aplicaci�n
-	 */
+	/** El manejador de persistencia general de la aplicaci�n. */
 	private PersistenciaHotelAndes pp;
 
 	/* ****************************************************************
@@ -29,7 +28,8 @@ public class SQLReservasDeServicio {
 	 *****************************************************************/
 
 	/**
-	 * Constructor
+	 * Constructor.
+	 *
 	 * @param pp - El Manejador de persistencia de la aplicaci�n
 	 */
 	public SQLReservasDeServicio (PersistenciaHotelAndes pp)
@@ -38,6 +38,19 @@ public class SQLReservasDeServicio {
 	}
 	
 
+	/**
+	 * Registrar reserva de servicio.
+	 *
+	 * @param pm the pm
+	 * @param descripcion the descripcion
+	 * @param fechaFin the fecha fin
+	 * @param fechaInicio the fecha inicio
+	 * @param id the id
+	 * @param servicioAdicional the servicio adicional
+	 * @param idUsuario the id usuario
+	 * @param tipoIdUsuario the tipo id usuario
+	 * @throws Exception the exception
+	 */
 	public void registrarReservaDeServicio (PersistenceManager pm, String descripcion, String fechaFin, String fechaInicio, long id, long servicioAdicional,long idUsuario, String tipoIdUsuario) throws Exception 
 	{
 		

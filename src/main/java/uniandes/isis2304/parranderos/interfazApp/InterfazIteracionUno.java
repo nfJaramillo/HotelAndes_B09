@@ -132,7 +132,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		preguntarPorElRol();
 
 		// Configura la apariencia del frame que contiene la interfaz grÃ¡fica
-		/*configurarFrame();
+		configurarFrame();
 
 		// Crea el menÃº
 		if (guiConfig != null)
@@ -145,7 +145,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 		setLayout (new BorderLayout());
 		add( new JLabel(new ImageIcon(RUTA_BANNER)), BorderLayout.NORTH );          
-		add( panelDatos, BorderLayout.CENTER );*/
+		add( panelDatos, BorderLayout.CENTER );
 	}
 
 	private void preguntarPorElRol()
@@ -826,7 +826,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 
 			// persistencia.RF14RegistarCierreDeConvencion( idReservas, darFechaDeHoy() );
-			
+
 			String resultado = "\n-> En RF14 registarCierreDeConvención:";
 			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idReservas + "'.";
 			resultado += "\n\nOperación terminada.";
@@ -837,6 +837,50 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
+
+		public void RF15() throws Exception
+		{
+			//Declaracion de variables
+			int idHotel;
+			String fecha1;
+			String fecha2;
+			ArrayList<Integer> habitaciones = new ArrayList<>();
+			ArrayList<Integer> servicios = new ArrayList<>();
+
+			//Obtencion de datos 
+
+			try
+			{
+			idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+			fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+			fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+
+			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+			String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idHabitacion1;idHabitacion2;...)", "Informacion de las habitaciones para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux) {
+				habitaciones.add(Integer.parseInt(string));
+			}
+			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+			String[] aux1 = JOptionPane.showInputDialog( this, "Datos de los servicios (idServicio1;idServicio2;...)", "Informacion de los servicios para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux1) {
+				servicios.add(Integer.parseInt(string));
+			}
+			}
+			catch(Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+			//LLamado a la persistencia
+			try
+			{
+			persistencia.RFC15(idHotel, fecha1, fecha2, habitaciones, servicios);
+			panelDatos.actualizarInterfaz("Operacion exitosa");
+			}
+			catch (Exception e) {
+				panelDatos.actualizarInterfaz( generarMensajeError(e) );
+			}
+		}
+	
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
