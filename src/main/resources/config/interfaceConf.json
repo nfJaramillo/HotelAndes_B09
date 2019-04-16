@@ -4,7 +4,7 @@
 	"frameW": 800,
 	"menuBar":
 	[
-		{ "menuTitle": "Requerimientos funcionales de modificacion ",
+		{ "menuTitle": "Modificacion 1",
 		  "options":
 			[
 				{
@@ -29,9 +29,9 @@
 				}
 			]
 		},
-		{ "menuTitle": "Requerimientos funcionales de consulta",
-		  "options":
-			[
+				{ "menuTitle": "Consulta 1",
+		 		  "options":
+					[
 				{
 					"label": "RFC1: Mostrar el dinero recolectado",
 					"event": "mostrarElDineroRecolectado"
@@ -53,8 +53,40 @@
 					"event": "mostrarConsumoUsuarioFechas"
 				}
 			]
-		}
-,
+		},
+				{ "menuTitle": "Modificacion 2",
+		  		  "options":
+					[
+				{
+					"label": "RF12: RESERVAR ALOJAMIENTO Y SERVICIOS PARA UNA CONVENCION",
+					"event": "RFC12"
+				},
+
+				{
+					"label": "RF12B: RESERVAR INDIVIDUALMENTE ALOJAMIENTO PARA UNA CONVENCION",
+					"event": "RFC12B"
+				},
+				{
+					"label": "RF13: CANCELAR RESERVAS ASOCIADAS A UNA CONVENCION",
+					"event": "RFC12B"
+				},
+				{
+					"label": "RF14: REGISTRAR EL FIN DE UNA CONVENCION",
+					"event": "mostrarIndiceOcupacion"
+				},
+				{
+					"label": "RF15: REGISTRAR LA ENTRADA A MANTENIMIENTO DE ALOJAMIENTOS O SERVICIOS DEL HOTEL",
+					"event": "RFC4"
+				},
+				{
+					"label": "RF16: REGISTRAR EL FIN DEL MANTENIMIENTO DE ALOJAMIENTOS O SERVICIOS DEL HOTEL",
+					"event": "mostrarConsumoUsuarioFechas"
+				}
+			]
+		},
+				
+
+		
 		{
 			"menuTitle": "Acerca de",
 			"options":

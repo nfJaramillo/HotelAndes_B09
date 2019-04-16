@@ -31,6 +31,7 @@ import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -359,7 +360,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
 			verificarRol( 'A' );
 
-			String tipoIdentificacion;
+
 			long idUsuario;
 			long idReservaServicio;
 			int seCargaALaHabitacion = -1;
@@ -369,7 +370,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				idUsuario = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva:", "ID reserva", JOptionPane.QUESTION_MESSAGE ) );
 				idReservaServicio = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva del servicio:", "ID reserva servicio", JOptionPane.QUESTION_MESSAGE ) );
 
-				 seCargaALaHabitacion = Integer.parseInt(JOptionPane.showInputDialog(this, "Escriba 0, si el usuario ya lo pago, 1 si lo carga a su cuenta o 2 si lo carga a la cuenta de la convencion", "¿Desea pagar el servicio, cargarlo a su cuenta o cargarlo a la cuenta de su convenvion (Si esta en una) ?", JOptionPane.QUESTION_MESSAGE));
+				seCargaALaHabitacion = Integer.parseInt(JOptionPane.showInputDialog(this, "Escriba 0, si el usuario ya lo pago, 1 si lo carga a su cuenta o 2 si lo carga a la cuenta de la convencion", "¿Desea pagar el servicio, cargarlo a su cuenta o cargarlo a la cuenta de su convenvion (Si esta en una) ?", JOptionPane.QUESTION_MESSAGE));
 
 			}
 			catch (Exception e)
@@ -626,7 +627,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			{
 				tipoIDPersona =  JOptionPane.showInputDialog( this, "Tipo de identificador:", "Tipo id", JOptionPane.QUESTION_MESSAGE );
 				idPersona = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador del cliente:", "ID cliente", JOptionPane.QUESTION_MESSAGE ) );
-				  fecha1=JOptionPane.showInputDialog( this, "Fecha 1 (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha 1", JOptionPane.QUESTION_MESSAGE );
+				fecha1=JOptionPane.showInputDialog( this, "Fecha 1 (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha 1", JOptionPane.QUESTION_MESSAGE );
 				fecha2 =  JOptionPane.showInputDialog( this, "Fecha 2 (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha 2", JOptionPane.QUESTION_MESSAGE );
 			}
 			catch (Exception e)
@@ -636,7 +637,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 			List<ClaseAsistente> lista = persistencia.RFC5( idPersona.intValue(), tipoIDPersona, fecha1, fecha2 );
-		
+
 
 			String resultado = "\n-> En RFC5 mostrarConsumoUsuarioFechas:\n\n\n";
 			resultado       +=        "\t-----------------------------------------------------\n";
@@ -652,244 +653,346 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
+	//-----------------------------------------------------------------------------------
+	// Requerimientos de modificacion iteracion 2
+	//----------------------------------------------------------------------------------
 
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	/**
-	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
-	 * @param e - La excepciÃ³n generada
-	 * @return La cadena con la informaciÃ³n de la excepciÃ³n y detalles adicionales
-	 */
-	private String generarMensajeError(Exception e) 
+	public void RFC12() throws Exception
 	{
-		String resultado = "Error en la ejecuciÃ³n:\n";
-		resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
-		return resultado;
-	}
+		// Definicio de variables
+		int idHotel;
+		int planDeConsumo;
+		String fecha1;
+		String fecha2;
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		ArrayList<Integer> cantHabitaciones = new ArrayList<>();
+		ArrayList<Integer> servicios = new ArrayList<>();
 
-	/**
-	 * Genera una cadena de caracteres con la descripciÃ³n de la excepcion e, haciendo Ã©nfasis en las excepciones de JDO
-	 * @param e - La excepciÃ³n recibida
-	 * @return La descripciÃ³n de la excepciÃ³n cuando es javax.jdo.JDODataStoreException o "" de lo contrario
-	 */
-	private String darDetalleException(Exception e) 
-	{
-		String resp = "";
-		if( e.getClass().getName().equals("javax.jdo.JDODataStoreException") )
-		{
-			JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
-			return ". " + je.getNestedExceptions()[0].getMessage();
-		}
-		return resp;
-	}
-
-	/**
-	 * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
-	 * @param seEsperaQueSea Lo que se espera que sea el usuario
-	 * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
-	 */
-	private void verificarRol( char seEsperaQueSea ) throws Exception
-	{
-		if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
-		else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
-	}
-
-	/**
-	 * Abre el archivo dado como parÃ¡metro con la aplicaciÃ³n por defecto del sistema
-	 * @param nombreArchivo - El nombre del archivo que se quiere mostrar
-	 */
-	private void mostrarArchivo( String nombreArchivo )
-	{
 		try
 		{
-			Desktop.getDesktop().open(new File(nombreArchivo));
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+			// Pedido de datos al usuario
+			idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+			planDeConsumo = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del plan de consumo:", "ID plan de consumo", JOptionPane.QUESTION_MESSAGE ) );
+			fecha1 =  JOptionPane.showInputDialog( this, "Fecha de llegada (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+			fecha2 =  JOptionPane.showInputDialog( this, "Fecha de salida (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
 
+			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+			String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idTipoDeHabitacion:cantidad;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
 
-	/**
-	 * Retorna un String con la fecha del dÃ­a de hoy
-	 * @return String de la fecha actual en formato dd/MM/AAAA
-	 */
-	private String darFechaDeHoy()
-	{
-		Date date = (Calendar.getInstance()).getTime();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
-		return dateFormat.format(date);
-	}
-
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//  MÃ‰TODOS DE INTERACCIÃ“N
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	/**
-	 * MÃ©todo para la ejecuciÃ³n de los eventos que enlazan el menÃº con los mÃƒÂ©todos de negocio
-	 * Invoca al mÃ©todo correspondiente segÃƒÂºn el evento recibido
-	 * @param pEvento - El evento del usuario
-	 */
-	@Override
-	public void actionPerformed(ActionEvent pEvento)
-	{
-		String evento = pEvento.getActionCommand( );		
-		try 
-		{
-			Method req = InterfazIteracionUno.class.getMethod ( evento );			
-			req.invoke ( this );
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		} 
-	}
-
-	//~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   PROGRAMA PRINCIPAL 
-	//~~~~~~~~~~~~~~~~~~~~~~~~~
-	/**
-	 * Este mÃ©todo ejecuta la aplicaciÃ³n, creando una nueva interfaz
-	 * @param args Arreglo de argumentos que se recibe por lÃ­nea de comandos
-	 */
-	public static void main( String[] args )
-	{
-		try
-		{	
-			// Unifica la interfaz para Mac y para Windows.
-			UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
-			InterfazIteracionUno interfaz = new InterfazIteracionUno( );
-
-			// Crea y centra la interfaz
-			interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			interfaz.setLocationRelativeTo(null);
-			interfaz.setVisible(true);
-		}
-		catch( Exception e )
-		{
-			e.printStackTrace( );
-		}
-	}
-
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÃ‰TODOS DE CONFIGURACIÃ“N PARA LA INTERFAZ
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	/**
-	 * Lee datos de configuraciÃ³n para la aplicaciÃ³n, a partir de un archivo JSON o con valores por defecto si hay errores.
-	 * @param tipo - El tipo de configuraciÃ³n deseada
-	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
-	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
-	 * 			NULL si hay un error en el archivo.
-	 */
-	private JsonObject openConfig (String tipo, String archConfig)
-	{
-		JsonObject config = null;
-		try 
-		{
-			Gson gson = new Gson( );
-			FileReader file = new FileReader (archConfig);
-			JsonReader reader = new JsonReader ( file );
-			config = gson.fromJson(reader, JsonObject.class);
-			log.info ( "Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo );
-		} 
-		catch (Exception e)
-		{	
-			log.info ( "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido" );			
-			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
-		}	
-		return config;
-	}
-
-	/**
-	 * MÃ©todo para configurar el frame principal de la aplicaciÃ³n
-	 */
-	private void configurarFrame(  )
-	{
-		int alto = 0;
-		int ancho = 0;
-		String titulo = "";	
-
-		if ( guiConfig == null )
-		{
-			log.info ( "Se aplica configuraciÃ³n por defecto" );			
-			titulo = "Parranderos APP Default";
-			alto = 300;
-			ancho = 500;
-		}
-		else
-		{
-			log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n" );
-			titulo = guiConfig.get("title").getAsString();
-			alto= guiConfig.get("frameH").getAsInt();
-			ancho = guiConfig.get("frameW").getAsInt();
-		}
-
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		setLocation (50,50);
-		setResizable( true );
-		setBackground( Color.WHITE );
-
-		setTitle( titulo );
-		setSize ( ancho, alto);        
-	}
-
-	/**
-	 * MÃ©todo para crear el menÃº de la aplicaciÃ³n con base en el objeto JSON leÃ­do
-	 * Genera una barra de menÃº y los menÃºs con sus respectivas opciones
-	 * @param jsonMenu - Arreglo Json con los menÃºs deseados
-	 */
-	private void crearMenu( JsonArray jsonMenu )
-	{   
-		// CreaciÃ³n de la barra de menÃºs
-		menuBar = new JMenuBar();       
-		for (JsonElement men : jsonMenu)
-		{
-			// CreaciÃ³n de cada uno de los menÃºs
-			JsonObject jom = men.getAsJsonObject(); 
-
-			String menuTitle = jom.get("menuTitle").getAsString();        	
-			JsonArray opciones = jom.getAsJsonArray("options");
-
-			JMenu menu = new JMenu( menuTitle);
-
-			for (JsonElement op : opciones)
-			{       	
-				// CreaciÃ³n de cada una de las opciones del menÃº
-				JsonObject jo = op.getAsJsonObject(); 
-				String lb = jo.get("label").getAsString();
-				String event = jo.get("event").getAsString();
-
-				JMenuItem mItem = new JMenuItem( lb );
-				mItem.addActionListener( this );
-				mItem.setActionCommand(event);
-
-				menu.add(mItem);
+			for( int i = 0; i < aux.length; i++ )
+			{
+				String[] aux2 = aux[i].split(":");
+				habitaciones.add(Integer.valueOf(aux2[0]));
+				cantHabitaciones.add(Integer.valueOf(aux2[1]));
 			}
 
-			menuBar.add( menu );
-		}        
-		setJMenuBar ( menuBar );	
-	}
+			String[] aux3 = JOptionPane.showInputDialog( this, "Datos de las servicios (idTipoServicio1;idTipoServicio2;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
+			for (String string : aux3) {
+				servicios.add(Integer.valueOf(string));
+			}
+		}
+		catch (Exception e) {
+			throw new Exception( "Error convirtiendo un dato de entrada, por favor verifique que los formatos sean los correctos." );
+		}
 
-	//~~~~~~~~~~~~~~~~~
-	//   ACERCA DE
-	//~~~~~~~~~~~~~~~~~
-	/**
-	 * Muestra la informaciÃ³n acerca del desarrollo de esta apicaciÃ³n
-	 */
-	public void acercaDe()
+		// Llamado a la persistencia
+		try {
+			ArrayList<Integer> resp = persistencia.RFC12(idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
+			String ans = "Habitaciones reservadas: "+'\n';
+			for (Integer integer : resp) {
+				if(integer != -1)
+				{
+					ans+=""+integer+'\n';
+				}
+				else
+				{
+					ans+="Id de servicios reservados: "+'\n';
+				}
+
+			}
+			panelDatos.actualizarInterfaz(ans);
+
+		} catch (Exception e) {
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+	public void RFC12B() throws Exception
 	{
-		String resultado = "\n***********************************************************************\n";
-		resultado += " * Universidad de los Andes (BogotÃ¡ - Colombia)\n";
-		resultado += " * Curso: ISIS 2304 - Sistemas Transaccionales\n";
-		resultado += " * Proyecto HotelAndes\n";
-		resultado += " * Hecho por Juan Pablo Correa y NicolÃ¡s Jaramillo\n *\n";
-		resultado += " * El cÃ³digo original del proyecto es propiedad del profesor GermÃ¡n Bravo,\n"
-				+ " * y fue tomado del proyecto Parranderos\n";
-		resultado += "***********************************************************************\n\n";
+		// Declaracion de variables 
+		int idReserva;
+		String[] tiposDeIdentificaciones;
+		long[] identificaciones;
+		// Peticion de datos
+		try
+		{
+			idReserva = Integer.parseInt( JOptionPane.showInputDialog( this, "Identificador de su reserva:", "Id reserva", JOptionPane.QUESTION_MESSAGE ) );
+			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+			String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "InformaciÃ³n de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
 
-		panelDatos.actualizarInterfaz(resultado);		
+			tiposDeIdentificaciones = new String[ aux.length ];
+			identificaciones = new long[ aux.length ];
+
+			for( int i = 0; i < aux.length; i++ )
+			{
+				String[] aux2 = aux[i].split(":");
+				tiposDeIdentificaciones[i] = aux2[0];
+				identificaciones[i] = Long.parseLong( aux2[1] );
+			}
+		}
+		catch (Exception e)
+		{
+			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+		}
+		// Llamado a la persistencia
+		try {
+			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
+			panelDatos.actualizarInterfaz( "Operacion exitosa" );
+
+
+		} catch (Exception e) {
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
+ * @param e - La excepciÃ³n generada
+ * @return La cadena con la informaciÃ³n de la excepciÃ³n y detalles adicionales
+ */
+private String generarMensajeError(Exception e) 
+{
+	String resultado = "Error en la ejecuciÃ³n:\n";
+	resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
+	return resultado;
+}
+
+/**
+ * Genera una cadena de caracteres con la descripciÃ³n de la excepcion e, haciendo Ã©nfasis en las excepciones de JDO
+ * @param e - La excepciÃ³n recibida
+ * @return La descripciÃ³n de la excepciÃ³n cuando es javax.jdo.JDODataStoreException o "" de lo contrario
+ */
+private String darDetalleException(Exception e) 
+{
+	String resp = "";
+	if( e.getClass().getName().equals("javax.jdo.JDODataStoreException") )
+	{
+		JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+		return ". " + je.getNestedExceptions()[0].getMessage();
+	}
+	return resp;
+}
+
+/**
+ * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
+ * @param seEsperaQueSea Lo que se espera que sea el usuario
+ * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
+ */
+private void verificarRol( char seEsperaQueSea ) throws Exception
+{
+	if( seEsperaQueSea == 'A' && !esAdmin ) throw new Exception( "Â¡Usted no posee permisos de administrador para ejecutar esta opciÃ³n!" );
+	else if( seEsperaQueSea == 'C' && esAdmin ) throw new Exception( "Esta opciÃ³n es exclusiva para los clientes." );
+}
+
+/**
+ * Abre el archivo dado como parÃ¡metro con la aplicaciÃ³n por defecto del sistema
+ * @param nombreArchivo - El nombre del archivo que se quiere mostrar
+ */
+private void mostrarArchivo( String nombreArchivo )
+{
+	try
+	{
+		Desktop.getDesktop().open(new File(nombreArchivo));
+	}
+	catch (IOException e)
+	{
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+
+/**
+ * Retorna un String con la fecha del dÃ­a de hoy
+ * @return String de la fecha actual en formato dd/MM/AAAA
+ */
+private String darFechaDeHoy()
+{
+	Date date = (Calendar.getInstance()).getTime();
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+	return dateFormat.format(date);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  MÃ‰TODOS DE INTERACCIÃ“N
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * MÃ©todo para la ejecuciÃ³n de los eventos que enlazan el menÃº con los mÃƒÂ©todos de negocio
+ * Invoca al mÃ©todo correspondiente segÃƒÂºn el evento recibido
+ * @param pEvento - El evento del usuario
+ */
+@Override
+public void actionPerformed(ActionEvent pEvento)
+{
+	String evento = pEvento.getActionCommand( );		
+	try 
+	{
+		Method req = InterfazIteracionUno.class.getMethod ( evento );			
+		req.invoke ( this );
+	} 
+	catch (Exception e) 
+	{
+		e.printStackTrace();
+	} 
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+//   PROGRAMA PRINCIPAL 
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Este mÃ©todo ejecuta la aplicaciÃ³n, creando una nueva interfaz
+ * @param args Arreglo de argumentos que se recibe por lÃ­nea de comandos
+ */
+public static void main( String[] args )
+{
+	try
+	{	
+		// Unifica la interfaz para Mac y para Windows.
+		UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
+		InterfazIteracionUno interfaz = new InterfazIteracionUno( );
+
+		// Crea y centra la interfaz
+		interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		interfaz.setLocationRelativeTo(null);
+		interfaz.setVisible(true);
+	}
+	catch( Exception e )
+	{
+		e.printStackTrace( );
+	}
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//   MÃ‰TODOS DE CONFIGURACIÃ“N PARA LA INTERFAZ
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Lee datos de configuraciÃ³n para la aplicaciÃ³n, a partir de un archivo JSON o con valores por defecto si hay errores.
+ * @param tipo - El tipo de configuraciÃ³n deseada
+ * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+ * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
+ * 			NULL si hay un error en el archivo.
+ */
+private JsonObject openConfig (String tipo, String archConfig)
+{
+	JsonObject config = null;
+	try 
+	{
+		Gson gson = new Gson( );
+		FileReader file = new FileReader (archConfig);
+		JsonReader reader = new JsonReader ( file );
+		config = gson.fromJson(reader, JsonObject.class);
+		log.info ( "Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo );
+	} 
+	catch (Exception e)
+	{	
+		log.info ( "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido" );			
+		JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo, "HotelAndes", JOptionPane.ERROR_MESSAGE );
+	}	
+	return config;
+}
+
+/**
+ * MÃ©todo para configurar el frame principal de la aplicaciÃ³n
+ */
+private void configurarFrame(  )
+{
+	int alto = 0;
+	int ancho = 0;
+	String titulo = "";	
+
+	if ( guiConfig == null )
+	{
+		log.info ( "Se aplica configuraciÃ³n por defecto" );			
+		titulo = "Parranderos APP Default";
+		alto = 300;
+		ancho = 500;
+	}
+	else
+	{
+		log.info ( "Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n" );
+		titulo = guiConfig.get("title").getAsString();
+		alto= guiConfig.get("frameH").getAsInt();
+		ancho = guiConfig.get("frameW").getAsInt();
+	}
+
+	setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+	setLocation (50,50);
+	setResizable( true );
+	setBackground( Color.WHITE );
+
+	setTitle( titulo );
+	setSize ( ancho, alto);        
+}
+
+/**
+ * MÃ©todo para crear el menÃº de la aplicaciÃ³n con base en el objeto JSON leÃ­do
+ * Genera una barra de menÃº y los menÃºs con sus respectivas opciones
+ * @param jsonMenu - Arreglo Json con los menÃºs deseados
+ */
+private void crearMenu( JsonArray jsonMenu )
+{   
+	// CreaciÃ³n de la barra de menÃºs
+	menuBar = new JMenuBar();       
+	for (JsonElement men : jsonMenu)
+	{
+		// CreaciÃ³n de cada uno de los menÃºs
+		JsonObject jom = men.getAsJsonObject(); 
+
+		String menuTitle = jom.get("menuTitle").getAsString();        	
+		JsonArray opciones = jom.getAsJsonArray("options");
+
+		JMenu menu = new JMenu( menuTitle);
+
+		for (JsonElement op : opciones)
+		{       	
+			// CreaciÃ³n de cada una de las opciones del menÃº
+			JsonObject jo = op.getAsJsonObject(); 
+			String lb = jo.get("label").getAsString();
+			String event = jo.get("event").getAsString();
+
+			JMenuItem mItem = new JMenuItem( lb );
+			mItem.addActionListener( this );
+			mItem.setActionCommand(event);
+
+			menu.add(mItem);
+		}
+
+		menuBar.add( menu );
+	}        
+	setJMenuBar ( menuBar );	
+}
+
+//~~~~~~~~~~~~~~~~~
+//   ACERCA DE
+//~~~~~~~~~~~~~~~~~
+/**
+ * Muestra la informaciÃ³n acerca del desarrollo de esta apicaciÃ³n
+ */
+public void acercaDe()
+{
+	String resultado = "\n***********************************************************************\n";
+	resultado += " * Universidad de los Andes (BogotÃ¡ - Colombia)\n";
+	resultado += " * Curso: ISIS 2304 - Sistemas Transaccionales\n";
+	resultado += " * Proyecto HotelAndes\n";
+	resultado += " * Hecho por Juan Pablo Correa y NicolÃ¡s Jaramillo\n *\n";
+	resultado += " * El cÃ³digo original del proyecto es propiedad del profesor GermÃ¡n Bravo,\n"
+			+ " * y fue tomado del proyecto Parranderos\n";
+	resultado += "***********************************************************************\n\n";
+
+	panelDatos.actualizarInterfaz(resultado);		
+}
 }

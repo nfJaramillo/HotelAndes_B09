@@ -51,10 +51,10 @@ public class SQLReservasDeAlojamiento {
 
 
 		Query a = pm.newQuery(SQL, "SELECT * FROM RESERVAS_DE_ALOJAMIENTO WHERE IDHABITACION = "
-				+ idHabitacion + " AND ( (('"+fechallegadateorica + "' between FECHALLEGADATEORICA and FECHASALIDATEORICA)"
-				+ " OR ('"+ fechasalidateorica + "' BETWEEN FECHALLEGADATEORICA and FECHASALIDATEORICA)) )  or"
-				+ " ( ((FECHALLEGADATEORICA between '" + fechallegadateorica + "' and '" + fechasalidateorica + "') OR"
-				+ " ( FECHASALIDATEORICA between '" + fechallegadateorica + "' AND '" + fechasalidateorica + "')) )" );
+				+ idHabitacion + " AND ( ('"+fechallegadateorica + "' between FECHALLEGADATEORICA and FECHASALIDATEORICA)"
+				+ " OR ('"+ fechasalidateorica + "' BETWEEN FECHALLEGADATEORICA and FECHASALIDATEORICA) or"
+				+ " ( FECHALLEGADATEORICA between '" + fechallegadateorica + "' and '" + fechasalidateorica + "') OR"
+				+ " ( FECHASALIDATEORICA between '" + fechallegadateorica + "' AND '" + fechasalidateorica + "'))" );
 		List lista= a.executeList();
 
 		if( !lista.isEmpty() )
