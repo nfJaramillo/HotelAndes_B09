@@ -833,14 +833,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		try
 		{
 			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
-			ArrayList<Integer> idHabitaciones = new ArrayList<>();
+			ArrayList<Integer> idReservasHabitaciones = new ArrayList<>();
 			ArrayList<Integer> idServicios = new ArrayList<>();
 
 			try
 			{
 				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
 				for (String string : aux1 )
-					idHabitaciones.add( Integer.valueOf(string) );
+					idReservasHabitaciones.add( Integer.valueOf(string) );
 
 				String[] aux2 = JOptionPane.showInputDialog( this, "Datos de las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
 				for (String string : aux2)
@@ -852,14 +852,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 
 			// Valida que estén a paz y salvo
-			for (int i = 0; i < idHabitaciones.size(); i++)
+			for (int i = 0; i < idReservasHabitaciones.size(); i++)
 			{
-				int loQueDebePagar = persistencia.cuentaAPagar( idHabitaciones.get(i), 2 );
-				if( loQueDebePagar > 0 ) throw new Exception( "No se puede cerrar la convención, la reserva de habitación con ID " + idHabitaciones.get(i) + " aún tiene cuentas pendientes.");
+				int loQueDebePagar = persistencia.cuentaAPagar( idReservasHabitaciones.get(i), 2 );
+				if( loQueDebePagar > 0 ) throw new Exception( "No se puede cerrar la convención, la reserva de habitación con ID " + idReservasHabitaciones.get(i) + " aún tiene cuentas pendientes.");
 			}
 
 			// Registra el cierre de la convención
-			persistencia.RF14( idHabitaciones, idServicios, darFechaDeHoy() );
+			persistencia.RF14( idReservasHabitaciones, idServicios, darFechaDeHoy() );
 
 			String resultado = "\n-> En RF14 registarCierreDeConvención:";
 			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idServicios + "'.";
@@ -944,7 +944,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			persistencia.RFC15(idHotel, fecha1, fecha2, habitaciones, servicios);
 			panelDatos.actualizarInterfaz("Operacion exitosa");
 		}
-		catch (Exception e) {
+		catch (Exception e)
+		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
@@ -995,6 +996,9 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// Requerimientos de consulta de la Iteración 2
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/**
+	 * RESERV
+	 */
 	public void RFC6()
 	{
 		// Se pide la unidad de tiempo
@@ -1002,7 +1006,14 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RFC7()
 	{
-
+		/*
+		SELECT per.id, per.nombre, gas.precio
+		FROM Gastos gas, Reservas_Servicios res, Personas per
+		WHERE gas.precio > -1
+    		AND gas.idreserva = res.id
+		    AND res.idtipopersona = per.id
+		    AND res.tipoidentificacion LIKE per.tipoidentificacion;
+		 */
 	}
 
 	public void RFC8()
