@@ -1004,11 +1004,20 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		try 
 		{
 			char aux;
-			
+
 			try
 			{
 				// Se pide la unidad de tiempo
-				aux = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    D para día.\n    M para mes.\n    A para año.", "Filtrar servicios", JOptionPane.QUESTION_MESSAGE ).charAt(0);
+				aux = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    S para semana.\n    M para mes.\n    A para año.", "Filtrar temporalidad", JOptionPane.QUESTION_MESSAGE ).charAt(0);
+				int tipoHabitacion = Integer.parseInt( JOptionPane.showInputDialog( this, "Especifique un id tipo de habitación.", "Filtrar tipo habitación", JOptionPane.QUESTION_MESSAGE ) );
+				
+				switch( aux )
+				{
+				case 'M':
+					persistencia.RFC6Mes( tipoHabitacion );
+					break;
+				}
+
 			}
 			catch (Exception e)
 			{
