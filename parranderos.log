@@ -1418,3 +1418,5 @@ ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) 
 
 15:18:01,213 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
 
+15:33:55,322 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+

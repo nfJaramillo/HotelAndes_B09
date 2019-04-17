@@ -12,7 +12,7 @@ public class Tests1 {
 	
 	PersistenciaHotelAndes pha = PersistenciaHotelAndes.getInstance();
 	
-	/* 
+	
 	@Test
 	public void testRF12Exitoso()
 	{
@@ -116,7 +116,7 @@ public class Tests1 {
 		}
 	}
 	@Test
-	public void RF14Exitoso()
+	public void RF15Exitoso()
 	{
 		ArrayList<Integer> servicios = new ArrayList<>();
 		ArrayList<Integer> habitaciones = new  ArrayList<>();
@@ -131,7 +131,7 @@ public class Tests1 {
 		}
 	}
 	@Test
-	public void RF14Fallo()
+	public void RF15Fallo()
 	{
 		ArrayList<Integer> servicios = new ArrayList<>();
 		ArrayList<Integer> habitaciones = new  ArrayList<>();
@@ -143,6 +143,36 @@ public class Tests1 {
 			// TODO Auto-generated catch block
 			assertTrue(true);
 		}
-	}*/
+	}
+	@Test
+	public void RF16Exitoso()
+	{
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		servicios.add(3);
+		habitaciones.add(203);
+		try {
+			pha.RF16(1, habitaciones, servicios);
+			assertTrue(true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void RF16Fallo()
+	{
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		servicios.add(0);
+		habitaciones.add(0);
+		try {
+			pha.RF16(1, null, servicios);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			assertTrue(true);
+		}
+	}
 
 }
