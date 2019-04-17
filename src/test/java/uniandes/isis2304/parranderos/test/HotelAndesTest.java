@@ -91,7 +91,6 @@ public class HotelAndesTest
 		}
 		catch (Exception e)
 		{
-//			e.printStackTrace();
 			log.info ("Prueba de CRD de Tipobebida incompleta. No se pudo conectar a la base de datos !!. La excepción generada es: " + e.getClass ().getName ());
 			log.info ("La causa es: " + e.getCause ().toString ());
 

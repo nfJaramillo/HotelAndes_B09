@@ -77,7 +77,7 @@ public class PersistenciaHotelAndes {
 	private SQLConsultas sqlConsultas;
 
 	/* ****************************************************************
-	 * 			M�todos del MANEJADOR DE PERSISTENCIA
+	 * 			Métodos de manejador de persistencia
 	 *****************************************************************/
 
 
@@ -98,6 +98,15 @@ public class PersistenciaHotelAndes {
 		tablas.add("GASTOS");
 	}
 
+	/**
+	 * El constructor que recibe los nombres de las tablas en tableConfig
+	 * @param tableConfig - Objeto Json con los nombres de las tablas y de la unidad de persistencia
+	 */
+	public PersistenciaHotelAndes (JsonObject tableConfig)
+	{
+		//instance = PersistenciaHotelAndes.getInstance(tableConfig);
+	}
+	
 	/**
 	 * Cierra la conexi�n con la base de datos.
 	 */

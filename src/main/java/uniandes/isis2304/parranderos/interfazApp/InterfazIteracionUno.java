@@ -175,7 +175,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 * <Post> Se crea una nueva tupla en la tabla ROLES, lo cual implica ciertos permisos
 	 * y restricciones en lo que puede o no hacer en el sistema dicho usuario. 
 	 */
-	public void registrarRolDeUsuario( )
+	public void registrarRolDeUsuario()
 	{
 		try 
 		{
@@ -190,7 +190,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				panelDatos.actualizarInterfaz( "Por favor ingrese un nÃ¯Â¿Â½mero de id vÃ¯Â¿Â½lido." );
+				throw new Exception( "Por favor ingrese un número de id válido." );
 			}
 
 			if ( tipoDeRol != null && idDelRol > 0 )
@@ -204,7 +204,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 				String resultado = "En registrarRolDeUsuario\n\n";
 				resultado += "Rol de usuario adicionado exitosamente: " + tp;
-				resultado += "\n\nOperaciÃ³n terminada.";
+				resultado += "\n\nOperación terminada.";
 				panelDatos.actualizarInterfaz(resultado);
 			}
 			else
