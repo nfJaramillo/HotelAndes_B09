@@ -161,10 +161,71 @@ public class SQLReservasDeAlojamiento {
 		precioAPagar += (dias*lista4.get(0).intValue()) ;
 
 		return precioAPagar;
-
-
 	}
+	
+	/**
+	 * Da el mes con mayor y el mes con menor demanda, es decir, el mes en el
+	 * que más y menos uso se le dio a una habitación de un tipo específico
+	 * @param pm
+	 * @param idTipoHabitacionDeseado
+	 * @return
+	 * @throws Exception
+	 */
+	public int[] darDemandaMaxYMin( PersistenceManager pm, long idTipoHabitacionDeseado ) throws Exception
+	{		
+		// Lista con las fechas de llegadas teoricas
+		Query b = pm.newQuery(SQL, "SELECT res.fechaLlegadaTeorica\n" + 
+				"FROM HABITACIONES hab, RESERVAS_DE_ALOJAMIENTO res\n" + 
+				"WHERE res.idHabitacion = hab.numero\n" + 
+				"    AND hab.tipoHabitacion = " + idTipoHabitacionDeseado );
+		b.setResultClass(Persona.class);
+		List<Timestamp> listaLlegadas = b.executeList();
 
+		// Lista con las fechas de salidas teoricas
+		Query c = pm.newQuery(SQL, "SELECT res.fechaSalidaTeorica\n" + 
+				"FROM HABITACIONES hab, RESERVAS_DE_ALOJAMIENTO res\n" + 
+				"WHERE res.idHabitacion = hab.numero\n" + 
+				"    AND hab.tipoHabitacion = " + idTipoHabitacionDeseado );
+		c.setResultClass(Persona.class);
+		List<Timestamp> listaSalidas = c.executeList();
+
+		// Arreglo para modelar los meses
+		long[] conteoMes = new long[12];
+		
+		for (int i = 0; i < listaLlegadas.size(); i++)
+		{
+			int mesDeLlegada = listaLlegadas.get(i).getMonth() - 1;
+			 // Le aumenta los días al contador del mes
+			 conteoMes[mesDeLlegada] += Math.abs( (listaLlegadas.get(i).getTime() - listaSalidas.get(i).getTime()) / 86400000);
+		}			
+
+		// Busca el mes con mayor demanda
+		long mayorValor = Long.MIN_VALUE;
+		int mesMas = 0;
+
+		// Busca el mes con menor demanda
+		long menorValor = Long.MAX_VALUE;
+		int mesMenos = 0;
+		
+		for (int i = 0; i < conteoMes.length; i++)
+		{
+			if( conteoMes[i] > mayorValor )
+			{
+				mayorValor = conteoMes[i];
+				mesMas = i;
+			}
+			
+			if( conteoMes[i] < menorValor )
+			{
+				menorValor = conteoMes[i];
+				mesMenos = i;
+			}
+		}
+		
+		return new int[] { mesMas, mesMenos };
+	}
+	
+	
 	/**
 	 * Check out.
 	 *

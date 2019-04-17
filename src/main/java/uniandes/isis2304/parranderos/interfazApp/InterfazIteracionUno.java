@@ -1004,14 +1004,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		try 
 		{
 			char criterio;
-
+			int[] res;
+			
 			try
 			{
 				// Se pide la unidad de tiempo
 				criterio = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    S para semana.\n    M para mes.\n    A para año.", "Filtrar temporalidad", JOptionPane.QUESTION_MESSAGE ).charAt(0);
 				int tipoHabitacion = Integer.parseInt( JOptionPane.showInputDialog( this, "Especifique un id tipo de habitación.", "Filtrar tipo habitación", JOptionPane.QUESTION_MESSAGE ) );
 				
-				persistencia.RFC6(tipoHabitacion, criterio);
+				res = persistencia.RFC6( criterio, tipoHabitacion );
 			}
 			catch (Exception e)
 			{
@@ -1019,7 +1020,9 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 
 			String resultado = "\n-> En RFC6 mostrarIndiceOcupacion:\n\n\n";
-
+			resultado += "      Mes con mayor demanda: " + darNombreMes( res[0] );
+			resultado += "      Mes con mayores ingresos: " + darNombreMes( res[1] );
+			resultado += "      Mes con menor demanda: " + darNombreMes( res[2] );
 			resultado += "\n\n\n\n  [RFC6] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
@@ -1116,6 +1119,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		Date date = (Calendar.getInstance()).getTime();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
 		return dateFormat.format(date);
+	}
+	
+	/**
+	 * Da el nombre del mes según su número
+	 */
+	private String darNombreMes( int numero )
+	{
+		String[] nombres = new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+		return nombres[ numero ];
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

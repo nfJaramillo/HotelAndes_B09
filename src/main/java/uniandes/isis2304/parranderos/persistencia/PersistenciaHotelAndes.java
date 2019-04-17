@@ -1234,8 +1234,7 @@ public class PersistenciaHotelAndes {
 		}
 	}
 
-	// PENDIENTE, ESTOY TRABAJANDO EN EL SQL
-	public void RFC6( int tipoHabitacion, char criterio )
+	public int[] RFC6( char criterio, int tipoHabitacion ) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1243,10 +1242,16 @@ public class PersistenciaHotelAndes {
 		try
 		{
 			tx.begin();
+						
+			int[] demandaMes = sqlReservasDeAlojamiento.darDemandaMaxYMin( pm, tipoHabitacion );
+			// Mes con mayor demanda:
+			int masDemanda = demandaMes[0];
 
+			// Mes con mayor ingreso:
+			int mayorIngreso = 1;
 			
-			List<ClaseAsistente> resp = sqlConsultas.RFC6Mes( pm, tipoHabitacion );
-			
+			// Mes con menor demanda:
+			int menosDemanda = demandaMes[1];			
 			
 			tx.commit();
 
@@ -1256,7 +1261,8 @@ public class PersistenciaHotelAndes {
 				tx.rollback();
 
 			pm.close();
-			//return resp;
+			
+			return new int[] { masDemanda, mayorIngreso, menosDemanda };
 		}
 		catch (Exception e)
 		{
