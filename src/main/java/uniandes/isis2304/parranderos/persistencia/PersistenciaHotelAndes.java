@@ -106,7 +106,7 @@ public class PersistenciaHotelAndes {
 	{
 		//instance = PersistenciaHotelAndes.getInstance(tableConfig);
 	}
-	
+
 	/**
 	 * Cierra la conexi�n con la base de datos.
 	 */
@@ -1086,7 +1086,12 @@ public class PersistenciaHotelAndes {
 		{
 			tx.begin();
 
-			
+			for (Integer reserva : idReservasServicios)
+			{
+				Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+reserva);
+				q.setParameters(fechaActual,reserva);
+				q.executeUnique();
+			}
 
 			tx.commit();
 
@@ -1118,11 +1123,11 @@ public class PersistenciaHotelAndes {
 		try
 		{
 			tx.begin();
-			
+
 			Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
 			q.setParameters(fechaActual,idReserva);
 			q.executeUnique();
-			
+
 			tx.commit();
 
 			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
@@ -1228,7 +1233,7 @@ public class PersistenciaHotelAndes {
 			throw e;
 		}
 	}
-	
+
 
 
 

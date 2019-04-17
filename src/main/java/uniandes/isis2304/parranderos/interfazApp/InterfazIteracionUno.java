@@ -225,7 +225,6 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
 	 * RF7 - Registra una reserva de alojamiento
-	 * SÃ³lo los clientes pueden hacer este mÃ©todo
 	 */
 	public void registrarUnaReservaDeAlojamiento()
 	{
