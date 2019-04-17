@@ -31,7 +31,7 @@
 		},
 				{ "menuTitle": "Consulta 1",
 		 		  "options":
-					[
+			[
 				{
 					"label": "RFC1: Mostrar el dinero recolectado",
 					"event": "mostrarElDineroRecolectado"
@@ -59,12 +59,12 @@
 					[
 				{
 					"label": "RF12: Reservar alojamiento y servicios para una convención",
-					"event": "RFC12"
+					"event": "RF12"
 				},
 
 				{
 					"label": "RF12B: Reservar individualmente para una convención",
-					"event": "RFC12B"
+					"event": "RF12B"
 				},
 				{
 					"label": "RF13: Cancelar reservas asociadas a una convención",
@@ -73,6 +73,10 @@
 				{
 					"label": "RF14: Registrar el fin de una convención",
 					"event": "RF14"
+				},
+				{
+					"label": "RF14B: Finalizar individualmente una convención",
+					"event": "RF14B"
 				},
 				{
 					"label": "RF15: Registrar la entrada a mantenimiento de alojamientos o servicios del hotel",
@@ -86,7 +90,7 @@
 		},
 			{ "menuTitle": "Consulta 2",
 				"options":
-				[
+		[
 			{
 				"label": "RFC6: Analizar la operación de HotelAndes",
 				"event": "RFC6"
@@ -99,7 +103,7 @@
 				"label": "RFC8: Encontrar los servicios que tienen mucha demanda",
 				"event": "RFC8"
 			}
-	 ]
+		]
  },	
 	{	"menuTitle": "Acerca de",
 		"options":

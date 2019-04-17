@@ -1248,14 +1248,12 @@ public class PersistenciaHotelAndes {
 			int masDemanda = demandaMes[0];
 
 			// Mes con mayor ingreso:
-			int mayorIngreso = 1;
+			int mayorIngreso = sqlReservasDeAlojamiento.darMesMayorConsumo( pm, tipoHabitacion );
 			
 			// Mes con menor demanda:
 			int menosDemanda = demandaMes[1];			
 			
 			tx.commit();
-
-			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
 
 			if (tx.isActive())
 				tx.rollback();

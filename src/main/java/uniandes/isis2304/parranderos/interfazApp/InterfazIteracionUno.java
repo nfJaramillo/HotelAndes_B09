@@ -1019,10 +1019,10 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				throw new Exception( "Ingresó una opción que no está permitida, o uno de los valores no siguió el formato esperado." );
 			}
 
-			String resultado = "\n-> En RFC6 mostrarIndiceOcupacion:\n\n\n";
+			String resultado = "\n-> En RFC6 analizarOperaciónDeHotelAndes:\n\n";
 			resultado += "      Mes con mayor demanda: " + darNombreMes( res[0] );
-			resultado += "      Mes con mayores ingresos: " + darNombreMes( res[1] );
-			resultado += "      Mes con menor demanda: " + darNombreMes( res[2] );
+			resultado += "\n      Mes con mayores ingresos: " + darNombreMes( res[1] );
+			resultado += "\n      Mes con menor demanda: " + darNombreMes( res[2] );
 			resultado += "\n\n\n\n  [RFC6] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
