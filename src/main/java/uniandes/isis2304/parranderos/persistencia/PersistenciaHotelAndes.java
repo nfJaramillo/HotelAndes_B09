@@ -933,7 +933,7 @@ public class PersistenciaHotelAndes {
 	 * @return the array list
 	 * @throws Exception the exception
 	 */
-	public ArrayList<Integer> RFC12(int idHotel, int planDeConsumo, String fecha1, String fecha2, ArrayList<Integer> habitaciones, ArrayList<Integer> cantHabitaciones, ArrayList<Integer> servicios) throws Exception
+	public ArrayList<Integer> RF12(int idHotel, int planDeConsumo, String fecha1, String fecha2, ArrayList<Integer> habitaciones, ArrayList<Integer> cantHabitaciones, ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -977,7 +977,7 @@ public class PersistenciaHotelAndes {
 	 * @param idPersonas the id personas
 	 * @throws Exception the exception
 	 */
-	public void RFC12B( int idReserva, String[] tipos,long[]idPersonas) throws Exception
+	public void RF12B( int idReserva, String[] tipos,long[]idPersonas) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1018,7 +1018,7 @@ public class PersistenciaHotelAndes {
 	 * @param servicios the servicios
 	 * @throws Exception the exception
 	 */
-	public void RFC13( ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	public void RF13( ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1077,19 +1077,9 @@ public class PersistenciaHotelAndes {
 		{
 			tx.begin();
 
-			// PENDIENTE. Debo revisar bien el Modelo Relacional. No sé si esto debe ser iterativo
-			Query a = pm.newQuery(SQL, "SELECT * FROM RES" );
-			List lista= a.executeList();
-
-			if( !lista.isEmpty() )
-				throw new Exception("Ya existe una reserva para la misma habitacion en ese periodo de tiempo");
-
-			Query q = pm.newQuery(SQL, "INSERT INTO RESERVAS_DE_ALOJAMIENTO" + "(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)");
-			q.executeUnique();
+			
 
 			tx.commit();
-
-			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
 
 			if (tx.isActive())
 				tx.rollback();
@@ -1156,7 +1146,7 @@ public class PersistenciaHotelAndes {
 	 * @param servicios the servicios
 	 * @throws Exception the exception
 	 */
-	public void RFC15( int idHotel,String fecha1, String fecha2, ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	public void RF15( int idHotel,String fecha1, String fecha2, ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1193,7 +1183,7 @@ public class PersistenciaHotelAndes {
 		}
 	}
 
-	public void RFC16(int idHotel,ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	public void RF16(int idHotel,ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();

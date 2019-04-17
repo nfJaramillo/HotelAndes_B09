@@ -675,7 +675,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-	public void RFC12()
+	public void RF12()
 	{
 		try
 		{
@@ -720,7 +720,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			// Llamado a la persistencia
 
-			ArrayList<Integer> resp = persistencia.RFC12(idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
+			ArrayList<Integer> resp = persistencia.RF12(idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
 			String ans = "Habitaciones reservadas: "+'\n';
 			for (Integer integer : resp) {
 				if(integer != -1)
@@ -742,7 +742,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-	public void RFC12B()
+	public void RF12B()
 	{
 		try
 		{
@@ -775,7 +775,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 
 			// Llamado a la persistencia
-			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
+			persistencia.RF12B(idReserva, tiposDeIdentificaciones, identificaciones);
 			panelDatos.actualizarInterfaz( "Operacion exitosa" );
 		}
 		catch (Exception e)
@@ -812,7 +812,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			//Llamado a la persistencia
 
-			persistencia.RFC13(habitaciones, servicios);
+			persistencia.RF13(habitaciones, servicios);
 			panelDatos.actualizarInterfaz( "Operacion exitosa" );
 		}
 		catch (Exception e) {
@@ -862,7 +862,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			persistencia.RF14( idReservasHabitaciones, idServicios, darFechaDeHoy() );
 
 			String resultado = "\n-> En RF14 registarCierreDeConvención:";
-			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idServicios + "'.";
+			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idReservasHabitaciones + "'.";
+
 			resultado += "\n\nOperación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
@@ -872,7 +873,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-	public void RFC14B()
+	public void RF14B()
 	{
 		try
 		{
@@ -941,7 +942,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			//Llamado a la persistencia
 
-			persistencia.RFC15(idHotel, fecha1, fecha2, habitaciones, servicios);
+			persistencia.RF15(idHotel, fecha1, fecha2, habitaciones, servicios);
 			panelDatos.actualizarInterfaz("Operacion exitosa");
 		}
 		catch (Exception e)
@@ -985,7 +986,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			//Llamado a la persistencia
 
-			persistencia.RFC16(idHotel, habitaciones, servicios);
+			persistencia.RF16(idHotel, habitaciones, servicios);
 			panelDatos.actualizarInterfaz("Operacion exitosa");
 		}
 		catch (Exception e) {
@@ -1001,7 +1002,29 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC6()
 	{
-		// Se pide la unidad de tiempo
+		try 
+		{
+			char aux;
+			
+			try
+			{
+				// Se pide la unidad de tiempo
+				aux = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    D para día.\n    M para mes.\n    A para año.", "Filtrar servicios", JOptionPane.QUESTION_MESSAGE ).charAt(0);
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "Ingresó una opción que no está permitida, o uno de los valores no siguió el formato esperado." );
+			}
+
+			String resultado = "\n-> En RFC6 mostrarIndiceOcupacion:\n\n\n";
+
+			resultado += "\n\n\n\n  [RFC6] Operación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
 
 	public void RFC7()
