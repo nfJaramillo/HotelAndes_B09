@@ -741,7 +741,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-	
+
 	public void RFC12B()
 	{
 		try
@@ -822,13 +822,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	/**
-	 * Método que suple el requerimiento RF14, terminar una convención
+	 * Método que suple el requerimiento RF14, terminar una convención.
+	 * Es equivalente a registrar la salida de un cliente del hotel, haciendo las
+	 * verificaciones de estado de todas las habitaciones y servicios asociados a
+	 * la convención y las cuentas de todos los consumos asociados a la misma
+	 * (alimentación, alquiler de salas, por ejemplo).
 	 */
 	public void RF14()
 	{
 		try
 		{
-			verificarRol( 2 ); // Esta función está permitida sólo para organizadores de eventos
+			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
 			ArrayList<Integer> idHabitaciones = new ArrayList<>();
 			ArrayList<Integer> idServicios = new ArrayList<>();
 
@@ -872,39 +876,29 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			verificarRol( 2 );
+			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
 
-			// Declaracion de variables 
 			int idReserva;
-			String[] tiposDeIdentificaciones;
-			long[] identificaciones;
-			// Peticion de datos
-			idReserva = Integer.parseInt( JOptionPane.showInputDialog( this, "Identificador de su reserva:", "Id reserva", JOptionPane.QUESTION_MESSAGE ) );
-			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
-			String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "InformaciÃ³n de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
-
-			tiposDeIdentificaciones = new String[ aux.length ];
-			identificaciones = new long[ aux.length ];
 
 			try
 			{
-				for( int i = 0; i < aux.length; i++ )
-				{
-					String[] aux2 = aux[i].split(":");
-					tiposDeIdentificaciones[i] = aux2[0];
-					identificaciones[i] = Long.parseLong( aux2[1] );
-				}
+				String aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE );
+				idReserva = Integer.parseInt( aux1 );
 			}
 			catch (Exception e)
 			{
 				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
 
-			// Llamado a la persistencia
-			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
-			panelDatos.actualizarInterfaz( "Operacion exitosa" );
-		}
-		catch (Exception e)
+			// Registra el cierre de la reserva
+			persistencia.RF14B( idReserva, darFechaDeHoy() );
+
+			String resultado = "\n-> En RF14B registarCierreDeConvenciónIndividual:";
+			resultado += "     \n       Se ha dado salida al cliente de la reservas " + idReserva + ".";
+			resultado += "\n\nOperación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
 		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
@@ -914,7 +908,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			verificarRol( 0 );
+			verificarRol( ADMIN );
 
 			//Declaracion de variables
 			int idHotel;
@@ -960,7 +954,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			verificarRol( 0 );
+			verificarRol( ADMIN );
 
 			//Declaracion de variables
 			int idHotel;
@@ -1018,7 +1012,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
+	//   MÉTODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
 	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n

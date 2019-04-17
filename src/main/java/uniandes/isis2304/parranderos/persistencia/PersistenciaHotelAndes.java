@@ -1203,5 +1203,10 @@ public class PersistenciaHotelAndes {
 		return instance;
 	}
 
+	public void RF14B(int idReserva, String darFechaDeHoy)
+	{
+		
+	}
+
 
 }
