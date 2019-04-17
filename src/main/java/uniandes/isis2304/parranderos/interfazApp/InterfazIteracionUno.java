@@ -663,8 +663,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-
-	public void RFC12() throws Exception
+	public void RFC12()
 	{
 		// Definicio de variables
 		int idHotel;
@@ -677,33 +676,36 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 		try
 		{
-			// Pedido de datos al usuario
-			idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
-			planDeConsumo = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del plan de consumo:", "ID plan de consumo", JOptionPane.QUESTION_MESSAGE ) );
-			fecha1 =  JOptionPane.showInputDialog( this, "Fecha de llegada (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
-			fecha2 =  JOptionPane.showInputDialog( this, "Fecha de salida (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
-
-			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
-			String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idTipoDeHabitacion:cantidad;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
-
-			for( int i = 0; i < aux.length; i++ )
+			try
 			{
-				String[] aux2 = aux[i].split(":");
-				habitaciones.add(Integer.valueOf(aux2[0]));
-				cantHabitaciones.add(Integer.valueOf(aux2[1]));
+				// Pedido de datos al usuario
+				idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+				planDeConsumo = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del plan de consumo:", "ID plan de consumo", JOptionPane.QUESTION_MESSAGE ) );
+				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de llegada (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+				fecha2 =  JOptionPane.showInputDialog( this, "Fecha de salida (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idTipoDeHabitacion:cantidad;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
+
+				for( int i = 0; i < aux.length; i++ )
+				{
+					String[] aux2 = aux[i].split(":");
+					habitaciones.add(Integer.valueOf(aux2[0]));
+					cantHabitaciones.add(Integer.valueOf(aux2[1]));
+				}
+
+				String[] aux3 = JOptionPane.showInputDialog( this, "Datos de las servicios (idTipoServicio1;idTipoServicio2;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux3) {
+					servicios.add(Integer.valueOf(string));
+				}
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "Error convirtiendo un dato de entrada, por favor verifique que los formatos sean los correctos." );
 			}
 
-			String[] aux3 = JOptionPane.showInputDialog( this, "Datos de las servicios (idTipoServicio1;idTipoServicio2;...)", "Informacion de las habitaciones", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux3) {
-				servicios.add(Integer.valueOf(string));
-			}
-		}
-		catch (Exception e) {
-			throw new Exception( "Error convirtiendo un dato de entrada, por favor verifique que los formatos sean los correctos." );
-		}
+			// Llamado a la persistencia
 
-		// Llamado a la persistencia
-		try {
 			ArrayList<Integer> resp = persistencia.RFC12(idHotel, planDeConsumo, fecha1, fecha2, habitaciones, cantHabitaciones, servicios);
 			String ans = "Habitaciones reservadas: "+'\n';
 			for (Integer integer : resp) {
@@ -719,19 +721,23 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			panelDatos.actualizarInterfaz(ans);
 
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-	public void RFC12B() throws Exception
+	public void RFC12B()
 	{
-		// Declaracion de variables 
-		int idReserva;
-		String[] tiposDeIdentificaciones;
-		long[] identificaciones;
-		// Peticion de datos
 		try
 		{
+			verificarRol( 1 );
+
+			// Declaracion de variables 
+			int idReserva;
+			String[] tiposDeIdentificaciones;
+			long[] identificaciones;
+			// Peticion de datos
 			idReserva = Integer.parseInt( JOptionPane.showInputDialog( this, "Identificador de su reserva:", "Id reserva", JOptionPane.QUESTION_MESSAGE ) );
 			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
 			String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "InformaciÃ³n de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
@@ -739,54 +745,59 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			tiposDeIdentificaciones = new String[ aux.length ];
 			identificaciones = new long[ aux.length ];
 
-			for( int i = 0; i < aux.length; i++ )
+			try
 			{
-				String[] aux2 = aux[i].split(":");
-				tiposDeIdentificaciones[i] = aux2[0];
-				identificaciones[i] = Long.parseLong( aux2[1] );
+				for( int i = 0; i < aux.length; i++ )
+				{
+					String[] aux2 = aux[i].split(":");
+					tiposDeIdentificaciones[i] = aux2[0];
+					identificaciones[i] = Long.parseLong( aux2[1] );
+				}
 			}
+			catch (Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			// Llamado a la persistencia
+			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
+			panelDatos.actualizarInterfaz( "Operacion exitosa" );
 		}
 		catch (Exception e)
 		{
-			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
-		}
-		// Llamado a la persistencia
-		try {
-			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
-			panelDatos.actualizarInterfaz( "Operacion exitosa" );
-
-
-		} catch (Exception e) {
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-	public void RF13() throws Exception 
+
+
+	public void RF13()
 	{
-		// Declaracion de variables 
-		ArrayList<Integer> habitaciones = new ArrayList<>();
-		ArrayList<Integer> servicios = new ArrayList<>();
-
 		try
 		{
-			// Peticion de datos
-			String[] aux = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux)
-				habitaciones.add(Integer.valueOf(string));
+			// Declaracion de variables 
+			ArrayList<Integer> habitaciones = new ArrayList<>();
+			ArrayList<Integer> servicios = new ArrayList<>();
 
-			// Peticion de datos
-			String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux1)
-				servicios.add(Integer.valueOf(string));
+			try
+			{
+				// Peticion de datos
+				String[] aux = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux)
+					habitaciones.add(Integer.valueOf(string));
 
-		}
-		catch (Exception e)
-		{
-			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
-		}
+				// Peticion de datos
+				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de servicios a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux1)
+					servicios.add(Integer.valueOf(string));
 
-		//Llamado a la persistencia
-		try
-		{
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			//Llamado a la persistencia
+
 			persistencia.RFC13(habitaciones, servicios);
 			panelDatos.actualizarInterfaz( "Operacion exitosa" );
 		}
@@ -831,8 +842,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 
 			// ¿Deberé validar si las habitaciones tienen cobros?
-			
-			
+
+
 			// Registra el cierre de la convención
 			persistencia.RF14RegistarCierreDeConvencion( idHabitaciones, idServicios, darFechaDeHoy() );
 
@@ -847,41 +858,43 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-	public void RF15() throws Exception
+	public void RF15()
 	{
-		//Declaracion de variables
-		int idHotel;
-		String fecha1;
-		String fecha2;
-		ArrayList<Integer> habitaciones = new ArrayList<>();
-		ArrayList<Integer> servicios = new ArrayList<>();
-
-		//Obtencion de datos 
-
 		try
 		{
-			idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
-			fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
-			fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+			verificarRol( 0 );
 
-			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
-			String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idHabitacion1;idHabitacion2;...)", "Informacion de las habitaciones para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux) {
-				habitaciones.add(Integer.parseInt(string));
+			//Declaracion de variables
+			int idHotel;
+			String fecha1;
+			String fecha2;
+			ArrayList<Integer> habitaciones = new ArrayList<>();
+			ArrayList<Integer> servicios = new ArrayList<>();
+
+			//Obtencion de datos 
+
+			try
+			{
+				idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idHabitacion1;idHabitacion2;...)", "Informacion de las habitaciones para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux) {
+					habitaciones.add(Integer.parseInt(string));
+				}
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de los servicios (idServicio1;idServicio2;...)", "Informacion de los servicios para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux1)
+					servicios.add(Integer.parseInt(string));
 			}
-			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
-			String[] aux1 = JOptionPane.showInputDialog( this, "Datos de los servicios (idServicio1;idServicio2;...)", "Informacion de los servicios para mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
-			for (String string : aux1) {
-				servicios.add(Integer.parseInt(string));
+			catch(Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
-		}
-		catch(Exception e)
-		{
-			throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
-		}
-		//LLamado a la persistencia
-		try
-		{
+			//Llamado a la persistencia
+
 			persistencia.RFC15(idHotel, fecha1, fecha2, habitaciones, servicios);
 			panelDatos.actualizarInterfaz("Operacion exitosa");
 		}
@@ -893,29 +906,29 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RF16()
 	{
-		
+
 	}
-	
+
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// Requerimientos de consulta de la Iteración 2
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public void RFC6()
 	{
-		
+
 	}
-	
+
 	public void RFC7()
 	{
-		
+
 	}
-	
+
 	public void RFC8()
 	{
-		
+
 	}
-	
-	
+
+
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//   MÃ‰TODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
