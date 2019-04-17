@@ -47,39 +47,72 @@ public class Tests1 {
 //		}
 //		
 //	}
-	@Test
-	public void testRF12BExitoso()
+//	@Test
+//	public void testRF12BExitoso()
+//	{
+//		String[] tipos = new String[1];
+//		long[] idPersonas = new long[1];
+//		tipos[0]="Cedula";
+//		idPersonas[0]=9;
+//		
+//		try {
+//			pha.RF12B(374, tipos, idPersonas);
+//			assertTrue(true);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	@Test
+//	public void testRF12BFallo()
+//	{
+//		String[] tipos = new String[1];
+//		long[] idPersonas = new long[1];
+//		tipos[0]="Cedula";
+//		idPersonas[0]=9;
+//		
+//		try {
+//			pha.RF12B(0, tipos, idPersonas);
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			assertTrue(true);
+//		}
+//	}
+//	
+	@Test 
+	public void RF13Exitoso()
 	{
-		String[] tipos = new String[1];
-		long[] idPersonas = new long[1];
-		tipos[0]="Cedula";
-		idPersonas[0]=9;
 		
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		//Requiere unas reservas existentes 
+		//habitaciones.add(e);
+		//servicios.add(e);
 		try {
-			pha.RF12B(374, tipos, idPersonas);
+			pha.RF13(habitaciones, servicios);
 			assertTrue(true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	@Test
-	public void testRF12BFallo()
+	@Test 
+	public void RF13Fallo()
 	{
-		String[] tipos = new String[1];
-		long[] idPersonas = new long[1];
-		tipos[0]="Cedula";
-		idPersonas[0]=9;
 		
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		habitaciones.add(0);
+		servicios.add(0);
 		try {
-			pha.RF12B(0, tipos, idPersonas);
+			pha.RF13(habitaciones, servicios);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			assertTrue(true);
 		}
 	}
-	@Test
 
 }
