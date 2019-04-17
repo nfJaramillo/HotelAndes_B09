@@ -1347,3 +1347,13 @@ ORA-00933: comando SQL no terminado correctamente
 
 19:32:00,925 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 19:32:13,757 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:33:25,946 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+14:33:25,995 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+14:55:28,841 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-02291: restricci�n de integridad (ISIS2304B181910.RESERVAS_DE_CLIENTES_FK2) violada - clave principal no encontrada
+
+14:55:28,907 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
+ORA-00001: restricci�n �nica (ISIS2304B181910.RESERVAS_DE_CLIENTES_PK) violada
+
