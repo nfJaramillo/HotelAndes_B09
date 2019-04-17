@@ -946,13 +946,12 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// Requerimientos de consulta de la Iteración 2
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public void RFC6()
 	{
-
+		// Se pide la unidad de tiempo
 	}
 
 	public void RFC7()
