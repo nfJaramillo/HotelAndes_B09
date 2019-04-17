@@ -8,11 +8,19 @@ import org.junit.Test;
 
 import uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes;
 
+
+/**
+ * The Class Tests1.
+ */
 public class Tests1 {
 	
+	/** The pha. */
 	PersistenciaHotelAndes pha = PersistenciaHotelAndes.getInstance();
 	
 	
+	/**
+	 * Test RF 12 exitoso.
+	 */
 	@Test
 	public void testRF12Exitoso()
 	{
@@ -31,6 +39,10 @@ public class Tests1 {
 		}
 		
 	}
+	
+	/**
+	 * Test RF 12 falla.
+	 */
 	@Test
 	public void testRF12Falla()
 	{
@@ -48,6 +60,10 @@ public class Tests1 {
 		}
 		
 	}
+	
+	/**
+	 * Test RF 12 B exitoso.
+	 */
 	@Test
 	public void testRF12BExitoso()
 	{
@@ -65,6 +81,9 @@ public class Tests1 {
 		}
 	}
 	
+	/**
+	 * Test RF 12 B fallo.
+	 */
 	@Test
 	public void testRF12BFallo()
 	{
@@ -82,6 +101,9 @@ public class Tests1 {
 		}
 	}
 	
+	/**
+	 * RF 13 exitoso.
+	 */
 	@Test 
 	public void RF13Exitoso()
 	{
@@ -99,6 +121,10 @@ public class Tests1 {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * RF 13 fallo.
+	 */
 	@Test 
 	public void RF13Fallo()
 	{
@@ -115,6 +141,10 @@ public class Tests1 {
 			assertTrue(true);
 		}
 	}
+	
+	/**
+	 * RF 15 exitoso.
+	 */
 	@Test
 	public void RF15Exitoso()
 	{
@@ -130,6 +160,10 @@ public class Tests1 {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * RF 15 fallo.
+	 */
 	@Test
 	public void RF15Fallo()
 	{
@@ -144,6 +178,10 @@ public class Tests1 {
 			assertTrue(true);
 		}
 	}
+	
+	/**
+	 * RF 16 exitoso.
+	 */
 	@Test
 	public void RF16Exitoso()
 	{
@@ -159,6 +197,10 @@ public class Tests1 {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * RF 16 fallo.
+	 */
 	@Test
 	public void RF16Fallo()
 	{
