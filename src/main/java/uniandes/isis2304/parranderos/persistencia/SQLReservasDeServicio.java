@@ -56,11 +56,12 @@ public class SQLReservasDeServicio {
 		
 
 			Query a = pm.newQuery(SQL, "SELECT * FROM RESERVAS_SERVICIOS WHERE IDSERVICIO = "
-					+ servicioAdicional + " AND ( (('"+fechaInicio + "' between FECHAINICIO and FECHAFIN)"
-					+ " OR ('"+ fechaFin + "' BETWEEN FECHAINICIO and FECHAFIN)) )  or"
-					+ " ( ((FECHAINICIO between '" + fechaInicio + "' and '" + fechaFin + "') OR"
-					+ " ( FECHAFIN between '" + fechaInicio + "' AND '" + fechaFin + "')) )" );
+					+ servicioAdicional + " AND ( ('"+fechaInicio + "' between FECHAINICIO and FECHAFIN)"
+					+ " OR ('"+ fechaFin + "' BETWEEN FECHAINICIO and FECHAFIN)  or"
+					+ " (FECHAINICIO between '" + fechaInicio + "' and '" + fechaFin + "') OR"
+					+ " ( FECHAFIN between '" + fechaInicio + "' AND '" + fechaFin + "'))" );
 			List lista= a.executeList();
+			
 
 		if( !lista.isEmpty() )
 			throw new Exception("Ya existe una reserva para el mismo servicio en ese periodo de tiempo");

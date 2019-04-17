@@ -1357,3 +1357,64 @@ ORA-02291: restricción de integridad (ISIS2304B181910.RESERVAS_DE_CLIENTES_FK2) 
 14:55:28,907 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "insert into RESERVAS_DE_CLIENTES(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)".
 ORA-00001: restricción única (ISIS2304B181910.RESERVAS_DE_CLIENTES_PK) violada
 
+15:08:16,205 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+15:08:16,331 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+15:08:16,456 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+15:08:16,466 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+15:10:27,289 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:10:27,494 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:10:27,495 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:10:27,622 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+15:10:27,631 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+15:12:14,059 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
+
+15:12:14,341 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:12:14,418 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:12:14,418 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:12:14,533 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+15:12:14,539 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+15:14:02,100 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
+
+15:14:02,407 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:14:02,484 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:14:02,484 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:14:02,609 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RESERVAS_DE_ALOJAMIENTO(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)".
+ORA-02291: restricción de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) violada - clave principal no encontrada
+
+15:14:02,621 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+15:16:31,945 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:16:32,133 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:16:32,133 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:18:00,847 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para la misma habitacion en ese periodo de tiempo
+
+15:18:01,136 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:18:01,213 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
+15:18:01,213 (main) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Ya existe una reserva para el mismo servicio en ese periodo de tiempo
+
