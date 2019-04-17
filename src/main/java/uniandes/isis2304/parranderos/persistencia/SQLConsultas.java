@@ -453,18 +453,18 @@ public class SQLConsultas {
 
 	public List<ClaseAsistente> RFC6Mes(PersistenceManager pm, int tipoHabitacion)
 	{
-		String instruccion = "SELECT hab.idhotel AS Hotel, hab.numero, res.fechallegadareal, hab.tipohabitacion\r"
+		String instruccion = "EXTRACT(MONTH FROM (ROUND (TO_DATE (res.fechallegadareal),'MONTH')) ) AS mesRedondeado, hab.tipohabitacion\r"
 				+ "\nFROM RESERVAS_DE_ALOJAMIENTO res\r"
 				+ "\nJOIN HABITACIONES hab\r"
 				+ "\nON res.idhabitacion = hab.numero\r"
-				+ "\nWHERE hab.tipohabitacion = 1\r"
+				+ "\nWHERE hab.tipohabitacion = " + tipoHabitacion + "\r"
 				+ "\nAND res.fechallegadareal IS NOT NULL;";
 		
 		Query r = pm.newQuery(SQL, instruccion );
 		r.executeUnique();
-		
-		
-		return null;
+		r.setResultClass(ClaseAsistente.class);
+
+		return (List<ClaseAsistente>) r.executeList();
 	}
 
 }
