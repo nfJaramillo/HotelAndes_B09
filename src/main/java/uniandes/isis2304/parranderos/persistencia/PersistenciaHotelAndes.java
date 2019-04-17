@@ -1150,6 +1150,43 @@ public class PersistenciaHotelAndes {
 		}
 	}
 
+	public void RFC16(int idHotel,ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.setIsolationLevel("serializable");
+			tx.begin();
+
+			System.out.println(tx.getIsolationLevel());
+			sqlConsultas.RF16(pm, idHotel, habitaciones, servicios);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
+	}
+	
 
 
 

@@ -906,7 +906,44 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RF16()
 	{
+		try
+		{
+			verificarRol( 0 );
 
+			//Declaracion de variables
+			int idHotel;
+
+			ArrayList<Integer> habitaciones = new ArrayList<>();
+			ArrayList<Integer> servicios = new ArrayList<>();
+
+			//Obtencion de datos 
+
+			try
+			{
+				idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+				
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idHabitacion1;idHabitacion2;...)", "Informacion de las habitaciones para finalizar mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux) {
+					habitaciones.add(Integer.parseInt(string));
+				}
+				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de los servicios (idServicio1;idServicio2;...)", "Informacion de los servicios para finalizar mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
+				for (String string : aux1)
+					servicios.add(Integer.parseInt(string));
+			}
+			catch(Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+			//Llamado a la persistencia
+
+			persistencia.RFC16(idHotel, habitaciones, servicios);
+			panelDatos.actualizarInterfaz("Operacion exitosa");
+		}
+		catch (Exception e) {
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
 
 

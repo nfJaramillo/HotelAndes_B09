@@ -423,7 +423,7 @@ public class SQLConsultas {
 		System.out.println("Serviciosssss");
 		for (Integer integer : servicios) {
 			try {
-				pp.registrarReservaDeServicioSinTransaccion("Convencion", fecha2, fecha1, integer, 13, "Cedula");
+				pp.registrarReservaDeServicioSinTransaccion("Mantenimiento", fecha2, fecha1, integer, 14, "Cedula");
 			} catch (Exception e) {
 				Query d = pm.newQuery(SQL,"delete from reservas_servicios\r\n" + 
 						"where idservicio = "+integer+" and(\r\n" + 
@@ -436,6 +436,17 @@ public class SQLConsultas {
 				tx.begin();
 				pp.registrarReservaDeServicioSinTransaccion("Mantenimiento", fecha2, fecha1, integer, 14, "Cedula");
 			}
+		}
+	}
+	public void RF16(PersistenceManager pm,int idHotel,ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
+	{
+		for (Integer integer : habitaciones) {
+			Query a = pm.newQuery(SQL,"delete from reservas_de_alojamiento where idhabitacion = "+integer+" and plandeconsumo = 6");
+					a.executeUnique();
+		}
+		for (Integer integer : servicios) {
+			Query b = pm.newQuery(SQL,"delete from reservas_servicios where idservicio = "+integer+" and idtipopersona = 14");
+			b.executeUnique();
 		}
 	}
 
