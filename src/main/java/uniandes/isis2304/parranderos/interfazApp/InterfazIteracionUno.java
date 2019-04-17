@@ -1009,7 +1009,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			try
 			{
 				// Se pide la unidad de tiempo
-				criterio = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    S para semana.\n    M para mes.\n    A para año.", "Filtrar temporalidad", JOptionPane.QUESTION_MESSAGE ).charAt(0);
+				criterio = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    M para mes.\n    A para año.", "Filtrar temporalidad", JOptionPane.QUESTION_MESSAGE ).charAt(0);
 				int tipoHabitacion = Integer.parseInt( JOptionPane.showInputDialog( this, "Especifique un id tipo de habitación.", "Filtrar tipo habitación", JOptionPane.QUESTION_MESSAGE ) );
 				
 				res = persistencia.RFC6( criterio, tipoHabitacion );

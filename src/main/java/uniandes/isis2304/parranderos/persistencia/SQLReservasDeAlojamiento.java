@@ -226,6 +226,12 @@ public class SQLReservasDeAlojamiento {
 	}
 	
 	
+	public int darMesMayorIngreso(PersistenceManager pm, int tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	/**
 	 * Check out.
 	 *
