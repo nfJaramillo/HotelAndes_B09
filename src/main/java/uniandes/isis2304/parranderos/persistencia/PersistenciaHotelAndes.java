@@ -9,6 +9,7 @@ import javax.jdo.JDODataStoreException;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import org.apache.log4j.Logger;
@@ -552,7 +553,7 @@ public class PersistenciaHotelAndes {
 			sqlReservasDeAlojamiento.checkOut(pm, idReserva, fechaActual);
 			tx.commit();
 
-			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+			log.trace ("Inserción de reserva de alojamiento: con id: " + id + " tuplas insertadas");
 
 			if (tx.isActive())
 				tx.rollback();
@@ -1058,7 +1059,6 @@ public class PersistenciaHotelAndes {
 
 	/**
 	 * RF 14 registar cierre de convencion.
-	 *
 	 * @param idReservas the id reservas
 	 * @param darFechaDeHoy the dar fecha de hoy
 	 * @throws Exception the exception
@@ -1077,6 +1077,15 @@ public class PersistenciaHotelAndes {
 		{
 			tx.begin();
 
+			// PENDIENTE. Debo revisar bien el Modelo Relacional. No sé si esto debe ser iterativo
+			Query a = pm.newQuery(SQL, "SELECT * FROM RES" );
+			List lista= a.executeList();
+
+			if( !lista.isEmpty() )
+				throw new Exception("Ya existe una reserva para la misma habitacion en ese periodo de tiempo");
+
+			Query q = pm.newQuery(SQL, "INSERT INTO RESERVAS_DE_ALOJAMIENTO" + "(id,IDHABITACION,idhotel,fechallegadateorica,fechallegadareal,fechasalidateorica,fechasalidareal,plandeconsumo) values (?, ?,?,?,?,?,?,?)");
+			q.executeUnique();
 
 			tx.commit();
 
@@ -1102,7 +1111,43 @@ public class PersistenciaHotelAndes {
 		}
 	}
 
+	public void RF14B( int idReserva, String fechaActual )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			
+			Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
+			q.setParameters(fechaActual,idReserva);
+			q.executeUnique();
+			
+			tx.commit();
 
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
+	}
 
 	/**
 	 * Rfc13.
@@ -1201,11 +1246,6 @@ public class PersistenciaHotelAndes {
 			instance = new PersistenciaHotelAndes ();
 		}
 		return instance;
-	}
-
-	public void RF14B(int idReserva, String darFechaDeHoy)
-	{
-		
 	}
 
 

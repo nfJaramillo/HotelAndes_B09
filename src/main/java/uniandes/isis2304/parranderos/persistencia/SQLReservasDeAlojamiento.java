@@ -64,8 +64,6 @@ public class SQLReservasDeAlojamiento {
 	 */
 	public void registrarReservaDeAlojamiento (PersistenceManager pm, long id, long idHabitacion,long idHotel, String fechallegadateorica,String fechallegadareal, String fechasalidateorica, String fechasalidareal, long plandeconsumo,String[] tipos,long[]idPersonas) throws Exception 
 	{
-
-
 		Query a = pm.newQuery(SQL, "SELECT * FROM RESERVAS_DE_ALOJAMIENTO WHERE IDHABITACION = "
 				+ idHabitacion + " AND ( ('"+fechallegadateorica + "' between FECHALLEGADATEORICA and FECHASALIDATEORICA)"
 				+ " OR ('"+ fechasalidateorica + "' BETWEEN FECHALLEGADATEORICA and FECHASALIDATEORICA) or"
@@ -82,9 +80,6 @@ public class SQLReservasDeAlojamiento {
 
 		if(idPersonas!=null)
 		{
-
-
-
 			for (int i = 0; i < idPersonas.length; i++)
 			{
 				Query r = pm.newQuery(SQL, "insert into RESERVAS_DE_CLIENTES"+ "(IDRESERVA,IDUSUARIO, tipoidusuario) values (?,?,?)");
@@ -92,7 +87,6 @@ public class SQLReservasDeAlojamiento {
 				r.executeUnique();
 			}
 		}
-
 	}
 
 	/**
