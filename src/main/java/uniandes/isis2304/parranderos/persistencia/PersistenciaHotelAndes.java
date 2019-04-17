@@ -1234,9 +1234,40 @@ public class PersistenciaHotelAndes {
 		}
 	}
 
+	// PENDIENTE, ESTOY TRABAJANDO EN EL SQL
+	public void RFC6Mes(int tipoHabitacion)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long id = nextval();
+		try
+		{
+			tx.begin();
+			//List<ClaseAsistente> resp = sqlConsultas.RFC5(pm, idUsuario, tipoUsuario, fecha1, fecha2);
+			tx.commit();
+
+			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			//return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
 
 
+			if (tx.isActive())
+				tx.rollback();
 
+			pm.close();
+			throw e;
+		}
+	}
 
 	/**
 	 * Gets the single instance of PersistenciaHotelAndes.
