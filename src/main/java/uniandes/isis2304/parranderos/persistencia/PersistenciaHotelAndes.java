@@ -1235,7 +1235,7 @@ public class PersistenciaHotelAndes {
 	}
 
 	// PENDIENTE, ESTOY TRABAJANDO EN EL SQL
-	public void RFC6Mes(int tipoHabitacion)
+	public void RFC6( int tipoHabitacion, char criterio )
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1243,7 +1243,11 @@ public class PersistenciaHotelAndes {
 		try
 		{
 			tx.begin();
-			//List<ClaseAsistente> resp = sqlConsultas.RFC5(pm, idUsuario, tipoUsuario, fecha1, fecha2);
+
+			
+			List<ClaseAsistente> resp = sqlConsultas.RFC6Mes( pm, tipoHabitacion );
+			
+			
 			tx.commit();
 
 			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");

@@ -438,6 +438,7 @@ public class SQLConsultas {
 			}
 		}
 	}
+	
 	public void RF16(PersistenceManager pm,int idHotel,ArrayList<Integer> habitaciones,ArrayList<Integer> servicios) throws Exception
 	{
 		for (Integer integer : habitaciones) {
@@ -448,6 +449,22 @@ public class SQLConsultas {
 			Query b = pm.newQuery(SQL,"delete from reservas_servicios where idservicio = "+integer+" and idtipopersona = 14");
 			b.executeUnique();
 		}
+	}
+
+	public List<ClaseAsistente> RFC6Mes(PersistenceManager pm, int tipoHabitacion)
+	{
+		String instruccion = "SELECT hab.idhotel AS Hotel, hab.numero, res.fechallegadareal, hab.tipohabitacion\r"
+				+ "\nFROM RESERVAS_DE_ALOJAMIENTO res\r"
+				+ "\nJOIN HABITACIONES hab\r"
+				+ "\nON res.idhabitacion = hab.numero\r"
+				+ "\nWHERE hab.tipohabitacion = 1\r"
+				+ "\nAND res.fechallegadareal IS NOT NULL;";
+		
+		Query r = pm.newQuery(SQL, instruccion );
+		r.executeUnique();
+		
+		
+		return null;
 	}
 
 }
