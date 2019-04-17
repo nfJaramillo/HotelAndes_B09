@@ -124,7 +124,7 @@ public class SQLReservasDeAlojamiento {
 	 * @return the int
 	 * @throws Exception the exception
 	 */
-	public int precioAPagar (PersistenceManager pm, long idReserva) throws Exception
+	public int precioAPagar (PersistenceManager pm, long idReserva, int valor ) throws Exception
 	{		
 
 		Query a = pm.newQuery(SQL, "SELECT FECHALLEGADAREAL FROM RESERVAS_DE_ALOJAMIENTO WHERE ID = "+idReserva);
@@ -144,7 +144,7 @@ public class SQLReservasDeAlojamiento {
 
 		int precioAPagar = 0;
 		for (int i = 0; i < lista1.size(); i++) {
-			Query c = pm.newQuery(SQL, "select sum(precio) from gastos where pagado = 1 and idReserva = "+idReserva);
+			Query c = pm.newQuery(SQL, "select sum(precio) from gastos where pagado = " + valor + " and idReserva = "+idReserva);
 			List<Number> lista2 = c.executeList();
 			if(lista2.get(0)!=null)
 				precioAPagar += lista2.get(0).intValue();
@@ -181,19 +181,6 @@ public class SQLReservasDeAlojamiento {
 	public void checkOut(PersistenceManager pm, long idReserva, String fechaActual)
 	{
 		Query q = pm.newQuery(SQL, "UPDATE RESERVAS_DE_ALOJAMIENTO SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
-		q.setParameters(fechaActual,idReserva);
-		q.executeUnique();
-	}
-
-	/**
-	 * Hace un checkout de un servicio
-	 * @param pm
-	 * @param idReserva
-	 * @param fechaActual
-	 */
-	public void checkOutServicio( PersistenceManager pm, long idReserva, String fechaActual )
-	{
-		Query q = pm.newQuery(SQL, "UPDATE  SET FECHASALIDAREAL = '"+fechaActual+"' WHERE ID = "+idReserva);
 		q.setParameters(fechaActual,idReserva);
 		q.executeUnique();
 	}

@@ -499,7 +499,7 @@ public class PersistenciaHotelAndes {
 	 * @return the int
 	 * @throws Exception the exception
 	 */
-	public int cuentaAPagar (long idReserva) throws Exception
+	public int cuentaAPagar (long idReserva, int valor ) throws Exception
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -507,7 +507,7 @@ public class PersistenciaHotelAndes {
 		try
 		{
 			tx.begin();
-			int resp = sqlReservasDeAlojamiento.precioAPagar(pm, idReserva);
+			int resp = sqlReservasDeAlojamiento.precioAPagar( pm, idReserva, valor );
 			tx.commit();
 
 			log.trace ("Insercion de reserva de alojamiento: " + "con id: " + id + " tuplas insertadas");
@@ -1063,7 +1063,7 @@ public class PersistenciaHotelAndes {
 	 * @param darFechaDeHoy the dar fecha de hoy
 	 * @throws Exception the exception
 	 */
-	public void RF14RegistarCierreDeConvencion( ArrayList<Integer> idHabitaciones, ArrayList<Integer> idReservasServicios, String fechaActual ) throws Exception
+	public void RF14( ArrayList<Integer> idHabitaciones, ArrayList<Integer> idReservasServicios, String fechaActual ) throws Exception
 	{
 		// Para hacer checkout de las reservas de alojamiento
 		for ( int i = 0; i < idHabitaciones.size(); i++ )
@@ -1077,8 +1077,6 @@ public class PersistenciaHotelAndes {
 		{
 			tx.begin();
 
-			for (int i = 0; i < idReservasServicios.size(); i++)
-				sqlReservasDeAlojamiento.checkOutServicio( pm, idReservasServicios.get(i), fechaActual );
 
 			tx.commit();
 

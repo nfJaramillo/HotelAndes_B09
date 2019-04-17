@@ -70,19 +70,35 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//  CONSTANTES
 	//~~~~~~~~~~~~~~
 	/**
-	 * Logger para escribir la traza de la ejecuciÃ³n
+	 * Logger para escribir la traza de la ejecución
 	 */
 	private static Logger log = Logger.getLogger(InterfazIteracionUno.class.getName());
 
 	/**
-	 * Ruta al archivo de configuraciÃ³n de la interfaz
+	 * Ruta al archivo de configuración de la interfaz
 	 */
 	private static final String CONFIG_INTERFAZ = "./src/main/resources/config/interfaceConf.json";
 
 	/**
-	 * Ruta al archivo de configuraciÃ³n de la interfaz
+	 * Ruta al archivo de configuración de la interfaz
 	 */
-	private static final String RUTA_BANNER = "./src/main/resources/config/bannerHotelAndes.png"; 
+	private static final String RUTA_BANNER = "./src/main/resources/config/bannerHotelAndes.png";
+
+	/**
+	 * Constante para modelar el rol administrador
+	 */
+	private final static int ADMIN = 0;
+
+	/**
+	 * Constante para modelar el rol cliente
+	 */
+	private final static int CLIENTE = 1;
+
+	/**
+	 * Constante para modelar el rol organizador
+	 */
+	private final static int ORGANIZADOR = 2;
+
 
 	//~~~~~~~~~~~~~~
 	//   ATRIBUTOS
@@ -215,8 +231,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para clientes
-			verificarRol( 'C' );
+			verificarRol( CLIENTE ); // Esta función está permitida sólo para clientes
 
 			long idHabitacion;
 			long idHotel;
@@ -277,7 +292,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			verificarRol( 'C' ); // Esta funciÃ³n estÃ¡ permitida sÃ³lo para clientes
+			verificarRol( CLIENTE ); // Esta función está permitida sólo para clientes
 
 			String descripcion;
 			String fechaSalida;
@@ -324,8 +339,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
-			verificarRol( 'A' );
+			verificarRol( ADMIN ); // Esta función está permitida sólo para administradores
 
 			long idReserva;
 
@@ -359,9 +373,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try 
 		{
-			// Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
-			verificarRol( 'A' );
-
+			verificarRol( ADMIN ); // Esta función está permitida sólo para administradores
 
 			long idUsuario;
 			long idReservaServicio;
@@ -404,7 +416,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			verificarRol( 0 ); //Esta funciÃ³n estÃ¡ permitida sÃ³lo para administradores
+			verificarRol( ADMIN ); // Esta función está permitida sólo para administradores
 
 			long idReserva;
 			int pagoCuentaRestante;
@@ -413,7 +425,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			{
 				idReserva = Long.parseLong( JOptionPane.showInputDialog( this, "Identificador de la reserva:", "ID reserva", JOptionPane.QUESTION_MESSAGE ) );
 
-				int loQueDebePagar = persistencia.cuentaAPagar( idReserva );
+				int loQueDebePagar = persistencia.cuentaAPagar( idReserva, 1 );
 				pagoCuentaRestante = (int) Double.parseDouble( JOptionPane.showInputDialog( this, "Usted debe un total de $" + loQueDebePagar + "\nÂ¿CuÃ¡nto va a pagar por los gastos?", "Pago", JOptionPane.QUESTION_MESSAGE ) );
 				if( pagoCuentaRestante < loQueDebePagar ) throw new Exception( "El dinero no alcanza para pagar la reserva. No se puede dar salida sin cancelar la totalidad." );
 			}
@@ -665,17 +677,19 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RFC12()
 	{
-		// Definicio de variables
-		int idHotel;
-		int planDeConsumo;
-		String fecha1;
-		String fecha2;
-		ArrayList<Integer> habitaciones = new ArrayList<>();
-		ArrayList<Integer> cantHabitaciones = new ArrayList<>();
-		ArrayList<Integer> servicios = new ArrayList<>();
-
 		try
 		{
+			verificarRol( ADMIN ); // Esta función está permitida sólo para administradores
+
+			// Definicio de variables
+			int idHotel;
+			int planDeConsumo;
+			String fecha1;
+			String fecha2;
+			ArrayList<Integer> habitaciones = new ArrayList<>();
+			ArrayList<Integer> cantHabitaciones = new ArrayList<>();
+			ArrayList<Integer> servicios = new ArrayList<>();
+
 			try
 			{
 				// Pedido de datos al usuario
@@ -727,6 +741,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
+	
 	public void RFC12B()
 	{
 		try
@@ -769,7 +784,6 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
-
 	public void RF13()
 	{
 		try
@@ -808,19 +822,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	/**
-	 * Método que suple el requerimiento RF14, terminar una 
+	 * Método que suple el requerimiento RF14, terminar una convención
 	 */
 	public void RF14()
 	{
 		try
 		{
+			verificarRol( 2 ); // Esta función está permitida sólo para organizadores de eventos
 			ArrayList<Integer> idHabitaciones = new ArrayList<>();
 			ArrayList<Integer> idServicios = new ArrayList<>();
 
 			try
 			{
-				verificarRol( 2 ); //Esta función está permitida sólo para organizadores de eventos
-
 				String[] aux1 = JOptionPane.showInputDialog( this, "Datos de las reservas de habitaciones a cancelar (idReserva1;idReserva2;...)", "Id de las reservas a cancelar", JOptionPane.QUESTION_MESSAGE ).split(";");
 				for (String string : aux1 )
 					idHabitaciones.add( Integer.valueOf(string) );
@@ -834,18 +847,15 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
 
-			// Valida que los servicios estén pagos
-			for (int i = 0; i < idServicios.size(); i++)
+			// Valida que estén a paz y salvo
+			for (int i = 0; i < idHabitaciones.size(); i++)
 			{
-				int loQueDebePagar = persistencia.cuentaAPagar( idServicios.get(i) );
-				if( loQueDebePagar > 0 ) throw new Exception( "No se puede cerrar la convención, el servicio de ID " + idServicios.get(i) + " aún tiene cuentas pendientes.");
+				int loQueDebePagar = persistencia.cuentaAPagar( idHabitaciones.get(i), 2 );
+				if( loQueDebePagar > 0 ) throw new Exception( "No se puede cerrar la convención, la reserva de habitación con ID " + idHabitaciones.get(i) + " aún tiene cuentas pendientes.");
 			}
 
-			// ¿Deberé validar si las habitaciones tienen cobros?
-
-
 			// Registra el cierre de la convención
-			persistencia.RF14RegistarCierreDeConvencion( idHabitaciones, idServicios, darFechaDeHoy() );
+			persistencia.RF14( idHabitaciones, idServicios, darFechaDeHoy() );
 
 			String resultado = "\n-> En RF14 registarCierreDeConvención:";
 			resultado += "     \n       Se ha dado salida a los clientes de las reservas '" + idServicios + "'.";
@@ -853,6 +863,48 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+
+	public void RFC14B()
+	{
+		try
+		{
+			verificarRol( 2 );
+
+			// Declaracion de variables 
+			int idReserva;
+			String[] tiposDeIdentificaciones;
+			long[] identificaciones;
+			// Peticion de datos
+			idReserva = Integer.parseInt( JOptionPane.showInputDialog( this, "Identificador de su reserva:", "Id reserva", JOptionPane.QUESTION_MESSAGE ) );
+			// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
+			String[] aux = JOptionPane.showInputDialog( this, "Datos de las personas (tipoIdentificacionPersona1:idPersona1;...)", "InformaciÃ³n de las personas", JOptionPane.QUESTION_MESSAGE ).split(";");
+
+			tiposDeIdentificaciones = new String[ aux.length ];
+			identificaciones = new long[ aux.length ];
+
+			try
+			{
+				for( int i = 0; i < aux.length; i++ )
+				{
+					String[] aux2 = aux[i].split(":");
+					tiposDeIdentificaciones[i] = aux2[0];
+					identificaciones[i] = Long.parseLong( aux2[1] );
+				}
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			// Llamado a la persistencia
+			persistencia.RFC12B(idReserva, tiposDeIdentificaciones, identificaciones);
+			panelDatos.actualizarInterfaz( "Operacion exitosa" );
+		}
+		catch (Exception e)
 		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
@@ -921,7 +973,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			try
 			{
 				idHotel = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
-				
+
 				// Lo siguiente guarda la informaciÃ³n de las personas en dos arreglos
 				String[] aux = JOptionPane.showInputDialog( this, "Datos de las habitaciones (idHabitacion1;idHabitacion2;...)", "Informacion de las habitaciones para finalizar mantenimiento", JOptionPane.QUESTION_MESSAGE ).split(";");
 				for (String string : aux) {
