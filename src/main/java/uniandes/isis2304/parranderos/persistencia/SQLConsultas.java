@@ -1,6 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -465,6 +466,19 @@ public class SQLConsultas {
 		r.setResultClass(ClaseAsistente.class);
 
 		return (List<ClaseAsistente>) r.executeList();
+	}
+	
+	public List<ClaseAsistente> RFC7(PersistenceManager pm)
+	{
+		Query a = pm.newQuery(SQL, 	"SELECT per.id, per.tipoidentificacion as tipoIdUsuario, per.nombre, al.fechaLlegadaTeorica, al.fechaSalidaTeorica\n" + 
+				"FROM RESERVAS_DE_ALOJAMIENTO al, RESERVAS_DE_CLIENTES resClien, PERSONAS per\n" + 
+				"WHERE al.id = resClien.idreserva\n" + 
+				"    AND resClien.idusuario = per.id" );
+		
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+
+		return lista;
 	}
 
 }

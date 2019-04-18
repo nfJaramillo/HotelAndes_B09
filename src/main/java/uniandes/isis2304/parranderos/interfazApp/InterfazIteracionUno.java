@@ -1034,14 +1034,30 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RFC7()
 	{
-		/*
-		SELECT per.id, per.nombre, gas.precio
-		FROM Gastos gas, Reservas_Servicios res, Personas per
-		WHERE gas.precio > -1
-    		AND gas.idreserva = res.id
-		    AND res.idtipopersona = per.id
-		    AND res.tipoidentificacion LIKE per.tipoidentificacion;
-		 */
+		try 
+		{
+			try
+			{
+
+				List<ClaseAsistente> respuesta = persistencia.RFC7( );
+			/*	
+				String resultado = "\n-> En RFC4 mostrarIndiceOcupacion:\n\n\n";
+
+				for( ClaseAsistente ca : respuesta )
+					resultado += "\t" + ca.toString() + "\n";
+
+				resultado += "\n\n\n\n  [RFC4] OperaciÃ³n terminada.";
+				panelDatos.actualizarInterfaz(resultado);*/
+			}
+			catch (Exception e)
+			{
+				throw new Exception( "IngresÃ³ una opciÃ³n que no estÃ¡ permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
+			}
+		} 
+		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
 
 	public void RFC8()

@@ -223,7 +223,6 @@ public class SQLReservasDeAlojamiento {
 		return new int[] { mesMas, mesMenos };
 	}
 
-
 	public int darMesMayorConsumo(PersistenceManager pm, int tipoHabitacion)
 	{
 		// Lista con las fechas de los consumos

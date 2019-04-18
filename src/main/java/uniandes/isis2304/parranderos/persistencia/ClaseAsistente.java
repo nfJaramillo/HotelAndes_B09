@@ -7,89 +7,89 @@ import java.util.Date;
  * The Class ClaseAsistente.
  */
 public class ClaseAsistente {
-	
-	
+
+
 	/** The idhabitacion. */
 	private int IDHABITACION;
 
 	/** The dineroperiodoespecifico. */
 	private int DINEROPERIODOESPECIFICO;
-	
+
 	/** The dineroaniocorrido. */
 	private int DINEROANIOCORRIDO;
-	
+
 	/** The conteoservicios. */
 	private int CONTEOSERVICIOS;
-	
+
 	/** The idservicios. */
 	private int IDSERVICIOS;
-	
+
 	/** The nombreservicios. */
 	private String NOMBRESERVICIOS;
-	
+
 	/** The numhabitacion. */
 	private int NUMHABITACION;
-	
+
 	/** The indice. */
 	private double INDICE ;
-	
+
 	/** The id. */
 	private int ID;
-	
+
 	/** The idhotel. */
 	private int IDHOTEL;
-	
+
 	/** The categoria. */
 	private String CATEGORIA;
-	
+
 	/** The estaincluido. */
 	private int ESTAINCLUIDO;
-	
+
 	/** The horarioinicio. */
 	private String HORARIOINICIO;
-	
+
 	/** The horariofin. */
 	private String HORARIOFIN;
-	
+
 	/** The nombre. */
 	private String NOMBRE;
-	
+
 	/** The valor. */
 	private String VALOR;
-	
+
 
 	/** The idusuario. */
 	private int IDUSUARIO;
-	
+
 	/** The idtipoidentificacion. */
 	private String IDTIPOIDENTIFICACION;
-	
+
 	/** The idservicio. */
 	private int IDSERVICIO;
-	
+
 	/** The fecha. */
 	private String FECHA;
-	
+
 	/** The pagado. */
 	private int PAGADO;
-	
+
 	/** The precio. */
 	private int PRECIO;
-	
+
 	/** The idreserva. */
 	private int IDRESERVA;
-	
+
 	/** The idreserva 1. */
 	private int IDRESERVA_1;
-	
+
 	/** The tipoidusuario. */
 	private String TIPOIDUSUARIO;
-	
 
-	
-	
-	
-	
+	private String FECHASALIDATEORICA;
+
+	private String FECHALLEGADATEORICA;	
+
+
 	/**
 	 * Gets the idreserva.
 	 *
@@ -488,7 +488,7 @@ public class ClaseAsistente {
 
 	/** The descripcion. */
 	private String DESCRIPCION;
-	
+
 
 	/**
 	 * Gets the numhabitacion.
@@ -539,9 +539,9 @@ public class ClaseAsistente {
 	 */
 	public ClaseAsistente()
 	{
-		
+
 	}
-	
+
 
 
 	/**
@@ -654,7 +654,7 @@ public class ClaseAsistente {
 
 
 
-	
+
 
 
 
@@ -704,17 +704,48 @@ public class ClaseAsistente {
 				+ ", PRECIO=" + PRECIO + ", DESCRIPCION=" + DESCRIPCION + "]";
 	}
 
-/**
- * To string 3.
- *
- * @return the string
- */
-public String toString3()
-{
-	return "ID= "+ID+", Fecha: "+FECHA+", Pagado: "+PAGADO+", Precio: "+PRECIO+", Id reserva: "+IDRESERVA+", Id usuario: "+IDUSUARIO+", Tipo id usuario: "+TIPOIDUSUARIO;
-}
+	/**
+	 * To string 3.
+	 *
+	 * @return the string
+	 */
+	public String toString3()
+	{
+		return "ID= "+ID+", Fecha: "+FECHA+", Pagado: "+PAGADO+", Precio: "+PRECIO+", Id reserva: "+IDRESERVA+", Id usuario: "+IDUSUARIO+", Tipo id usuario: "+TIPOIDUSUARIO;
+	}
 
 
 
-	
+	/**
+	 * @return the fECHASALIDATEORICA
+	 */
+	public String getFECHASALIDATEORICA() {
+		return FECHASALIDATEORICA;
+	}
+
+
+
+	/**
+	 * @param fECHASALIDATEORICA the fECHASALIDATEORICA to set
+	 */
+	public void setFECHASALIDATEORICA(Date fECHASALIDATEORICA) {
+		FECHASALIDATEORICA = fECHASALIDATEORICA.toString().substring(0, 10);
+	}
+
+
+	/**
+	 * @return the fECHALLEGADATEORICA
+	 */
+	public String getFECHALLEGADATEORICA() {
+		return FECHALLEGADATEORICA;
+	}
+
+
+
+	/**
+	 * @param fECHALLEGADATEORICA the fECHALLEGADATEORICA to set
+	 */
+	public void setFECHALLEGADATEORICA(Date fECHALLEGADATEORICA) {
+		FECHALLEGADATEORICA = fECHALLEGADATEORICA.toString().substring(0, 10);
+	}
 }
