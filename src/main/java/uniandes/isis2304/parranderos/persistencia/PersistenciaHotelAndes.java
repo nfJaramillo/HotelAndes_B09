@@ -1,6 +1,8 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -1279,6 +1281,7 @@ public class PersistenciaHotelAndes {
 	
 	public List<ClaseAsistente> RFC7( )
 	{
+		ArrayList<ClaseAsistente> array = new ArrayList<ClaseAsistente>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		long id = nextval();
@@ -1286,23 +1289,35 @@ public class PersistenciaHotelAndes {
 		{
 			tx.begin();
 			List<ClaseAsistente> resp = sqlConsultas.RFC7(pm);
-			
+
 			for (ClaseAsistente act : resp)
 			{
-				System.out.println( "\nEn la lista está el usuario " + act.getNOMBRE() + " con ID " + act.getID() + ":" );
-				System.out.println( "\tINFO: " + act.getTIPOIDUSUARIO() + " | " + act.getFECHALLEGADATEORICA() + " | " + act.getFECHASALIDATEORICA() );
+
+				// Parsing the date
+				LocalDate dateBefore = LocalDate.parse( act.getFECHALLEGADATEORICA() );
+				LocalDate dateAfter = LocalDate.parse( act.getFECHASALIDATEORICA() );
+
+				// Calculating number of days in between
+				long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+
+				act.aumentarDiasEstadia( noOfDaysBetween );				
 			}
 			
-			/* per.id, per.tipoidentificacion as idtipoidentificacion, per.nombre, al.fechaLlegadaTeorica, al.fechaSalidaTeorica\n"
-			*/
-			
+			for (int i = 0; i < resp.size(); i++)
+			{
+				ClaseAsistente actual = resp.get(i);
+				
+				if( actual.getDiasEstadia() > 14 && !array.contains(actual) )
+					array.add( actual );
+			}
+
 			tx.commit();
 
 			if (tx.isActive())
 				tx.rollback();
 
 			pm.close();
-			return resp;
+			return array;
 
 		}
 		catch (Exception e)
@@ -1319,6 +1334,7 @@ public class PersistenciaHotelAndes {
 			throw e;
 		}
 	}
+	
 	public ArrayList<String> RFC8( )
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();

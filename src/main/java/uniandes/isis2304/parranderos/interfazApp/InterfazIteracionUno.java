@@ -1040,18 +1040,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			{
 
 				List<ClaseAsistente> respuesta = persistencia.RFC7( );
-			/*	
-				String resultado = "\n-> En RFC4 mostrarIndiceOcupacion:\n\n\n";
+			
+				String resultado = "\n-> En RFC7 encontrarLosBuenosClientes:\n\n\n";
 
 				for( ClaseAsistente ca : respuesta )
-					resultado += "\t" + ca.toString() + "\n";
+					resultado += "\t" + ca.getTIPOIDUSUARIO() + "\t" + ca.getID() + "\t" + ca.getNOMBRE() + "\t" + "Ha acumulado " + ca.getDiasEstadia() + " días de estadía (" + (ca.getDiasEstadia()/7) + " semanas).\n";
 
-				resultado += "\n\n\n\n  [RFC4] OperaciÃ³n terminada.";
-				panelDatos.actualizarInterfaz(resultado);*/
+				resultado += "\n\n\n\n  [RFC7] Operación terminada.";
+				panelDatos.actualizarInterfaz(resultado);
 			}
 			catch (Exception e)
 			{
-				throw new Exception( "IngresÃ³ una opciÃ³n que no estÃ¡ permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
+				throw new Exception( "Ingreasó una opción que no está permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
 			}
 		} 
 		catch (Exception e) 

@@ -748,4 +748,20 @@ public class ClaseAsistente {
 	public void setFECHALLEGADATEORICA(Date fECHALLEGADATEORICA) {
 		FECHALLEGADATEORICA = fECHALLEGADATEORICA.toString().substring(0, 10);
 	}
+	
+	private long diasDeEstadia = 0;
+
+
+	public void aumentarDiasEstadia(long noOfDaysBetween)
+	{
+		this.diasDeEstadia += noOfDaysBetween;
+	}
+
+
+
+	public long getDiasEstadia()
+	{
+		return diasDeEstadia;
+	}
+	
 }
