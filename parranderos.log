@@ -1503,3 +1503,5 @@ ORA-02291: restricci�n de integridad (ISIS2304B181910.IDHABITACIONRESERVASA_FK) 
 21:26:05,680 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
 21:28:25,800 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 21:28:26,988 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+21:47:40,501 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+21:47:42,226 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
