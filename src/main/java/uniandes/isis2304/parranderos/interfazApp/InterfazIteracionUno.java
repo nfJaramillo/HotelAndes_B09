@@ -1062,7 +1062,19 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 	public void RFC8()
 	{
-
+		try
+		{
+			ArrayList<String> servicios = persistencia.RFC8();
+			String resultado = "";
+			for (String string : servicios) {
+				resultado += string + '\n';
+			}
+			panelDatos.actualizarInterfaz(resultado);
+		}
+		catch(Exception e)
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
 	}
 
 

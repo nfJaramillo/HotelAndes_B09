@@ -2,12 +2,18 @@ package uniandes.isis2304.parranderos.persistencia;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+
+import org.datanucleus.store.types.converters.LocalDateDateConverter;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -480,5 +486,30 @@ public class SQLConsultas {
 
 		return lista;
 	}
+	public ArrayList <String> RFC8(PersistenceManager pm)
+	{
+		
+		Date hoy = new Date();
+		SimpleDateFormat dmyFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String actual = dmyFormat.format(hoy);
+		hoy.setYear(hoy.getYear()-1);
+		String anterior = dmyFormat.format(hoy);
+		Query a = pm.newQuery(SQL,"select nombre\r\n" + 
+				"from servicios_adicionales\r\n" + 
+				"where servicios_adicionales.id \r\n" + 
+				"not in (\r\n" + 
+				"select idServicio\r\n" + 
+				"from reservas_servicios\r\n" + 
+				"where fechainicio >= '"+anterior+"' and reservas_servicios.fechafin<='"+actual+"'\r\n" + 
+				"group by (idservicio)\r\n" + 
+				"having count(idServicio)>=3)");
+		List<String> ans = (List<String>) a.executeList();
+		ArrayList<String> resp = new ArrayList<>();
+		for (String string : ans) {
+			resp.add(string);
+		}
+		return resp;
+	}
+	
 
 }

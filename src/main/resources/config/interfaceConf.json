@@ -1,4 +1,4 @@
-{
+﻿{
 	"title": "Aplicacion transaccional de HotelAndes",
 	"frameH": 700,
 	"frameW": 800,
@@ -100,7 +100,7 @@
 				"event": "RFC7"
 			},
 			{
-				"label": "RFC8: Encontrar los servicios que tienen mucha demanda",
+				"label": "RFC8: Encontrar los servicios que no tienen mucha demanda",
 				"event": "RFC8"
 			}
 		]
