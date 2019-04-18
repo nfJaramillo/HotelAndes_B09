@@ -15,7 +15,7 @@ import uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes;
 public class Tests1 {
 	
 	/** The pha. */
-	PersistenciaHotelAndes pha = PersistenciaHotelAndes.getInstance();
+	private PersistenciaHotelAndes pha = PersistenciaHotelAndes.getInstance();
 	
 	
 	/**
@@ -142,6 +142,47 @@ public class Tests1 {
 		}
 	}
 	
+	/**
+	 * RF 14 exitoso.
+	 */
+	@Test 
+	public void RF14Exitoso()
+	{
+		
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+
+		try
+		{
+			pha.RF14( habitaciones, servicios, "01/02/2019" );
+			assertTrue(true);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * RF 14 fallo.
+	 */
+	@Test 
+	public void RF14Fallo()
+	{
+		
+		ArrayList<Integer> servicios = new ArrayList<>();
+		ArrayList<Integer> habitaciones = new ArrayList<>();
+		habitaciones.add(0);
+		servicios.add(0);
+		try {
+			pha.RF13(habitaciones, servicios);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			assertTrue(true);
+		}
+	}
+
 	/**
 	 * RF 15 exitoso.
 	 */
