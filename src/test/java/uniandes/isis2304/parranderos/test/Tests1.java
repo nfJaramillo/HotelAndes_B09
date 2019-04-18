@@ -152,6 +152,7 @@ public class Tests1 {
 		ArrayList<Integer> servicios = new ArrayList<>();
 		ArrayList<Integer> habitaciones = new ArrayList<>();
 
+		
 		try
 		{
 			pha.RF14( habitaciones, servicios, "01/02/2019" );
@@ -175,7 +176,7 @@ public class Tests1 {
 		habitaciones.add(0);
 		servicios.add(0);
 		try {
-			pha.RF13(habitaciones, servicios);
+			pha.RF14(habitaciones, servicios,"01/02/2019");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
