@@ -511,5 +511,30 @@ public class SQLConsultas {
 		return resp;
 	}
 	
+	public  ArrayList <Integer> RFC11 (PersistenceManager pm)
+	{
+		 ArrayList <Integer> resp = new  ArrayList <Integer>();
+		for (int i = 1; i < 54; i++) {
+			Query a = pm.newQuery(SQL,"select   idservicio\r\n" + 
+					"from reservas_servicios\r\n" + 
+					"where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
+					"group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio\r\n" + 
+					"order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc\r\n" + 
+					"fetch first row only");
+			BigDecimal b = (BigDecimal) a.executeUnique();
+			if(b==null)
+			{
+				resp.add(0) ;
+			}
+			else 
+			{
+				resp.add((b.intValue())) ;
+			}
+			System.out.println(b);
+			
+		}
+		return resp;
+	}
+	
 
 }

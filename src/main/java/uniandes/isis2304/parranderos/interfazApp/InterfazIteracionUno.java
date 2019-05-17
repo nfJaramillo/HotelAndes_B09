@@ -1076,6 +1076,26 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
+	
+	
+	public void RFC11()
+	{
+		
+		try
+		{
+			ArrayList<Integer> servicios = persistencia.RFC11();
+			String resultado = "";
+			for (int i = 1; i < 54; i++) {
+				
+				resultado += "Semana "+i+": "+ servicios.get(i-1) + '\n';
+			}
+			panelDatos.actualizarInterfaz(resultado);
+		}
+		catch(Exception e)
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
