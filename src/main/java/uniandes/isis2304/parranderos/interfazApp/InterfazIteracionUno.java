@@ -1080,15 +1080,18 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	
 	public void RFC11()
 	{
+		long t1 = System.currentTimeMillis();
 		
 		try
 		{
 			ArrayList<Integer> servicios = persistencia.RFC11();
 			String resultado = "";
+			resultado += "#Semana "+ "   ID Servicio mas consumido "+"   ID Servicio menos consumido "+"   Id Habitacionas mas solicitadas "+"   Id Habitaciones menos solicitadas"+ '\n';
 			for (int i = 1; i < 54; i++) {
 				
-				resultado += "Semana "+i+": "+ servicios.get(i-1) + '\n';
+				resultado += "Semana "+i+":                       "+ servicios.get(i-1) +"                                                        "+ servicios.get((i+53)-1) + '\n';
 			}
+			resultado += "Tiempo de ejecucion: "+ (System.currentTimeMillis()-t1)+ " Milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
 		}
 		catch(Exception e)
