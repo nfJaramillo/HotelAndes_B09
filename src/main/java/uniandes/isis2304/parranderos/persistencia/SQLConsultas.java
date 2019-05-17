@@ -548,6 +548,40 @@ public class SQLConsultas {
 				resp.add((b.intValue())) ;
 			}
 		}
+		for (int i = 1; i < 54; i++) {
+			Query a = pm.newQuery(SQL,"select   idhabitacion\r\n" + 
+					"from reservas_de_alojamiento\r\n" + 
+					"where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
+					"group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion\r\n" + 
+					"order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc\r\n" + 
+					"fetch first row only");
+			BigDecimal b = (BigDecimal) a.executeUnique();
+			if(b==null)
+			{
+				resp.add(0) ;
+			}
+			else 
+			{
+				resp.add((b.intValue())) ;
+			}
+		}
+		for (int i = 1; i < 54; i++) {
+			Query a = pm.newQuery(SQL,"select   idhabitacion\r\n" + 
+					"from reservas_de_alojamiento\r\n" + 
+					"where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
+					"group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion\r\n" + 
+					"order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  asc\r\n" + 
+					"fetch first row only");
+			BigDecimal b = (BigDecimal) a.executeUnique();
+			if(b==null)
+			{
+				resp.add(0) ;
+			}
+			else 
+			{
+				resp.add((b.intValue())) ;
+			}
+		}
 		return resp;
 	}
 	

@@ -1,0 +1,55 @@
+//------------------------------ parte 1
+select   idservicio
+from reservas_servicios
+where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = 2
+group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio
+order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc
+fetch first row only
+;
+
+//----------------------------- parte 2
+
+select   idservicio
+from reservas_servicios
+where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = 2
+group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio
+order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  asc
+fetch first row only
+;
+
+
+//------------------------------ parte 3
+
+select   idhabitacion
+from reservas_de_alojamiento
+where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = 53
+group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion
+order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc
+fetch first row only
+;
+
+//------------------------------ parte 4
+
+select   idhabitacion
+from reservas_de_alojamiento
+where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = 53
+group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion
+order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  asc
+fetch first row only
+;
+
+//------------------------------ EXTRAS
+
+select count(FECHAINICIO),FECHAINICIO
+from RESERVAS_SERVICIOS
+where extract(year from fechainicio) = '2019'
+group by FECHAINICIO;
+
+alter session set nls_territory = 'Afghanistan';
+
+select level as dow,
+    to_char(trunc(sysdate ,'D') + level, 'Day') as day
+from dual
+connect by level <= 7;
+
+https://stackoverflow.com/questions/3800551/select-first-row-in-each-group-by-group
