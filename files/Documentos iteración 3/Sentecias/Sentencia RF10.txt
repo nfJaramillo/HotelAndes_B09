@@ -1,0 +1,8 @@
+SELECT res.TIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO 
+FROM PERSONAS res 
+WHERE res.ID not in ( SELECT per.ID 
+                      FROM PERSONAS per, RESERVAS_SERVICIOS resSer 
+                      WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION 
+                        AND per.ID = resSer.IDTIPOPERSONA 
+                        AND resSer.FECHAINICIO > ‘Fecha1’ 
+                        AND resSer.FECHAFIN < ‘Fecha2’ );

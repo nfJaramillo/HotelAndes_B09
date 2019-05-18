@@ -483,7 +483,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getIDHABITACION() + "\t\t $" + ca.getDINEROPERIODOESPECIFICO()  + "\t\t\t $" + ca.getDINEROANIOCORRIDO() +"\n";
 
-			resultado += "\n\n\n\n-  [RFC1] OperaciÃ³n terminada.";
+			resultado += "\n\n\n\n-  [RFC1] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
@@ -1005,13 +1005,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		{
 			char criterio;
 			int[] res;
-			
+
 			try
 			{
 				// Se pide la unidad de tiempo
 				criterio = JOptionPane.showInputDialog( this, "Especifique la unidad de tiempo.\n\n Opciones:\n    M para mes.\n    A para año.", "Filtrar temporalidad", JOptionPane.QUESTION_MESSAGE ).charAt(0);
 				int tipoHabitacion = Integer.parseInt( JOptionPane.showInputDialog( this, "Especifique un id tipo de habitación.", "Filtrar tipo habitación", JOptionPane.QUESTION_MESSAGE ) );
-				
+
 				res = persistencia.RFC6( criterio, tipoHabitacion );
 			}
 			catch (Exception e)
@@ -1040,7 +1040,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			{
 
 				List<ClaseAsistente> respuesta = persistencia.RFC7( );
-			
+
 				String resultado = "\n-> En RFC7 encontrarLosBuenosClientes:\n\n\n";
 
 				for( ClaseAsistente ca : respuesta )
@@ -1051,7 +1051,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			}
 			catch (Exception e)
 			{
-				throw new Exception( "Ingreasó una opción que no está permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
+				throw new Exception( "Ingresó una opción que no está permitida, o uno de los valores no siguiÃ³ el formato que deberÃ­a." );
 			}
 		} 
 		catch (Exception e) 
@@ -1076,25 +1076,77 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
-	
-	
+
+
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// Requerimientos de consulta de la Iteración 2
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	/**
+	 * Muestra la información de los clientes que consumieron al menos una vez un
+	 * determinado servicio del hotel, en un rango de fechas específico.
+	 */
+	public void RFC9()
+	{
+		try
+		{
+			if( rol == CLIENTE ) // Esta función está permitida sólo para los que no son clientes
+				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
+
+			
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+
+	public void RFC10()
+	{
+		try
+		{
+			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
+
+		} 
+		catch (Exception e) 
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+
 	public void RFC11()
 	{
 		long t1 = System.currentTimeMillis();
-		
+
 		try
 		{
 			ArrayList<Integer> servicios = persistencia.RFC11();
-			String resultado = "";
-			resultado += "#Semana "+ "   ID Servicio mas consumido "+"   ID Servicio menos consumido "+"   Id Habitacionas mas solicitadas "+"   Id Habitaciones menos solicitadas"+ '\n';
-			for (int i = 1; i < 54; i++) {
-				
-				resultado += "Semana "+i+":                       "+ servicios.get(i-1) +"                                                        "+ servicios.get((i+53)-1)+"                                                        "+ servicios.get((i+106)-1)+"                                                        "+ servicios.get((i+159)-1) + '\n';
-			}
-			resultado += "Tiempo de ejecucion: "+ (System.currentTimeMillis()-t1)+ " Milisegundos"+ '\n';
+			String resultado = "\n-> En RFC11 consultarFuncionamiento:\n\n\n";
+			resultado += "\t No. semana \t\t ID servicio más consumido \t ID servicio menos consumido \t ID habitaciones más solicitadas \t ID habitaciones menos solicitadas \n";
+			
+			for (int i = 1; i < 54; i++)
+				resultado += "\t " + i + " \t\t " + servicios.get(i-1) + " \t\t "+ servicios.get((i+53)-1) + " \t\t "+ servicios.get((i+106)-1) + " \t\t\t " + servicios.get((i+159)-1) + '\n';
+			
+			resultado += "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
 		}
 		catch(Exception e)
+		{
+			panelDatos.actualizarInterfaz( generarMensajeError(e) );
+		}
+	}
+
+	public void RFC12()
+	{
+		try
+		{
+			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
+
+		} 
+		catch (Exception e) 
 		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
@@ -1133,8 +1185,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	}
 
 	/**
-	 * Verifica el rol de quien interactÃºa con la aplicaciÃ³n, para permitirle o no ciertas acciones
-	 * @param seEsperaQueSea Lo que se espera que sea el usuario
+	 * Verifica el rol de quien interactúa con la aplicación, para permitirle o no ciertas acciones
+	 * @param seEsperaQueSea Lo que se espera que sea el usuario: 0 Admin, 1 Cliente, 2 Organizador
 	 * @throws Exception Cuando se espera que el usuario tenga ciertos permisos y no los tiene
 	 */
 	private void verificarRol( int seEsperaQueSea ) throws Exception
@@ -1171,7 +1223,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
 		return dateFormat.format(date);
 	}
-	
+
 	/**
 	 * Da el nombre del mes según su número
 	 */
