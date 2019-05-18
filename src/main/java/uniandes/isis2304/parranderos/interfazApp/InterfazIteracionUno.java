@@ -1091,18 +1091,25 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 		try
 		{
-			if( rol == CLIENTE ) // Esta función está permitida sólo para los que no son clientes
+			if( rol == CLIENTE ) // Esta función está permitida sólo para administradores y organizadores de eventos.
 				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
 
 			int idServicio;
 			String fecha1;
 			String fecha2;
 
+			int ordenamiento;
+
 			try
 			{
-				idServicio = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+				idServicio = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del servicio:", "ID servicio", JOptionPane.QUESTION_MESSAGE ));
 				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
 				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+
+				
+				String[] options = {"Red", "Green", "Blue"}; 
+				String result = (String)JOptionPane.showInputDialog( this, "Seleccione el criterio a filtrar", "Consultar consumo", JOptionPane.PLAIN_MESSAGE, null, options, options[0] );
+				System.out.println( "La opción elegida es " + result );
 			}
 			catch(Exception e)
 			{
@@ -1119,7 +1126,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getAPARICIONES() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
 
-			
+
 			resultado += "\n\n\n\n  [RFC9] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		}
