@@ -1,0 +1,57 @@
+
+//------------------------------PARTE1
+
+select personas.id,personas.tipoidentificacion,nombre,correo
+from personas
+inner join (
+select id
+FROM(
+select to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q'),count(personas.id),personas.id
+from (( reservas_de_clientes
+inner join reservas_de_Alojamiento
+on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)
+inner join personas
+on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)
+where reservas_de_alojamiento.fechallegadateorica >= '18/05/18'
+and to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q') = to_char(to_date(reservas_de_alojamiento.fechasalidateorica,'DD/MM/YYYY'),'Q')
+group by to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q'),personas.id
+having count(*)>0)
+group by id
+having count(*)=4) resp
+on personas.id = resp.id;
+
+//------------------------------PARTE2
+
+
+select personas.id,personas.tipoidentificacion,nombre,correo
+from personas 
+inner join (
+select a.id
+from (
+select personas.id,count(personas.id) as cA
+from (( reservas_de_clientes
+inner join reservas_de_Alojamiento
+on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)
+inner join personas
+on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)
+GROUP BY personas.id ) A
+inner join (
+select resp.id, count(resp.id) as cB
+from(
+select personas.id
+from ((( reservas_de_clientes
+inner join reservas_de_Alojamiento
+on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)
+inner join personas
+on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)
+inner join gastos
+on  reservas_de_Alojamiento.id = gastos.idreserva)
+where gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  reservas_de_alojamiento.fechasalidateorica
+and gastos.precio > 300000
+group by reservas_de_Alojamiento.id,personas.id) resp
+group by resp.id) B
+on a.id = b.id and a.ca = b.cb) C
+on personas.id = c.id
+;
+
+
