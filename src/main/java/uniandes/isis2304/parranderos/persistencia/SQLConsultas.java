@@ -584,6 +584,23 @@ public class SQLConsultas {
 		}
 		return resp;
 	}
+
+	public List<ClaseAsistente> RFC9(PersistenceManager pm, int idServicio, String fecha1, String fecha2)
+	{
+		Query a = pm.newQuery(SQL, "SELECT COUNT(*) AS APARICIONES, per.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO \r\n"
+				+ "FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
+				+ "WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "    AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "    AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "    AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "    AND resSer.FECHAFIN <= '" + fecha2 + "'\r\n"
+				+ "GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO" );
+
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+
+		return lista;
+	}
 	
 
 }

@@ -54,9 +54,11 @@ public class ClaseAsistente {
 	/** The nombre. */
 	private String NOMBRE;
 
+	/** The correo */
+	private String CORREO;
+	
 	/** The valor. */
 	private String VALOR;
-
 
 	/** The idusuario. */
 	private int IDUSUARIO;
@@ -89,7 +91,21 @@ public class ClaseAsistente {
 
 	private String FECHALLEGADATEORICA;	
 
+	/** The descripcion. */
+	private String DESCRIPCION;
+	
+	/** The apariciones **/
+	private int APARICIONES;
+	
+	// Chanchullo para días de estadía
+	private long diasDeEstadia = 0;
 
+	public void aumentarDiasEstadia(long noOfDaysBetween)
+	{
+		this.diasDeEstadia += noOfDaysBetween;
+	}
+	
+	
 	/**
 	 * Gets the idreserva.
 	 *
@@ -486,8 +502,7 @@ public class ClaseAsistente {
 
 
 
-	/** The descripcion. */
-	private String DESCRIPCION;
+
 
 
 	/**
@@ -714,8 +729,6 @@ public class ClaseAsistente {
 		return "ID= "+ID+", Fecha: "+FECHA+", Pagado: "+PAGADO+", Precio: "+PRECIO+", Id reserva: "+IDRESERVA+", Id usuario: "+IDUSUARIO+", Tipo id usuario: "+TIPOIDUSUARIO;
 	}
 
-
-
 	/**
 	 * @return the fECHASALIDATEORICA
 	 */
@@ -749,19 +762,30 @@ public class ClaseAsistente {
 		FECHALLEGADATEORICA = fECHALLEGADATEORICA.toString().substring(0, 10);
 	}
 	
-	private long diasDeEstadia = 0;
-
-
-	public void aumentarDiasEstadia(long noOfDaysBetween)
-	{
-		this.diasDeEstadia += noOfDaysBetween;
-	}
-
-
-
+	
 	public long getDiasEstadia()
 	{
 		return diasDeEstadia;
+	}
+
+
+	public String getCORREO() {
+		return CORREO;
+	}
+
+
+	public void setCORREO(String cORREO) {
+		CORREO = cORREO;
+	}
+
+
+	public int getAPARICIONES() {
+		return APARICIONES;
+	}
+
+
+	public void setAPARICIONES(int aPARICIONES) {
+		APARICIONES = aPARICIONES;
 	}
 	
 }

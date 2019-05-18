@@ -610,7 +610,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 				for( ClaseAsistente ca : respuesta )
 					resultado += "\t" + ca.toString() + "\n";
 
-				resultado += "\n\n\n\n  [RFC4] OperaciÃ³n terminada.";
+				resultado += "\n\n\n\n  [RFC4] Operación terminada.";
 				panelDatos.actualizarInterfaz(resultado);
 			}
 			catch (Exception e)
@@ -1094,18 +1094,48 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			if( rol == CLIENTE ) // Esta función está permitida sólo para los que no son clientes
 				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
 
+			int idServicio;
+			String fecha1;
+			String fecha2;
+
+			try
+			{
+				idServicio = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del hotel:", "ID hotel", JOptionPane.QUESTION_MESSAGE ));
+				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+			}
+			catch(Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			List<ClaseAsistente> lista = persistencia.RFC9( idServicio, fecha1, fecha2 );
+
+
+			String resultado = "\n-> En RFC9 mostrarConsumidoresDeCiertoServicio:\n\n\n";
+			resultado       +=        "\tApariciones \t Tipo ID \t ID \tNombre \t Correo\n";
+			resultado       +=        "\t--------------------------------------------------------------------------------------------------------------------\n";
+
+			for( ClaseAsistente ca : lista )
+				resultado += "\t" + ca.getAPARICIONES() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
+
 			
-			
-			
-		} 
+			resultado += "\n\n\n\n  [RFC9] Operación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		}
 		catch (Exception e) 
 		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
 		}
 	}
 
+	/**
+	 * Muestra la información de los clientes que NO consumieron ninguna vez
+	 *  un determinado servicio del hotel, en un rango de fechas específico.
+	 */
 	public void RFC10()
 	{
+		System.out.println( "Entró a RFC10");
 		try
 		{
 			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
@@ -1117,6 +1147,11 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Muestra, para cada semana del año (sábado a sábado), el servicio más consumido,
+	 * el servicio menos consumido, las habitaciones más solicitadas y las
+	 * habitaciones menos solicitadas.
+	 */
 	public void RFC11()
 	{
 		long t1 = System.currentTimeMillis();
@@ -1126,10 +1161,10 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			ArrayList<Integer> servicios = persistencia.RFC11();
 			String resultado = "\n-> En RFC11 consultarFuncionamiento:\n\n\n";
 			resultado += "\t No. semana \t\t ID servicio más consumido \t ID servicio menos consumido \t ID habitaciones más solicitadas \t ID habitaciones menos solicitadas \n";
-			
+
 			for (int i = 1; i < 54; i++)
 				resultado += "\t " + i + " \t\t " + servicios.get(i-1) + " \t\t "+ servicios.get((i+53)-1) + " \t\t "+ servicios.get((i+106)-1) + " \t\t\t " + servicios.get((i+159)-1) + '\n';
-			
+
 			resultado += "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
 		}
@@ -1139,6 +1174,11 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Muestra aquellos clientes que realizan estancias en HotelAndes al menos una vez por trimestre,
+	 * aquellos que siempre consumen por lo menos un servicio costoso y aquellos que en cada estancia
+	 * consumen servicios de SPA o de salones de reuniones con duración mayor a 4 horas.
+	 */
 	public void RFC12()
 	{
 		try
@@ -1154,7 +1194,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//   MÉTODOS PARA LA PRESENTACIÃ“N DE LOS DATOS
+	//   MÉTODOS PARA LA PRESENTACIÓN DE LOS DATOS
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	/**
 	 * Genera una cadena para indicar al usuario que hubo un error en la aplicaciÃ³n
@@ -1163,7 +1203,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	private String generarMensajeError(Exception e) 
 	{
-		String resultado = "Error en la ejecuciÃ³n:\n";
+		String resultado = "Error en la ejecución:\n";
 		resultado += "----->" + e.getLocalizedMessage() + darDetalleException(e);
 		return resultado;
 	}
