@@ -602,5 +602,113 @@ public class SQLConsultas {
 		return lista;
 	}
 	
+	public List<ClaseAsistente> RFC12(PersistenceManager pm)
+	{
+		Date hoy = new Date();
+		SimpleDateFormat dmyFormat = new SimpleDateFormat("dd/MM/yyyy");
+		hoy.setYear(hoy.getYear()-1);
+		String actual = dmyFormat.format(hoy);
+		
+		Query a = pm.newQuery(SQL,"select personas.id,personas.tipoidentificacion,nombre,correo\r\n" + 
+				"from personas\r\n" + 
+				"inner join (\r\n" + 
+				"select id\r\n" + 
+				"FROM(\r\n" + 
+				"select to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q'),count(personas.id),personas.id\r\n" + 
+				"from (( reservas_de_clientes\r\n" + 
+				"inner join reservas_de_Alojamiento\r\n" + 
+				"on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)\r\n" + 
+				"inner join personas\r\n" + 
+				"on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)\r\n" + 
+				"where reservas_de_alojamiento.fechallegadateorica >= '"+actual+"'\r\n" + 
+				"and to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q') = to_char(to_date(reservas_de_alojamiento.fechasalidateorica,'DD/MM/YYYY'),'Q')\r\n" + 
+				"group by to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'),'Q'),personas.id\r\n" + 
+				"having count(*)>0)\r\n" + 
+				"group by id\r\n" + 
+				"having count(*)=4) resp\r\n" + 
+				"on personas.id = resp.id");
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+
+		return lista;
+	}
+	public List<ClaseAsistente> RFC12B(PersistenceManager pm)
+	{
+		
+		Query a = pm.newQuery(SQL,"select personas.id,personas.tipoidentificacion,nombre,correo\r\n" + 
+				"from personas \r\n" + 
+				"inner join (\r\n" + 
+				"select a.id\r\n" + 
+				"from (\r\n" + 
+				"select personas.id,count(personas.id) as cA\r\n" + 
+				"from (( reservas_de_clientes\r\n" + 
+				"inner join reservas_de_Alojamiento\r\n" + 
+				"on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)\r\n" + 
+				"inner join personas\r\n" + 
+				"on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)\r\n" + 
+				"GROUP BY personas.id ) A\r\n" + 
+				"inner join (\r\n" + 
+				"select resp.id, count(resp.id) as cB\r\n" + 
+				"from(\r\n" + 
+				"select personas.id\r\n" + 
+				"from ((( reservas_de_clientes\r\n" + 
+				"inner join reservas_de_Alojamiento\r\n" + 
+				"on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)\r\n" + 
+				"inner join personas\r\n" + 
+				"on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)\r\n" + 
+				"inner join gastos\r\n" + 
+				"on  reservas_de_Alojamiento.id = gastos.idreserva)\r\n" + 
+				"where gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  reservas_de_alojamiento.fechasalidateorica\r\n" + 
+				"and gastos.precio > 300000\r\n" + 
+				"group by reservas_de_Alojamiento.id,personas.id) resp\r\n" + 
+				"group by resp.id) B\r\n" + 
+				"on a.id = b.id and a.ca = b.cb) C\r\n" + 
+				"on personas.id = c.id");
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+
+
+		return lista;
+	}
+	
+	public List<ClaseAsistente> RFC12C(PersistenceManager pm)
+	{
+		
+		Query a = pm.newQuery(SQL,"select personas.id,personas.tipoidentificacion,nombre,correo\r\n" + 
+				"from personas \r\n" + 
+				"inner join (\r\n" + 
+				"select a.id\r\n" + 
+				"from (\r\n" + 
+				"select personas.id,count(personas.id) as cA\r\n" + 
+				"from (( reservas_de_clientes\r\n" + 
+				"inner join reservas_de_Alojamiento\r\n" + 
+				"on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)\r\n" + 
+				"inner join personas\r\n" + 
+				"on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)\r\n" + 
+				"GROUP BY personas.id ) A\r\n" + 
+				"inner join (\r\n" + 
+				"select resp.id, count(resp.id) as cB\r\n" + 
+				"from(\r\n" + 
+				"select personas.id\r\n" + 
+				"from ((( reservas_de_clientes\r\n" + 
+				"inner join reservas_de_Alojamiento\r\n" + 
+				"on reservas_de_clientes.idreserva = reservas_de_alojamiento.id)\r\n" + 
+				"inner join personas\r\n" + 
+				"on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion = reservas_de_clientes.tipoidusuario)\r\n" + 
+				"inner join gastos\r\n" + 
+				"on  reservas_de_Alojamiento.id = gastos.idreserva)\r\n" + 
+				"where gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  reservas_de_alojamiento.fechasalidateorica\r\n" + 
+				"and (gastos.idservicio = 12 or gastos.idservicio = 13)\r\n" + 
+				"group by reservas_de_Alojamiento.id,personas.id) resp\r\n" + 
+				"group by resp.id) B\r\n" + 
+				"on a.id = b.id and a.ca = b.cb) C\r\n" + 
+				"on personas.id = c.id");
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+
+
+		return lista;
+	}
+	
 
 }

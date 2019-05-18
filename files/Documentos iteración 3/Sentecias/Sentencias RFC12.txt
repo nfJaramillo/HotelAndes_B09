@@ -82,12 +82,11 @@ on personas.id = reservas_de_clientes.idusuario AND personas.tipoidentificacion 
 inner join gastos
 on  reservas_de_Alojamiento.id = gastos.idreserva)
 where gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  reservas_de_alojamiento.fechasalidateorica
-and (gastos.idservicio = 5 or gastos.idservicio = 8)
+and (gastos.idservicio = 12 or gastos.idservicio = 13)
 group by reservas_de_Alojamiento.id,personas.id) resp
 group by resp.id) B
 on a.id = b.id and a.ca = b.cb) C
 on personas.id = c.id
 ;
-
 
 

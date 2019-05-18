@@ -65,9 +65,30 @@ public class ClaseAsistente {
 
 	/** The idtipoidentificacion. */
 	private String IDTIPOIDENTIFICACION;
+	
+	/** The idtipoidentificacion. */
+	private String TIPOIDENTIFICACION;
+	
+	
 
 	/** The idservicio. */
 	private int IDSERVICIO;
+
+	/**
+	 * @return the tIPOIDENTIFICACION
+	 */
+	public String getTIPOIDENTIFICACION() {
+		return TIPOIDENTIFICACION;
+	}
+
+
+	/**
+	 * @param tIPOIDENTIFICACION the tIPOIDENTIFICACION to set
+	 */
+	public void setTIPOIDENTIFICACION(String tIPOIDENTIFICACION) {
+		TIPOIDENTIFICACION = tIPOIDENTIFICACION;
+	}
+
 
 	/** The fecha. */
 	private String FECHA;

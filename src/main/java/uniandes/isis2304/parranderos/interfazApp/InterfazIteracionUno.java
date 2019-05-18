@@ -1080,7 +1080,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	// Requerimientos de consulta de la Iteración 2
+	// Requerimientos de consulta de la Iteración 3
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	/**
@@ -1089,6 +1089,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC9()
 	{
+		
 		try
 		{
 			if( rol == CLIENTE ) // Esta función está permitida sólo para administradores y organizadores de eventos.
@@ -1115,6 +1116,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			{
 				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
+			
+			long t1 = System.currentTimeMillis();
 
 			List<ClaseAsistente> lista = persistencia.RFC9( idServicio, fecha1, fecha2 );
 
@@ -1126,6 +1129,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			for( ClaseAsistente ca : lista )
 				resultado += "\t" + ca.getAPARICIONES() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
 
+			resultado += '\n' + "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
 
 			resultado += "\n\n\n\n  [RFC9] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
@@ -1161,10 +1165,17 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC11()
 	{
+		
+		
 		long t1 = System.currentTimeMillis();
 
 		try
 		{
+
+			if( rol != ADMIN ) // Esta función está permitida sólo para administradores y organizadores de eventos.
+				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
+			
+			verificarRol( ADMIN ); // Esta función está permitida sólo para el admin
 			ArrayList<Integer> servicios = persistencia.RFC11();
 			String resultado = "\n-> En RFC11 consultarFuncionamiento:\n\n\n";
 			resultado += "\t No. semana \t\t ID servicio más consumido \t ID servicio menos consumido \t ID habitaciones más solicitadas \t ID habitaciones menos solicitadas \n";
@@ -1172,7 +1183,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			for (int i = 1; i < 54; i++)
 				resultado += "\t " + i + " \t\t " + servicios.get(i-1) + " \t\t "+ servicios.get((i+53)-1) + " \t\t "+ servicios.get((i+106)-1) + " \t\t\t " + servicios.get((i+159)-1) + '\n';
 
-			resultado += "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
+			resultado += '\n' + "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
 		}
 		catch(Exception e)
@@ -1188,9 +1199,40 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC12()
 	{
+		long t1 = System.currentTimeMillis();
+		String resultado = "";
 		try
 		{
-			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
+			if( rol != ADMIN ) // Esta función está permitida sólo para administradores y organizadores de eventos.
+				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
+			
+			List<ClaseAsistente> a = persistencia.RFC12();
+			resultado+=("Buenos clientes por realizar estancias al menos una vez por trimestre en el ultimo año:"+ '\n');
+			for (ClaseAsistente claseAsistente : a) {
+				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
+			}
+			
+			resultado+='\n';
+			
+			List<ClaseAsistente> b = persistencia.RFC12B();
+			resultado+=("Buenos clientes por consumir al menos una vez en cada estacia un servicio con costo mayor a $300.000.oo:"+ '\n');
+			for (ClaseAsistente claseAsistente : b) {
+				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
+			}
+			
+			resultado+='\n';
+			
+			List<ClaseAsistente> c = persistencia.RFC12C();
+			resultado+=("Buenos clientes por consumir al menos una vez en cada estacia servicios de SPA o de salones de reuniones con duración mayor a 4 horas:" + '\n');
+			for (ClaseAsistente claseAsistente : c) {
+				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
+			}
+			
+			resultado+='\n';
+			
+			resultado += "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
+			panelDatos.actualizarInterfaz(resultado);
+			
 
 		} 
 		catch (Exception e) 

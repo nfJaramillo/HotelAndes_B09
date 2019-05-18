@@ -1454,6 +1454,100 @@ public class PersistenciaHotelAndes {
 			throw e;
 		}
 	}
+	
+	public List<ClaseAsistente> RFC12( )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC12( pm);
+			tx.commit();
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
+	}
+	public List<ClaseAsistente> RFC12B( )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC12B( pm);
+			tx.commit();
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
+	}
+	public List<ClaseAsistente> RFC12C( )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC12C( pm);
+			tx.commit();
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			return resp;
+
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+
+
+			if (tx.isActive())
+				tx.rollback();
+
+			pm.close();
+			throw e;
+		}
+	}
 
 	/**
 	 * Gets the single instance of PersistenciaHotelAndes.
