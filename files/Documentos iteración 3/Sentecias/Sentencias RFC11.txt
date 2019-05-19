@@ -1,42 +1,21 @@
-//------------------------------ parte 1
+//------------------------------ parte 1 y 2
 select   idservicio
 from reservas_servicios
 where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = 2
 group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio
 order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc
-fetch first row only
-;
-
-//----------------------------- parte 2
-
-select   idservicio
-from reservas_servicios
-where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = 2
-group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio
-order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  asc
-fetch first row only
 ;
 
 
-//------------------------------ parte 3
+//------------------------------ parte 3 y 4
 
 select   idhabitacion
 from reservas_de_alojamiento
 where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = 53
 group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion
 order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc
-fetch first row only
 ;
 
-//------------------------------ parte 4
-
-select   idhabitacion
-from reservas_de_alojamiento
-where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = 53
-group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion
-order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  asc
-fetch first row only
-;
 
 //------------------------------ EXTRAS
 

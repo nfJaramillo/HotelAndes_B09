@@ -1634,3 +1634,49 @@ ORA-00904: "CONPER"."ID": identificador no válido
 13:35:37,149 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
 13:40:13,349 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 13:40:15,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:13:54,582 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:13:55,607 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:21:55,287 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:21:56,372 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:22:00,485 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+14:22:26,861 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:22:27,955 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:22:32,033 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+14:23:22,660 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:23:23,612 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:23:27,744 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+14:24:54,990 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:24:55,799 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:25:00,114 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+14:25:33,811 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:25:35,126 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:25:39,113 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : null
+
+14:26:08,982 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:26:09,860 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:27:21,326 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:27:22,401 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:33:53,272 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:33:54,222 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:35:40,186 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:35:41,348 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:44:40,076 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:44:42,654 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:46:37,770 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:46:38,665 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:47:22,349 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:47:23,484 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:47:43,369 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:47:47,115 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:50:45,281 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:50:46,199 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:51:02,658 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:51:03,622 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:51:38,900 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:51:40,037 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+14:51:50,297 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+14:51:51,339 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n

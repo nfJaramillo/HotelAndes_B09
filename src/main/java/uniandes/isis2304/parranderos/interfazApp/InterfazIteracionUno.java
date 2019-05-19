@@ -1246,23 +1246,22 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	{
 
 
-		long t1 = System.currentTimeMillis();
+		
 
-		try
-		{
+		try {
+		
 
 			if( rol != ADMIN ) // Esta función está permitida sólo para administradores y organizadores de eventos.
 				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
 
-			verificarRol( ADMIN ); // Esta función está permitida sólo para el admin
 			ArrayList<Integer> servicios = persistencia.RFC11();
 			String resultado = "\n-> En RFC11 consultarFuncionamiento:\n\n\n";
 			resultado += "\t No. semana \t\t ID servicio más consumido \t ID servicio menos consumido \t ID habitaciones más solicitadas \t ID habitaciones menos solicitadas \n";
 
 			for (int i = 1; i < 54; i++)
-				resultado += "\t " + i + " \t\t " + servicios.get(i-1) + " \t\t "+ servicios.get((i+53)-1) + " \t\t "+ servicios.get((i+106)-1) + " \t\t\t " + servicios.get((i+159)-1) + '\n';
+				resultado += "\t " + i + " \t\t " + servicios.get((i-1)*2) + " \t\t "+ servicios.get((i)+((i-1))) + " \t\t "+ servicios.get(((i+106))+i-2) + " \t\t\t " + servicios.get((i+106)+(((i)-1))) + '\n';
 
-			resultado += '\n' + "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
+			resultado += '\n' + "Tiempo de ejecución: "+ (SQLConsultas.tRFC11)+ " milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
 		}
 		catch(Exception e)

@@ -32,6 +32,8 @@ public class SQLConsultas {
 	 *****************************************************************/
 	/** El manejador de persistencia general de la aplicaci�n. */
 	private PersistenciaHotelAndes pp;
+	
+	public static long tRFC11;
 
 	/* ****************************************************************
 	 * 			Metodos
@@ -610,75 +612,60 @@ public class SQLConsultas {
 	}
 	public  ArrayList <Integer> RFC11 (PersistenceManager pm)
 	{
+		
 		 ArrayList <Integer> resp = new  ArrayList <Integer>();
+		 long t1 = System.currentTimeMillis();
 		for (int i = 1; i < 54; i++) {
 			Query a = pm.newQuery(SQL,"select   idservicio\r\n" + 
 					"from reservas_servicios\r\n" + 
 					"where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
 					"group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio\r\n" + 
-					"order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc\r\n" + 
-					"fetch first row only");
-			BigDecimal b = (BigDecimal) a.executeUnique();
-			if(b==null)
+					"order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc");
+			List<BigDecimal> b = a.executeList();
+			if(b.isEmpty()|| b.get(0)==null)
 			{
 				resp.add(0) ;
 			}
 			else 
 			{
-				resp.add((b.intValue())) ;
+				resp.add((b.get(0).intValue())) ;
 			}
-		}
-		for (int i = 1; i < 54; i++) {
-			Query a = pm.newQuery(SQL,"select   idservicio\r\n" + 
-					"from reservas_servicios\r\n" + 
-					"where  to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
-					"group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio\r\n" + 
-					"order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  asc\r\n" + 
-					"fetch first row only");
-			BigDecimal b = (BigDecimal) a.executeUnique();
-			if(b==null)
+			if(b.isEmpty() ||b.get(b.size()-1)==null)
 			{
 				resp.add(0) ;
 			}
 			else 
 			{
-				resp.add((b.intValue())) ;
+				resp.add((b.get(b.size()-1).intValue())) ;
 			}
+			
 		}
+		
 		for (int i = 1; i < 54; i++) {
 			Query a = pm.newQuery(SQL,"select   idhabitacion\r\n" + 
 					"from reservas_de_alojamiento\r\n" + 
 					"where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
 					"group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion\r\n" + 
-					"order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc\r\n" + 
-					"fetch first row only");
-			BigDecimal b = (BigDecimal) a.executeUnique();
-			if(b==null)
+					"order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc");
+			List<BigDecimal> b = a.executeList();
+			if(b.isEmpty() ||b.get(0)==null)
 			{
 				resp.add(0) ;
 			}
 			else 
 			{
-				resp.add((b.intValue())) ;
+				resp.add((b.get(0).intValue())) ;
 			}
-		}
-		for (int i = 1; i < 54; i++) {
-			Query a = pm.newQuery(SQL,"select   idhabitacion\r\n" + 
-					"from reservas_de_alojamiento\r\n" + 
-					"where  to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = "+i+"\r\n" + 
-					"group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion\r\n" + 
-					"order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  asc\r\n" + 
-					"fetch first row only");
-			BigDecimal b = (BigDecimal) a.executeUnique();
-			if(b==null)
+			if(b.isEmpty() ||b.get(b.size()-1)==null)
 			{
 				resp.add(0) ;
 			}
 			else 
 			{
-				resp.add((b.intValue())) ;
+				resp.add((b.get(b.size()-1).intValue())) ;
 			}
 		}
+		tRFC11 = System.currentTimeMillis() - t1;
 		return resp;
 	}
 	
