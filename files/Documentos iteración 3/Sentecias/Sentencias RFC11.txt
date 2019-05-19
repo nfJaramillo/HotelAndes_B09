@@ -6,6 +6,39 @@ group by to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio
 order by (to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  desc
 ;
 
+SQL_ID  7d8fhawvpxz38, child number 0
+-------------------------------------
+select   idservicio from reservas_servicios where  
+to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww') = 2 group by 
+to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww'),idservicio order by 
+(to_char(to_date(fechainicio,'DD/MM/YYYY'),'ww')),count(idservicio)  
+desc
+ 
+Plan hash value: 2505605778
+ 
+--------------------------------------------------------------------------------------
+| Id  | Operation           | Name               | E-Rows |  OMem |  1Mem | Used-Mem |
+--------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT    |                    |        |       |       |          |
+|   1 |  SORT ORDER BY      |                    |      2 |  2048 |  2048 | 2048  (0)|
+|   2 |   HASH GROUP BY     |                    |      2 |  1452K|  1452K|  635K (0)|
+|*  3 |    TABLE ACCESS FULL| RESERVAS_SERVICIOS |      2 |       |       |          |
+--------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - filter(TO_NUMBER(TO_CHAR(TO_DATE(INTERNAL_FUNCTION("FECHAINICIO"),'DD/M
+              M/YYYY'),'ww'))=2)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - Warning: basic plan statistics not available. These are only collected when:
+       * hint 'gather_plan_statistics' is used for the statement or
+       * parameter 'statistics_level' is set to 'ALL', at session or system level
+   - 1 Sql Plan Directive used for this statement
+
 
 //------------------------------ parte 3 y 4
 
@@ -16,6 +49,35 @@ group by to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion
 order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count(idhabitacion)  desc
 ;
 
+SQL_ID  64s4jda76bzdf, child number 0
+-------------------------------------
+select   idhabitacion from reservas_de_alojamiento where  
+to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww') = 53 group by 
+to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww'),idhabitacion 
+order by (to_char(to_date(FECHALLEGADATEORICA,'DD/MM/YYYY'),'ww')),count
+(idhabitacion)  desc
+ 
+Plan hash value: 4091662820
+ 
+------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation           | Name                    | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT    |                         |      1 |        |      1 |00:00:00.01 |       7 |       |       |          |
+|   1 |  SORT ORDER BY      |                         |      1 |      1 |      1 |00:00:00.01 |       7 |  2048 |  2048 | 2048  (0)|
+|   2 |   HASH GROUP BY     |                         |      1 |      1 |      1 |00:00:00.01 |       7 |  1422K|  1422K|  510K (0)|
+|*  3 |    TABLE ACCESS FULL| RESERVAS_DE_ALOJAMIENTO |      1 |      1 |      1 |00:00:00.01 |       7 |       |       |          |
+------------------------------------------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - filter(TO_NUMBER(TO_CHAR(TO_DATE(INTERNAL_FUNCTION("FECHALLEGADATEORICA"),'DD/MM/YYYY'),'ww'))=53)
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - 1 Sql Plan Directive used for this statement
+ 
 
 //------------------------------ EXTRAS
 

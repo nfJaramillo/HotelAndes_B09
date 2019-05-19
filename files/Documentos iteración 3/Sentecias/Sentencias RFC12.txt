@@ -20,6 +20,69 @@ group by id
 having count(*)=4) resp
 on personas.id = resp.id;
 
+SQL_ID  35kp9bu4rxdgc, child number 0
+-------------------------------------
+select personas.id,personas.tipoidentificacion,nombre,correo from 
+personas inner join ( select id FROM( select 
+to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'
+),'Q'),count(personas.id),personas.id from (( reservas_de_clientes 
+inner join reservas_de_Alojamiento on reservas_de_clientes.idreserva = 
+reservas_de_alojamiento.id) inner join personas on personas.id = 
+reservas_de_clientes.idusuario AND personas.tipoidentificacion = 
+reservas_de_clientes.tipoidusuario) where 
+reservas_de_alojamiento.fechallegadateorica >= '18/05/18' and 
+to_char(to_date(reservas_de_alojamiento.fechallegadateorica,'DD/MM/YYYY'
+),'Q') = to_char(to_date(reservas_de_alojamiento.fechasalidateorica,'DD/
+MM/YYYY'),'Q') group by to_char(to_date(reservas_de_alojamiento.fechalle
+gadateorica,'DD/MM/YYYY'),'Q'),personas.id having count(*)>0) group by 
+id having count(*)=4) resp on personas.id = resp.id
+ 
+Plan hash value: 3231332636
+ 
+----------------------------------------------------------------------------------------------------
+| Id  | Operation                    | Name                    | E-Rows |  OMem |  1Mem | Used-Mem |
+----------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT             |                         |        |       |       |          |
+|   1 |  NESTED LOOPS                |                         |      1 |       |       |          |
+|   2 |   NESTED LOOPS               |                         |      1 |       |       |          |
+|   3 |    VIEW                      |                         |      1 |       |       |          |
+|*  4 |     FILTER                   |                         |        |       |       |          |
+|   5 |      HASH GROUP BY           |                         |      1 |  1600K|  1600K|  607K (0)|
+|   6 |       VIEW                   |                         |      1 |       |       |          |
+|*  7 |        FILTER                |                         |        |       |       |          |
+|   8 |         HASH GROUP BY        |                         |      1 |  1484K|  1484K| 1001K (0)|
+|   9 |          NESTED LOOPS        |                         |      8 |       |       |          |
+|* 10 |           HASH JOIN          |                         |      8 |  1483K|  1483K|  918K (0)|
+|* 11 |            TABLE ACCESS FULL | RESERVAS_DE_ALOJAMIENTO |      7 |       |       |          |
+|  12 |            INDEX FULL SCAN   | RESERVAS_DE_CLIENTES_PK |     11 |       |       |          |
+|* 13 |           INDEX UNIQUE SCAN  | IDPERSONAS_PK           |      1 |       |       |          |
+|* 14 |    INDEX RANGE SCAN          | IDPERSONAS_PK           |      1 |       |       |          |
+|  15 |   TABLE ACCESS BY INDEX ROWID| PERSONAS                |      1 |       |       |          |
+----------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   4 - filter(COUNT(*)=4)
+   7 - filter(COUNT(*)>0)
+  10 - access("RESERVAS_DE_CLIENTES"."IDRESERVA"="RESERVAS_DE_ALOJAMIENTO"."ID")
+  11 - filter(("RESERVAS_DE_ALOJAMIENTO"."FECHALLEGADATEORICA">='18/05/18' AND 
+              TO_CHAR(TO_DATE(INTERNAL_FUNCTION("RESERVAS_DE_ALOJAMIENTO"."FECHALLEGADATEORICA"),'DD/MM/YY
+              YY'),'q')=TO_CHAR(TO_DATE(INTERNAL_FUNCTION("RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA"),
+              'DD/MM/YYYY'),'q') AND "FECHASALIDATEORICA">'18/05/18'))
+  13 - access("PERSONAS"."ID"="RESERVAS_DE_CLIENTES"."IDUSUARIO" AND 
+              "PERSONAS"."TIPOIDENTIFICACION"="RESERVAS_DE_CLIENTES"."TIPOIDUSUARIO")
+  14 - access("PERSONAS"."ID"="RESP"."ID")
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - this is an adaptive plan
+   - Warning: basic plan statistics not available. These are only collected when:
+       * hint 'gather_plan_statistics' is used for the statement or
+       * parameter 'statistics_level' is set to 'ALL', at session or system level
+   - 2 Sql Plan Directives used for this statement
+
 //------------------------------PARTE2
 
 
@@ -53,6 +116,76 @@ group by resp.id) B
 on a.id = b.id and a.ca = b.cb) C
 on personas.id = c.id
 ;
+
+SQL_ID  bf4bd1qdp74xa, child number 0
+-------------------------------------
+select personas.id,personas.tipoidentificacion,nombre,correo from 
+personas  inner join ( select a.id from ( select 
+personas.id,count(personas.id) as cA from (( reservas_de_clientes inner 
+join reservas_de_Alojamiento on reservas_de_clientes.idreserva = 
+reservas_de_alojamiento.id) inner join personas on personas.id = 
+reservas_de_clientes.idusuario AND personas.tipoidentificacion = 
+reservas_de_clientes.tipoidusuario) GROUP BY personas.id ) A inner join 
+( select resp.id, count(resp.id) as cB from( select personas.id from 
+((( reservas_de_clientes inner join reservas_de_Alojamiento on 
+reservas_de_clientes.idreserva = reservas_de_alojamiento.id) inner join 
+personas on personas.id = reservas_de_clientes.idusuario AND 
+personas.tipoidentificacion = reservas_de_clientes.tipoidusuario) inner 
+join gastos on  reservas_de_Alojamiento.id = gastos.idreserva) where 
+gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  
+reservas_de_alojamiento.fechasalidateorica and gastos.precio > 300000
+ 
+Plan hash value: 1789769157
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                             | Name                     | Starts | E-Rows | A-Rows |   A-Time   | Buffers |  OMem |  1Mem | Used-Mem |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                      |                          |      1 |        |      2 |00:00:00.01 |      42 |       |       |          |
+|   1 |  NESTED LOOPS                         |                          |      1 |      1 |      2 |00:00:00.01 |      42 |       |       |          |
+|   2 |   NESTED LOOPS                        |                          |      1 |      1 |      2 |00:00:00.01 |      41 |       |       |          |
+|*  3 |    HASH JOIN                          |                          |      1 |      1 |      2 |00:00:00.01 |      35 |  1969K|  1969K|  553K (0)|
+|   4 |     VIEW                              |                          |      1 |      1 |      2 |00:00:00.01 |      21 |       |       |          |
+|   5 |      HASH GROUP BY                    |                          |      1 |      1 |      2 |00:00:00.01 |      21 |  1600K|  1600K| 1009K (0)|
+|   6 |       VIEW                            | VM_NWVW_0                |      1 |      1 |      3 |00:00:00.01 |      21 |       |       |          |
+|   7 |        HASH GROUP BY                  |                          |      1 |      1 |      3 |00:00:00.01 |      21 |  1889K|  1889K|  733K (0)|
+|   8 |         NESTED LOOPS                  |                          |      1 |      1 |      3 |00:00:00.01 |      21 |       |       |          |
+|*  9 |          HASH JOIN                    |                          |      1 |      1 |      3 |00:00:00.01 |      13 |  1519K|  1519K|  694K (0)|
+|  10 |           NESTED LOOPS                |                          |      1 |      1 |      3 |00:00:00.01 |      12 |       |       |          |
+|* 11 |            TABLE ACCESS FULL          | GASTOS                   |      1 |      3 |      3 |00:00:00.01 |       7 |       |       |          |
+|* 12 |            TABLE ACCESS BY INDEX ROWID| RESERVAS_DE_ALOJAMIENTO  |      3 |      1 |      3 |00:00:00.01 |       5 |       |       |          |
+|* 13 |             INDEX UNIQUE SCAN         | IDRESERVASALOJAMIENTO_PK |      3 |      1 |      3 |00:00:00.01 |       2 |       |       |          |
+|  14 |           INDEX FULL SCAN             | RESERVAS_DE_CLIENTES_PK  |      1 |      1 |     11 |00:00:00.01 |       1 |       |       |          |
+|* 15 |          INDEX UNIQUE SCAN            | IDPERSONAS_PK            |      3 |      1 |      3 |00:00:00.01 |       8 |       |       |          |
+|  16 |     VIEW                              |                          |      1 |      5 |      6 |00:00:00.01 |      14 |       |       |          |
+|  17 |      HASH GROUP BY                    |                          |      1 |      5 |      6 |00:00:00.01 |      14 |  1214K|  1214K|  875K (0)|
+|  18 |       NESTED LOOPS                    |                          |      1 |      5 |      6 |00:00:00.01 |      14 |       |       |          |
+|  19 |        VIEW                           | VW_GBF_10                |      1 |      5 |      6 |00:00:00.01 |       1 |       |       |          |
+|  20 |         HASH GROUP BY                 |                          |      1 |      5 |      6 |00:00:00.01 |       1 |  1345K|  1345K|  733K (0)|
+|  21 |          INDEX FULL SCAN              | RESERVAS_DE_CLIENTES_PK  |      1 |     11 |     11 |00:00:00.01 |       1 |       |       |          |
+|* 22 |        INDEX UNIQUE SCAN              | IDPERSONAS_PK            |      6 |      1 |      6 |00:00:00.01 |      13 |       |       |          |
+|* 23 |    INDEX RANGE SCAN                   | IDPERSONAS_PK            |      2 |      1 |      2 |00:00:00.01 |       6 |       |       |          |
+|  24 |   TABLE ACCESS BY INDEX ROWID         | PERSONAS                 |      2 |      1 |      2 |00:00:00.01 |       1 |       |       |          |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - access("A"."ID"="B"."ID" AND "A"."CA"="B"."CB")
+   9 - access("RESERVAS_DE_CLIENTES"."IDRESERVA"="RESERVAS_DE_ALOJAMIENTO"."ID")
+  11 - filter("GASTOS"."PRECIO">300000)
+  12 - filter(("GASTOS"."FECHA"<="RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA" AND 
+              "GASTOS"."FECHA">="RESERVAS_DE_ALOJAMIENTO"."FECHALLEGADATEORICA"))
+  13 - access("RESERVAS_DE_ALOJAMIENTO"."ID"="GASTOS"."IDRESERVA")
+  15 - access("PERSONAS"."ID"="RESERVAS_DE_CLIENTES"."IDUSUARIO" AND "PERSONAS"."TIPOIDENTIFICACION"="RESERVAS_DE_CLIENTES"."TIPOIDUSUARIO")
+  22 - access("PERSONAS"."ID"="ITEM_2" AND "PERSONAS"."TIPOIDENTIFICACION"="ITEM_1")
+  23 - access("PERSONAS"."ID"="A"."ID")
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - this is an adaptive plan
+   - 1 Sql Plan Directive used for this statement
+ 
 
 //------------------------------PARTE3
 
@@ -89,4 +222,78 @@ on a.id = b.id and a.ca = b.cb) C
 on personas.id = c.id
 ;
 
+
+SQL_ID  da0dpjr6hwqcx, child number 0
+-------------------------------------
+select personas.id,personas.tipoidentificacion,nombre,correo from 
+personas  inner join ( select a.id from ( select 
+personas.id,count(personas.id) as cA from (( reservas_de_clientes inner 
+join reservas_de_Alojamiento on reservas_de_clientes.idreserva = 
+reservas_de_alojamiento.id) inner join personas on personas.id = 
+reservas_de_clientes.idusuario AND personas.tipoidentificacion = 
+reservas_de_clientes.tipoidusuario) GROUP BY personas.id ) A inner join 
+( select resp.id, count(resp.id) as cB from( select personas.id from 
+((( reservas_de_clientes inner join reservas_de_Alojamiento on 
+reservas_de_clientes.idreserva = reservas_de_alojamiento.id) inner join 
+personas on personas.id = reservas_de_clientes.idusuario AND 
+personas.tipoidentificacion = reservas_de_clientes.tipoidusuario) inner 
+join gastos on  reservas_de_Alojamiento.id = gastos.idreserva) where 
+gastos.fecha between reservas_de_alojamiento.fechallegadateorica and  
+reservas_de_alojamiento.fechasalidateorica and (gastos.idservicio = 12
+ 
+Plan hash value: 3807874109
+ 
+--------------------------------------------------------------------------------------------------------------
+| Id  | Operation                             | Name                     | E-Rows |  OMem |  1Mem | Used-Mem |
+--------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT                      |                          |        |       |       |          |
+|   1 |  NESTED LOOPS                         |                          |      1 |       |       |          |
+|   2 |   NESTED LOOPS                        |                          |      1 |       |       |          |
+|*  3 |    HASH JOIN                          |                          |      1 |  1969K|  1969K|  376K (0)|
+|   4 |     VIEW                              |                          |      1 |       |       |          |
+|   5 |      HASH GROUP BY                    |                          |      1 |  1600K|  1600K|  752K (0)|
+|   6 |       VIEW                            | VM_NWVW_0                |      1 |       |       |          |
+|   7 |        HASH GROUP BY                  |                          |      1 |  1889K|  1889K|  511K (0)|
+|   8 |         NESTED LOOPS                  |                          |      1 |       |       |          |
+|   9 |          NESTED LOOPS                 |                          |      1 |       |       |          |
+|  10 |           NESTED LOOPS                |                          |      1 |       |       |          |
+|* 11 |            TABLE ACCESS FULL          | GASTOS                   |      2 |       |       |          |
+|* 12 |            TABLE ACCESS BY INDEX ROWID| RESERVAS_DE_ALOJAMIENTO  |      1 |       |       |          |
+|* 13 |             INDEX UNIQUE SCAN         | IDRESERVASALOJAMIENTO_PK |      1 |       |       |          |
+|* 14 |           INDEX RANGE SCAN            | RESERVAS_DE_CLIENTES_PK  |      1 |       |       |          |
+|* 15 |          INDEX UNIQUE SCAN            | IDPERSONAS_PK            |      1 |       |       |          |
+|  16 |     VIEW                              |                          |      5 |       |       |          |
+|  17 |      HASH GROUP BY                    |                          |      5 |  1214K|  1214K|  868K (0)|
+|  18 |       NESTED LOOPS                    |                          |      5 |       |       |          |
+|  19 |        VIEW                           | VW_GBF_10                |      5 |       |       |          |
+|  20 |         HASH GROUP BY                 |                          |      5 |  1345K|  1345K|  758K (0)|
+|  21 |          INDEX FULL SCAN              | RESERVAS_DE_CLIENTES_PK  |     11 |       |       |          |
+|* 22 |        INDEX UNIQUE SCAN              | IDPERSONAS_PK            |      1 |       |       |          |
+|* 23 |    INDEX RANGE SCAN                   | IDPERSONAS_PK            |      1 |       |       |          |
+|  24 |   TABLE ACCESS BY INDEX ROWID         | PERSONAS                 |      1 |       |       |          |
+--------------------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   3 - access("A"."ID"="B"."ID" AND "A"."CA"="B"."CB")
+  11 - filter(("GASTOS"."IDSERVICIO"=12 OR "GASTOS"."IDSERVICIO"=13))
+  12 - filter(("GASTOS"."FECHA"<="RESERVAS_DE_ALOJAMIENTO"."FECHASALIDATEORICA" AND 
+              "GASTOS"."FECHA">="RESERVAS_DE_ALOJAMIENTO"."FECHALLEGADATEORICA"))
+  13 - access("RESERVAS_DE_ALOJAMIENTO"."ID"="GASTOS"."IDRESERVA")
+  14 - access("RESERVAS_DE_CLIENTES"."IDRESERVA"="RESERVAS_DE_ALOJAMIENTO"."ID")
+  15 - access("PERSONAS"."ID"="RESERVAS_DE_CLIENTES"."IDUSUARIO" AND 
+              "PERSONAS"."TIPOIDENTIFICACION"="RESERVAS_DE_CLIENTES"."TIPOIDUSUARIO")
+  22 - access("PERSONAS"."ID"="ITEM_2" AND "PERSONAS"."TIPOIDENTIFICACION"="ITEM_1")
+  23 - access("PERSONAS"."ID"="A"."ID")
+ 
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+   - this is an adaptive plan
+   - Warning: basic plan statistics not available. These are only collected when:
+       * hint 'gather_plan_statistics' is used for the statement or
+       * parameter 'statistics_level' is set to 'ALL', at session or system level
+   - 1 Sql Plan Directive used for this statement
+ 
 
