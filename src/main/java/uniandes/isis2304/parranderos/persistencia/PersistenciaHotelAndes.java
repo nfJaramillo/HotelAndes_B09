@@ -1455,6 +1455,88 @@ public class PersistenciaHotelAndes {
 		}
 	}
 	
+	/**
+	 * RFC10.
+	 * @param idUsuario the id usuario
+	 * @param tipoUsuario the tipo usuario
+	 * @param fecha1 the fecha 1
+	 * @param fecha2 the fecha 2
+	 * @return the list
+	 */
+	public List<ClaseAsistente> RFC10( int idServicio, String fecha1, String fecha2, String criterio, int orden )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+	
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC10( pm, idServicio, fecha1, fecha2, criterio, orden );
+			tx.commit();
+	
+			if (tx.isActive())
+				tx.rollback();
+	
+			pm.close();
+			return resp;
+	
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+	
+	
+			if (tx.isActive())
+				tx.rollback();
+	
+			pm.close();
+			throw e;
+		}
+	}
+
+	/**
+	 * RFC9.
+	 * @param idUsuario the id usuario
+	 * @param tipoUsuario the tipo usuario
+	 * @param fecha1 the fecha 1
+	 * @param fecha2 the fecha 2
+	 * @return the list
+	 */
+	public List<ClaseAsistente> RFC10PorFecha( int idServicio, String fecha1, String fecha2, String cualFecha, int orden )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+	
+		try
+		{
+			tx.begin();
+			List<ClaseAsistente> resp = sqlConsultas.RFC10PorFecha( pm, idServicio, fecha1, fecha2, cualFecha, orden );
+			tx.commit();
+	
+			if (tx.isActive())
+				tx.rollback();
+	
+			pm.close();
+			return resp;
+	
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			System.out.println( "Exception : " + e.getMessage() + "\n" + darDetalleException(e) );
+	
+	
+			if (tx.isActive())
+				tx.rollback();
+	
+			pm.close();
+			throw e;
+		}
+	}
+	
 	public ArrayList<Integer> RFC11( )
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();

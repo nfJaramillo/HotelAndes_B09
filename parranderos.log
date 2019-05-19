@@ -1609,3 +1609,10 @@ ORA-00904: "+i+": identificador no válido
 20:34:23,624 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
 20:36:01,021 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 20:36:02,774 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+23:11:53,358 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+23:11:56,872 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+23:13:22,094 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT res.TIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO   FROM PERSONAS res   WHERE ROWNUM < 250   AND res.ID NOT IN ( per.ID   FROM PERSONAS per, RESERVAS_SERVICIOS resSer   WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION       AND resSer.IDSERVICIO = 1      AND per.ID = resSer.IDTIPOPERSONA       AND resSer.FECHAINICIO >= '1/1/2000'      AND resSer.FECHAFIN <= '2/2/2030'  GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO )  ORDER BY res.NOMBRE ASC".
+ORA-00907: falta el paréntesis derecho
+
+23:15:00,702 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+23:15:13,839 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n

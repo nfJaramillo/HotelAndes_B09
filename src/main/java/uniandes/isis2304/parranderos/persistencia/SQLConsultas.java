@@ -556,7 +556,56 @@ public class SQLConsultas {
 		List<ClaseAsistente> lista= a.executeList();
 		return lista;
 	}
-	
+	public List<ClaseAsistente> RFC10(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String criterio, int orden)
+	{
+		String consulta = "SELECT res.TIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO \r\n"
+				+ "FROM PERSONAS res \r\n"
+				+ "WHERE ROWNUM < 250 \r\n"
+				+ "AND res.ID NOT IN ( SELECT per.ID \r\n"
+				+ "FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
+				+ "WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "    AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "    AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "    AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "    AND resSer.FECHAFIN <= '" + fecha2 + "'\r\n"
+				+ "GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO )\r\n"
+				+ "ORDER BY res.";
+
+		if( criterio.equals( "Identificador del cliente" ) )
+			consulta += "ID";
+		else if( criterio.equals( "Nombre del cliente" ) )
+			consulta += "NOMBRE";
+		else if( criterio.equals( "Correo del cliente" ) )
+			consulta += "CORREO";
+
+		consulta += orden==0?" ASC":" DESC";
+		
+		Query a = pm.newQuery(SQL, consulta );
+
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+		return lista;
+	}
+
+	public List<ClaseAsistente> RFC10PorFecha(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String cualFecha, int orden)
+	{
+		Query a = pm.newQuery(SQL, "SELECT conResSer.FECHAINICIO AS FECHALLEGADATEORICA, conResSer.FECHAFIN AS FECHASALIDATEORICA, conPer.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, conPer.ID, conPer.NOMBRE, conPer.CORREO \r\n"
+				+ "FROM PERSONAS per, RESERVAS_SERVICIOS conResSer \r\n"
+				+ "WHERE ROWNUM < 250 \r\n"
+				+ "   AND conPer.TIPOIDENTIFICACION = conResSer.TIPOIDENTIFICACION \r\n"
+				+ "   AND conPer.ID = conResSer.IDTIPOPERSONA \r\n"
+				+ "   AND conPer.ID NOT IN ( SELECT per.ID"
+				+ "	WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "   AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "   AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "   AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "   AND resSer.FECHAFIN <= '" + fecha2 + "' ) \r\n"
+				+ "ORDER BY conResSer." + (cualFecha.equals("Fecha de inicio del servicio")?"FECHAINICIO":"FECHAFIN") + " " + (orden==0?"ASC":"DESC") );
+
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+		return lista;
+	}
 	public  ArrayList <Integer> RFC11 (PersistenceManager pm)
 	{
 		 ArrayList <Integer> resp = new  ArrayList <Integer>();

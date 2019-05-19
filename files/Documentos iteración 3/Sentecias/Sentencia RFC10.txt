@@ -1,9 +1,27 @@
+/* Cuando no es por fecha */
 SELECT res.TIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO 
-FROM PERSONAS res 
-WHERE res.ID not in ( SELECT per.ID 
-                      FROM PERSONAS per, RESERVAS_SERVICIOS resSer 
-                      WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION
-			AND resSer.IDSERVICIO = 'idServicio'
-                        AND per.ID = resSer.IDTIPOPERSONA 
-                        AND resSer.FECHAINICIO > 'Fecha1' 
-                        AND resSer.FECHAFIN < 'Fecha2' );
+FROM PERSONAS res
+
+WHERE res.ID NOT IN ( per.ID, per.NOMBRE, per.CORREO 
+			FROM PERSONAS per, RESERVAS_SERVICIOS resSer 
+			WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION 
+    			 AND resSer.IDSERVICIO = 'idServicio'
+    			 AND per.ID = resSer.IDTIPOPERSONA 
+   			 AND resSer.FECHAINICIO >= 'fecha1'
+   			 AND resSer.FECHAFIN <= 'fecha2'
+			GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO )
+ORDER BY 'criterio' 'orden';
+
+/* Cuando sí es por fecha */
+SELECT conResSer.FECHAINICIO AS FECHALLEGADATEORICA, conResSer.FECHAFIN AS FECHASALIDATEORICA, conPer.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, conPer.ID, conPer.NOMBRE, conPer.CORREO 
+FROM PERSONAS per, RESERVAS_SERVICIOS conResSer
+WHERE conPer.TIPOIDENTIFICACION = conResSer.TIPOIDENTIFICACION 
+     AND conPer.ID = conResSer.IDTIPOPERSONA 
+     AND conPer.ID NOT IN ( SELECT per.ID
+			    FROM PERSONAS per, RESERVAS_SERVICIOS resSer
+			    WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION 
+     			     AND resSer.IDSERVICIO = idServicio  
+     			     AND per.ID = resSer.IDTIPOPERSONA 
+     			     AND resSer.FECHAINICIO >= 'fecha1'
+     			     AND resSer.FECHAFIN <= 'fecha2' )
+ORDER BY 'cualFecha' 'orden';

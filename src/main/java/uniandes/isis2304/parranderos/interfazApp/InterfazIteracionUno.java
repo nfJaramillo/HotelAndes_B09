@@ -1124,6 +1124,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			String resultado = "\n-> En RFC9 mostrarConsumidoresDeCiertoServicioEnCiertoPeriodo:\n     Ordenando por el criterio '" + criterio + "' de manera " + (orden==0?"ascendente":"descendente") + "\n\n\n";
 			List<ClaseAsistente> lista;
 
+			long t1 = System.currentTimeMillis();
+
 			if( criterio == null )
 				throw new Exception("No se seleccionó ninguna opción.");
 
@@ -1149,7 +1151,9 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			}
 
-			resultado += "\n\n\n\n  [RFC9] Operación terminada.";
+
+			resultado += "\n\n\n\n  Tiempo de ejecución: "+ (System.currentTimeMillis()-t1) + " milisegundos."+ '\n';
+			resultado += "  [RFC9] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		}
 		catch (Exception e) 
@@ -1164,12 +1168,67 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC10()
 	{
-		System.out.println( "Entró a RFC10");
 		try
 		{
-			verificarRol( ORGANIZADOR ); // Esta función está permitida sólo para organizadores de eventos
+			if( rol == CLIENTE ) // Esta función está permitida sólo para administradores y organizadores de eventos.
+				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
 
-		} 
+			int idServicio;
+			String fecha1;
+			String fecha2;
+
+			String criterio;
+			int orden;
+
+			try
+			{
+				idServicio = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del servicio:", "ID servicio", JOptionPane.QUESTION_MESSAGE ));
+				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
+				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE );				
+
+				String[] options = { "Identificador del cliente", "Nombre del cliente", "Correo del cliente", "Fecha de inicio del servicio", "Fecha final del servicio" }; 
+
+				criterio = (String) JOptionPane.showInputDialog( this, "Seleccione el criterio a filtrar:", "Filtrar", JOptionPane.PLAIN_MESSAGE, null, options, options[0] );
+
+				// Indica el orden para mostrar las consultas: 0 para ascendente, 1 para descendente
+				orden = JOptionPane.showOptionDialog(this, "Seleccione el criterio con el que desea ordenar:", "Ordenar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[] { "Ascendente", "Descendente" }, "Ascendente" );
+			}
+			catch(Exception e)
+			{
+				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
+			}
+
+			String resultado = "\n-> En RFC10 mostrarClientesQueNoConsumieronCiertoServicioEnCiertoPeriodo:\n     Ordenando por el criterio '" + criterio + "' de manera " + (orden==0?"ascendente":"descendente") + "\n\n\n";
+			List<ClaseAsistente> lista;
+
+			if( criterio == null )
+				throw new Exception("No se seleccionó ninguna opción.");
+
+			// Si desea ver por fechas
+			else if( criterio.startsWith("Fecha") )
+			{
+				lista = persistencia.RFC10PorFecha( idServicio, fecha1, fecha2, criterio, orden );
+				resultado += "\tFecha inicio \tFecha fin \tTipo ID \t ID \tNombre \t\t\t Correo\n";
+				resultado       +=        "\t--------------------------------------------------------------------------------------------------------------------\n";
+
+				for( ClaseAsistente ca : lista )
+					resultado += "\t" + ca.getFECHALLEGADATEORICA() + '\t' + ca.getFECHASALIDATEORICA() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + "\t\t" + ca.getCORREO() + "\n";
+			}
+			// Si desea agrupar con algun criterio que no es por fechas
+			else
+			{
+				lista = persistencia.RFC10( idServicio, fecha1, fecha2, criterio, orden );
+				resultado       +=        "\t Tipo ID \t ID \tNombre \t\t Correo\n";
+				resultado       +=        "\t---------------------------------------------------------------------------------------------------------------------------------\n";
+
+				for( ClaseAsistente ca : lista )
+					resultado += '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + "\t\t" + ca.getCORREO() + '\n';
+
+			}
+
+			resultado += "\n\n\n\n  [RFC10] Operación terminada.";
+			panelDatos.actualizarInterfaz(resultado);
+		}
 		catch (Exception e) 
 		{
 			panelDatos.actualizarInterfaz( generarMensajeError(e) );
