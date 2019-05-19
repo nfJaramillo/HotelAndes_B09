@@ -1082,14 +1082,13 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// Requerimientos de consulta de la Iteración 3
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 	/**
 	 * Muestra la información de los clientes que consumieron al menos una vez un
 	 * determinado servicio del hotel, en un rango de fechas específico.
+	 * <pre:> El usuario ingresa fechas válidas como String
 	 */
 	public void RFC9()
 	{
-		
 		try
 		{
 			if( rol == CLIENTE ) // Esta función está permitida sólo para administradores y organizadores de eventos.
@@ -1099,37 +1098,56 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			String fecha1;
 			String fecha2;
 
-			int ordenamiento;
+			String criterio;
+			int orden;
 
 			try
 			{
 				idServicio = Integer.valueOf( JOptionPane.showInputDialog( this, "Identificador del servicio:", "ID servicio", JOptionPane.QUESTION_MESSAGE ));
 				fecha1 =  JOptionPane.showInputDialog( this, "Fecha de inicio (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de llegada", JOptionPane.QUESTION_MESSAGE );
-				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE ) ;
+				fecha2 =  JOptionPane.showInputDialog( this, "Fecha fin (formato DD/MM/AAAA, p.e. 31/01/2019):", "Fecha de salida", JOptionPane.QUESTION_MESSAGE );				
 
-				
-				String[] options = {"Red", "Green", "Blue"}; 
-				String result = (String)JOptionPane.showInputDialog( this, "Seleccione el criterio a filtrar", "Consultar consumo", JOptionPane.PLAIN_MESSAGE, null, options, options[0] );
-				System.out.println( "La opción elegida es " + result );
+				String[] options = { "Veces que el servicio fue solicitado", "Identificador del cliente", "Nombre del cliente", "Correo del cliente", "Fecha de inicio del servicio", "Fecha final del servicio" }; 
+
+				criterio = (String) JOptionPane.showInputDialog( this, "Seleccione el criterio a filtrar:", "Filtrar", JOptionPane.PLAIN_MESSAGE, null, options, options[0] );
+
+				// Indica el orden para mostrar las consultas: 0 para ascendente, 1 para descendente
+				orden = JOptionPane.showOptionDialog(this, "Seleccione el criterio con el que desea ordenar:", "Ordenar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[] { "Ascendente", "Descendente" }, "Ascendente" );
+
+				System.out.println( "La opción elegida es " + criterio + orden );
 			}
 			catch(Exception e)
 			{
 				throw new Exception( "Error convirtiendo uno de los datos de entrada: " + e.getMessage() );
 			}
-			
-			long t1 = System.currentTimeMillis();
 
-			List<ClaseAsistente> lista = persistencia.RFC9( idServicio, fecha1, fecha2 );
+			String resultado = "\n-> En RFC9 mostrarConsumidoresDeCiertoServicioEnCiertoPeriodo:\n     Ordenando por el criterio '" + criterio + "' de manera " + (orden==0?"ascendente":"descendente") + "\n\n\n";
+			List<ClaseAsistente> lista;
 
+			if( criterio == null )
+				throw new Exception("No se seleccionó ninguna opción.");
 
-			String resultado = "\n-> En RFC9 mostrarConsumidoresDeCiertoServicio:\n\n\n";
-			resultado       +=        "\tApariciones \t Tipo ID \t ID \tNombre \t Correo\n";
-			resultado       +=        "\t--------------------------------------------------------------------------------------------------------------------\n";
+			// Si desea ver por fechas
+			else if( criterio.startsWith("Fecha") )
+			{
+				lista = persistencia.RFC9PorFecha( idServicio, fecha1, fecha2, criterio, orden );
+				resultado += "\tFecha inicio \tFecha fin \tTipo ID \t ID \tNombre \t Correo\n";
+				resultado       +=        "\t--------------------------------------------------------------------------------------------------------------------\n";
 
-			for( ClaseAsistente ca : lista )
-				resultado += "\t" + ca.getAPARICIONES() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
+				for( ClaseAsistente ca : lista )
+					resultado += "\t" + ca.getFECHALLEGADATEORICA() + '\t' + ca.getFECHASALIDATEORICA() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
+			}
+			// Si desea agrupar con algun criterio que no es por fechas
+			else
+			{
+				lista = persistencia.RFC9( idServicio, fecha1, fecha2, criterio, orden );
+				resultado       +=        "\tVeces que lo solicito \t Tipo ID \t ID \tNombre \t Correo\n";
+				resultado       +=        "\t---------------------------------------------------------------------------------------------------------------------------------\n";
 
-			resultado += '\n' + "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
+				for( ClaseAsistente ca : lista )
+					resultado += "\t" + ca.getAPARICIONES() + "\t\t" + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + '\t' + ca.getCORREO() + "\n";
+
+			}
 
 			resultado += "\n\n\n\n  [RFC9] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
@@ -1165,8 +1183,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 	 */
 	public void RFC11()
 	{
-		
-		
+
+
 		long t1 = System.currentTimeMillis();
 
 		try
@@ -1174,7 +1192,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			if( rol != ADMIN ) // Esta función está permitida sólo para administradores y organizadores de eventos.
 				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
-			
+
 			verificarRol( ADMIN ); // Esta función está permitida sólo para el admin
 			ArrayList<Integer> servicios = persistencia.RFC11();
 			String resultado = "\n-> En RFC11 consultarFuncionamiento:\n\n\n";
@@ -1205,34 +1223,34 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 		{
 			if( rol != ADMIN ) // Esta función está permitida sólo para administradores y organizadores de eventos.
 				throw new Exception( "¡Usted no cuenta con los permisos necesarios para ejecutar esta acción!" );
-			
+
 			List<ClaseAsistente> a = persistencia.RFC12();
 			resultado+=("Buenos clientes por realizar estancias al menos una vez por trimestre en el ultimo año:"+ '\n');
 			for (ClaseAsistente claseAsistente : a) {
 				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
 			}
-			
+
 			resultado+='\n';
-			
+
 			List<ClaseAsistente> b = persistencia.RFC12B();
 			resultado+=("Buenos clientes por consumir al menos una vez en cada estacia un servicio con costo mayor a $300.000.oo:"+ '\n');
 			for (ClaseAsistente claseAsistente : b) {
 				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
 			}
-			
+
 			resultado+='\n';
-			
+
 			List<ClaseAsistente> c = persistencia.RFC12C();
 			resultado+=("Buenos clientes por consumir al menos una vez en cada estacia servicios de SPA o de salones de reuniones con duración mayor a 4 horas:" + '\n');
 			for (ClaseAsistente claseAsistente : c) {
 				resultado+= ("ID: "+claseAsistente.getID()+"     Tipo de identificacion: "+claseAsistente.getTIPOIDENTIFICACION()+"     Nombre: "+claseAsistente.getNOMBRE()+"       Correo: "+claseAsistente.getCORREO() +'\n');
 			}
-			
+
 			resultado+='\n';
-			
+
 			resultado += "Tiempo de ejecución: "+ (System.currentTimeMillis()-t1)+ " milisegundos"+ '\n';
 			panelDatos.actualizarInterfaz(resultado);
-			
+
 
 		} 
 		catch (Exception e) 

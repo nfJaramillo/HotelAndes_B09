@@ -1605,3 +1605,7 @@ ORA-00904: "+i+": identificador no válido
 17:38:31,862 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
 17:43:11,710 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 17:43:12,802 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+20:34:07,066 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+20:34:23,624 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+20:36:01,021 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+20:36:02,774 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n

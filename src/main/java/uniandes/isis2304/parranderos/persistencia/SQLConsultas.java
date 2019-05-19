@@ -511,6 +511,52 @@ public class SQLConsultas {
 		return resp;
 	}
 	
+	public List<ClaseAsistente> RFC9(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String criterio, int orden)
+	{
+		String consulta = "SELECT COUNT(*) AS APARICIONES, per.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO \r\n"
+				+ "FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
+				+ "WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "    AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "    AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "    AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "    AND resSer.FECHAFIN <= '" + fecha2 + "'\r\n"
+				+ "GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO\r\n"
+				+ "ORDER BY ";
+
+		if( criterio.equals( "Veces que el servicio fue solicitado" ) )
+			consulta += "APARICIONES";
+		else if( criterio.equals( "Identificador del cliente" ) )
+			consulta += "per.ID";
+		else if( criterio.equals( "Nombre del cliente" ) )
+			consulta += "per.NOMBRE";
+		else if( criterio.equals( "Correo del cliente" ) )
+			consulta += "per.CORREO";
+
+		consulta += orden==0?" ASC":" DESC";
+		
+		Query a = pm.newQuery(SQL, consulta );
+
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+		return lista;
+	}
+
+	public List<ClaseAsistente> RFC9PorFecha(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String cualFecha, int orden)
+	{
+		Query a = pm.newQuery(SQL, "SELECT resSer.FECHAINICIO AS FECHALLEGADATEORICA, resSer.FECHAFIN AS FECHASALIDATEORICA, per.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO \r\n"
+				+ "FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
+				+ "WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "    AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "    AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "    AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "    AND resSer.FECHAFIN <= '" + fecha2 + "'\r\n"
+				+ "ORDER BY resSer." + (cualFecha.equals("Fecha de inicio del servicio")?"FECHAINICIO":"FECHAFIN") + " " + (orden==0?"ASC":"DESC") );
+
+		a.setResultClass(ClaseAsistente.class);
+		List<ClaseAsistente> lista= a.executeList();
+		return lista;
+	}
+	
 	public  ArrayList <Integer> RFC11 (PersistenceManager pm)
 	{
 		 ArrayList <Integer> resp = new  ArrayList <Integer>();
@@ -584,24 +630,8 @@ public class SQLConsultas {
 		}
 		return resp;
 	}
-
-	public List<ClaseAsistente> RFC9(PersistenceManager pm, int idServicio, String fecha1, String fecha2)
-	{
-		Query a = pm.newQuery(SQL, "SELECT COUNT(*) AS APARICIONES, per.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO \r\n"
-				+ "FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
-				+ "WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
-				+ "    AND resSer.IDSERVICIO = " + idServicio + "\r\n"
-				+ "    AND per.ID = resSer.IDTIPOPERSONA \r\n"
-				+ "    AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
-				+ "    AND resSer.FECHAFIN <= '" + fecha2 + "'\r\n"
-				+ "GROUP BY per.TIPOIDENTIFICACION, per.ID, per.NOMBRE, per.CORREO" );
-
-		a.setResultClass(ClaseAsistente.class);
-		List<ClaseAsistente> lista= a.executeList();
-
-		return lista;
-	}
 	
+
 	public List<ClaseAsistente> RFC12(PersistenceManager pm)
 	{
 		Date hoy = new Date();
