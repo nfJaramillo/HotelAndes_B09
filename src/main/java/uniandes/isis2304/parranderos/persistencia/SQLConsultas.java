@@ -558,7 +558,7 @@ public class SQLConsultas {
 	}
 	public List<ClaseAsistente> RFC10(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String criterio, int orden)
 	{
-		String consulta = "SELECT res.TIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO \r\n"
+		String consulta = "SELECT res.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, res.ID, res.NOMBRE, res.CORREO \r\n"
 				+ "FROM PERSONAS res \r\n"
 				+ "WHERE ROWNUM < 250 \r\n"
 				+ "AND res.ID NOT IN ( SELECT per.ID \r\n"
@@ -590,19 +590,21 @@ public class SQLConsultas {
 	public List<ClaseAsistente> RFC10PorFecha(PersistenceManager pm, int idServicio, String fecha1, String fecha2, String cualFecha, int orden)
 	{
 		Query a = pm.newQuery(SQL, "SELECT conResSer.FECHAINICIO AS FECHALLEGADATEORICA, conResSer.FECHAFIN AS FECHASALIDATEORICA, conPer.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, conPer.ID, conPer.NOMBRE, conPer.CORREO \r\n"
-				+ "FROM PERSONAS per, RESERVAS_SERVICIOS conResSer \r\n"
+				+ "FROM PERSONAS conPer, RESERVAS_SERVICIOS conResSer \r\n"
 				+ "WHERE ROWNUM < 250 \r\n"
 				+ "   AND conPer.TIPOIDENTIFICACION = conResSer.TIPOIDENTIFICACION \r\n"
 				+ "   AND conPer.ID = conResSer.IDTIPOPERSONA \r\n"
-				+ "   AND conPer.ID NOT IN ( SELECT per.ID"
-				+ "	WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
-				+ "   AND resSer.IDSERVICIO = " + idServicio + "\r\n"
-				+ "   AND per.ID = resSer.IDTIPOPERSONA \r\n"
-				+ "   AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
-				+ "   AND resSer.FECHAFIN <= '" + fecha2 + "' ) \r\n"
-				+ "ORDER BY conResSer." + (cualFecha.equals("Fecha de inicio del servicio")?"FECHAINICIO":"FECHAFIN") + " " + (orden==0?"ASC":"DESC") );
+				+ "   AND conPer.ID NOT IN ( SELECT per.ID \r\n"
+				+ "							 FROM PERSONAS per, RESERVAS_SERVICIOS resSer \r\n"
+				+ "							 WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION \r\n"
+				+ "							 AND resSer.IDSERVICIO = " + idServicio + "\r\n"
+				+ "							 AND per.ID = resSer.IDTIPOPERSONA \r\n"
+				+ "							 AND resSer.FECHAINICIO >= '" + fecha1 + "'\r\n"
+				+ "							 AND resSer.FECHAFIN <= '" + fecha2 + "' ) \r\n"
+				+ "ORDER BY conResSer." + (cualFecha.equals("Fecha de inicio del servicio")?"FECHAINICIO":"FECHAFIN") + (orden==0?" ASC":" DESC") );
 
 		a.setResultClass(ClaseAsistente.class);
+		
 		List<ClaseAsistente> lista= a.executeList();
 		return lista;
 	}

@@ -1151,7 +1151,6 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			}
 
-
 			resultado += "\n\n\n\n  Tiempo de ejecución: "+ (System.currentTimeMillis()-t1) + " milisegundos."+ '\n';
 			resultado += "  [RFC9] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
@@ -1201,6 +1200,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			String resultado = "\n-> En RFC10 mostrarClientesQueNoConsumieronCiertoServicioEnCiertoPeriodo:\n     Ordenando por el criterio '" + criterio + "' de manera " + (orden==0?"ascendente":"descendente") + "\n\n\n";
 			List<ClaseAsistente> lista;
 
+			long t1 = System.currentTimeMillis();
+			
 			if( criterio == null )
 				throw new Exception("No se seleccionó ninguna opción.");
 
@@ -1208,8 +1209,8 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 			else if( criterio.startsWith("Fecha") )
 			{
 				lista = persistencia.RFC10PorFecha( idServicio, fecha1, fecha2, criterio, orden );
-				resultado += "\tFecha inicio \tFecha fin \tTipo ID \t ID \tNombre \t\t\t Correo\n";
-				resultado       +=        "\t--------------------------------------------------------------------------------------------------------------------\n";
+				resultado += "\tFecha inicio \tFecha fin \tTipo ID \t ID \tNombre \t\t Correo\n";
+				resultado       +=        "\t-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 
 				for( ClaseAsistente ca : lista )
 					resultado += "\t" + ca.getFECHALLEGADATEORICA() + '\t' + ca.getFECHASALIDATEORICA() + '\t' + ca.getIDTIPOIDENTIFICACION() + '\t' + ca.getID() + '\t' + ca.getNOMBRE() + "\t\t" + ca.getCORREO() + "\n";
@@ -1226,6 +1227,7 @@ public class InterfazIteracionUno extends JFrame implements ActionListener
 
 			}
 
+			resultado += "\n\n\n\n  Tiempo de ejecución: "+ (System.currentTimeMillis()-t1) + " milisegundos."+ '\n';
 			resultado += "\n\n\n\n  [RFC10] Operación terminada.";
 			panelDatos.actualizarInterfaz(resultado);
 		}

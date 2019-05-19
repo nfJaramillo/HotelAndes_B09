@@ -1616,3 +1616,21 @@ ORA-00907: falta el paréntesis derecho
 
 23:15:00,702 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
 23:15:13,839 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:18:05,930 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:18:07,892 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:28:24,158 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:28:25,426 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:31:15,868 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:31:17,458 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:31:39,238 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT conResSer.FECHAINICIO AS FECHALLEGADATEORICA, conResSer.FECHAFIN AS FECHASALIDATEORICA, conPer.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, conPer.ID, conPer.NOMBRE, conPer.CORREO   FROM PERSONAS per, RESERVAS_SERVICIOS conResSer   WHERE ROWNUM < 250      AND conPer.TIPOIDENTIFICACION = conResSer.TIPOIDENTIFICACION      AND conPer.ID = conResSer.IDTIPOPERSONA      AND conPer.ID NOT IN ( SELECT per.ID WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION      AND resSer.IDSERVICIO = 1     AND per.ID = resSer.IDTIPOPERSONA      AND resSer.FECHAINICIO >= '1/1/2000'     AND resSer.FECHAFIN <= '12/12/2030' )   ORDER BY conResSer.FECHAINICIO ASC".
+ORA-00923: palabra clave FROM no encontrada donde se esperaba
+
+13:33:33,960 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:33:35,163 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:34:13,864 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "SELECT conResSer.FECHAINICIO AS FECHALLEGADATEORICA, conResSer.FECHAFIN AS FECHASALIDATEORICA, conPer.TIPOIDENTIFICACION AS IDTIPOIDENTIFICACION, conPer.ID, conPer.NOMBRE, conPer.CORREO   FROM PERSONAS per, RESERVAS_SERVICIOS conResSer   WHERE ROWNUM < 250      AND conPer.TIPOIDENTIFICACION = conResSer.TIPOIDENTIFICACION      AND conPer.ID = conResSer.IDTIPOPERSONA      AND conPer.ID NOT IN ( SELECT per.ID           FROM PERSONAS per, RESERVAS_SERVICIOS resSer           WHERE per.TIPOIDENTIFICACION = resSer.TIPOIDENTIFICACION           AND resSer.IDSERVICIO = 1          AND per.ID = resSer.IDTIPOPERSONA           AND resSer.FECHAINICIO >= '1/1/1998'          AND resSer.FECHAFIN <= '2/2/2300' )   ORDER BY conResSer.FECHAFIN DESC".
+ORA-00904: "CONPER"."ID": identificador no válido
+
+13:35:35,921 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:35:37,149 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
+13:40:13,349 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Interfaz
+13:40:15,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazIteracionUno] - Se aplica configuraciÃ³n indicada en el archivo de configuraciÃ³n
