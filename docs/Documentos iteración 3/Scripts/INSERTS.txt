@@ -1,0 +1,134 @@
+--///////////////////////////////////////
+-- INSERTSSSS
+--///////////////////////////////////////
+
+INSERT INTO CADENA_DE_HOTELES (ID,NOMBRE) VALUES (1,'Hoteles Andes');
+
+INSERT INTO HOTELES (ID,NOMBRE,ESTRELLAS,IDCADENAHOTELES) VALUES (1,'HotelAndes',5,1);
+
+--///////////////////////////////////////
+-- Insert de los roles
+--///////////////////////////////////////
+
+
+INSERT INTO tipos_de_personas (id,NOMBRE)VALUES (1,'Cliente');
+INSERT INTO tipos_de_personas (id,NOMBRE)VALUES (2,'Recepcionista');
+INSERT INTO tipos_de_personas (id,NOMBRE)VALUES (3,'Empleado');
+INSERT INTO tipos_de_personas (id,NOMBRE)VALUES (4,'Administrador de datos');
+INSERT INTO tipos_de_personas (id,NOMBRE)VALUES (5,'Gerente');
+
+
+--///////////////////////////////////////
+-- Insert de las personas 
+--///////////////////////////////////////
+
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (1,'Cedula',1,5,'El Profe','elProfe@profe.profe');
+
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (2,'Cedula',1,4,'Nico J','nicoJ@profe.profe');
+
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (5,'Cedula',1,3,'Aleja','Aleja@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (6,'Cedula',1,3,'Roberto','Roberto@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (7,'Cedula',1,3,'Pedrita','Pedrita@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (8,'Cedula',1,3,'Julia','Julia@profe.profe');
+
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (3,'Cedula',1,2,'Jorge','jorgge@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (4,'Cedula',1,2,'Laura','laura@profe.profe');
+
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (9,'Cedula',null,1,'Laura','Laura@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (10,'Cedula',null,1,'Luisa','Luisa@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (11,'Cedula',null,1,'Manuela','Manuela@profe.profe');
+INSERT INTO PERSONAS  (ID,tipoidentificacion,idhotel,idtipopersona,nombre,correo)VALUES (12,'Cedula',null,1,'Santiago','Santiago@profe.profe');
+
+
+
+
+--///////////////////////////////////////
+-- Insert de los tipos de habitacion
+--///////////////////////////////////////
+
+
+
+INSERT INTO tipos_de_habitacion  (id,capacidad,costoalojamientonoche,dotacion,nombre)VALUES (1,12,5000000,'Tiene un perro incluido','Super premium');
+INSERT INTO tipos_de_habitacion  (id,capacidad,costoalojamientonoche,dotacion,nombre)VALUES (2,6,4000000,'Tiene medio perro vivo incluido','No tan premium');
+INSERT INTO tipos_de_habitacion  (id,capacidad,costoalojamientonoche,dotacion,nombre)VALUES (3,3,3000000,'Tiene un perro muerto incluido','Muy casual');
+INSERT INTO tipos_de_habitacion  (id,capacidad,costoalojamientonoche,dotacion,nombre)VALUES (4,1,2000000,'No incluye perro','Cutre');
+
+
+
+--///////////////////////////////////////
+-- Insert de las habitaciones
+--///////////////////////////////////////
+
+
+
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (102,1,1);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (202,1,1);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (302,1,1);
+
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (103,1,2);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (203,1,2);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (303,1,2);
+
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (104,1,3);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (204,1,3);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (304,1,3);
+
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (105,1,4);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (205,1,4);
+INSERT INTO Habitaciones  (numero,idhotel,tipohabitacion)VALUES (305,1,4);
+
+
+--///////////////////////////////////////
+-- Insert de los servicios
+--///////////////////////////////////////
+
+
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (1,1,'Recreacion',1,'07:00:00','22:00:00','Piscina',0,'El agua moja');
+
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (2,1,'Recreacion',1,'07:00:00','22:00:00','Gimnasio',0,'El ejercicio es bueno');
+
+
+
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (3,1,'Necesidades',1,'00:00:00','23:59:59','Internet',0   ,'Yeiiii wifiiii');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (4,1,'Ventas',1,'07:00:00','20:00:00','Supermercado',0,'Comprar cosas');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (5,1,'Recreacion',1,'10:00:00','20:00:00','SPA',0,'Los masajes son del carajo');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (6,1,'Necesidades',1,'07:00:00','22:00:00','Lavado/planchado/embolada',0,' Limpioooo');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (7,1,'Prestamos',1,'07:00:00','22:00:00','Préstamo de utensilios',0,' Te prestamosss');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (8,1,'Prestamos',1,'07:00:00','22:00:00','Salones de reuniones',0,' Te prestamosss un salon!');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (9,1,'Prestamos',1,'07:00:00','22:00:00','Salones de conferencias grande',0,' Te prestamosss un salon de gran capacidad!');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (10,1,'Alimentacion',1,'07:00:00','24:00:00','Bar',0,' Guarooooo!');
+INSERT INTO servicios_adicionales  (id,idhotel,categoria,estaincluido,horarioinicio,horariofin,nombre,valor,descripcion)VALUES (11,1,'Alimentacion',1,'07:00:00','22:00:00','Restaurante',0,' Comidaaaaaaa!');
+
+
+
+--///////////////////////////////////////
+-- Insert de los productos de los servicios
+--///////////////////////////////////////
+
+INSERT INTO productos  (id,idservicio,nombre)VALUES (1,10,'Guaro');
+INSERT INTO productos  (id,idservicio,nombre)VALUES (2,10,'Pisco');
+INSERT INTO productos  (id,idservicio,nombre)VALUES (3,10,'Vodka');
+
+INSERT INTO productos  (id,idservicio,nombre)VALUES (4,11,'Carne');
+INSERT INTO productos  (id,idservicio,nombre)VALUES (5,11,'Pollo');
+INSERT INTO productos  (id,idservicio,nombre)VALUES (6,11,'Cerdo');
+
+
+
+--///////////////////////////////////////
+-- Insert de los planes de estadia
+--///////////////////////////////////////
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (1,1,'Genera un descuento (%) en el costo del alojamiento para estadías mayores a 7 noches','Larga estadía');
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (2,1,'Las estadías son de 7 noches (sábado a sábado) y tienen un costo total fijo; tiene
+también un porcentaje de descuento en los consumos de bar y restaurante (no necesariamente en
+todos los bares y restaurantes del hotel) y en algunos servicios. Los consumos no incluidos en el plan
+son cargados a la cuenta de la habitación','Tiempo compartido');
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (3,1,'Un costo fijo total cubre el alojamiento y alimentación completa (desayuno, almuerzo y
+comida). Los menús de los restaurantes tienen identificados los platos que hacen parte de este plan.
+Para los bares, normalmente incluye el consumo de bebidas nacionales (en algunos casos ponen
+límites. Por ejemplo, 3 cervezas diarias). Los consumos no incluidos en el plan son cargados a la
+cuenta de la habitación.','Todo incluido');
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (4,1,'Genera un descuento (%) en el costo del alojamiento para estadías mayores a 7 noches','Larga estadía');
+INSERT INTO planes_de_consumo  (id,idhotel,descripcion,nombre)VALUES (5,1,'ConvencionTest','Larga estadía');
+
+
